@@ -1,4 +1,5 @@
 import AnimatedPage from '@/components/AnimatedPage';
+import AISummarySection from '@/components/AISummarySection';
 
 export default function ElsewherePage() {
   return (
@@ -99,6 +100,9 @@ export default function ElsewherePage() {
                   </p>
                 </div>
               </div>
+
+              {/* AI Summary section */}
+              <AISummarySection />
           </div>
         </main>
       </div>

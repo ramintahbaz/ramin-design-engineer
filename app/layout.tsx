@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import Navigation from "@/components/Navigation";
+import HiddenMetadata from "@/components/HiddenMetadata";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -96,6 +97,9 @@ export default async function RootLayout({
 
         {/* Bottom Navbar (global, non-animated) */}
         <Navigation />
+        
+        {/* Hidden metadata for AI crawlers and search tools */}
+        <HiddenMetadata />
       </body>
     </html>
   );

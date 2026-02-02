@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import AnimatedPage from '@/components/AnimatedPage';
+import AISummarySection from '@/components/AISummarySection';
 
 export const photoboomMetadata = {
   id: 'photoboom',
@@ -40,6 +41,11 @@ export default function Home() {
                   </Link>
                   , designing intelligent financial systems that work for people.
                 </p>
+              </div>
+              
+              {/* AI Summary section */}
+              <div className="-mx-3.5 sm:-mx-4 mt-8 sm:mt-10">
+                <AISummarySection />
               </div>
             </div>
           </div>
