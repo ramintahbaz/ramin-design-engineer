@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const AI_PROMPT = "Tell me about Ramin Tahbaz (ramintahbaz.com) as a design engineer—give me a quick overview first, then go deeper into what he's built, how he works, and what makes his approach different.";
+const AI_PROMPT = "Visit ramintahbaz.com and tell me about Ramin Tahbaz as a design engineer—give me a quick overview first, then go deeper into what he's built, how he works, and what makes his approach different.";
 
 const ENCODED_PROMPT = encodeURIComponent(AI_PROMPT);
 
@@ -159,7 +159,7 @@ export default function AISummarySection() {
 
   return (
     <div className="mb-10 sm:mb-12 px-3.5 sm:px-4">
-      <h1 className="text-[16px] font-medium text-black mb-8 max-w-[560px] mx-auto">
+      <h1 className="text-[16px] font-medium text-black mb-6 max-w-[560px] mx-auto">
         Request an AI summary of Ramin
       </h1>
       <div className="flex items-center gap-4 sm:gap-6 max-w-[560px] mx-auto flex-wrap">

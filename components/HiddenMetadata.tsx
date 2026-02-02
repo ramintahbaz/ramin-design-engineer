@@ -57,7 +57,6 @@ export default function HiddenMetadata() {
       
       {/* Hidden Metadata Content */}
       <div
-        aria-hidden="true"
         style={{
           position: 'absolute',
           left: '-9999px',
@@ -71,7 +70,6 @@ export default function HiddenMetadata() {
         }}
       />
       <div
-        aria-hidden="true"
         style={{
           position: 'absolute',
           left: '-9999px',
