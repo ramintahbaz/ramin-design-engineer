@@ -7,11 +7,9 @@ const AI_PROMPT = "Tell me about Ramin Tahbaz (ramintahbaz.com) as a design engi
 
 const ENCODED_PROMPT = encodeURIComponent(AI_PROMPT);
 
-// Service name mapping for display
-const SERVICE_NAMES = {
+// Service name mapping for display (only services that are actually shown)
+const SERVICE_NAMES: Record<'chatgpt' | 'grok' | 'perplexity', string> = {
   chatgpt: 'ChatGPT',
-  claude: 'Claude',
-  gemini: 'Gemini',
   grok: 'Grok',
   perplexity: 'Perplexity'
 };
@@ -52,7 +50,7 @@ const AI_LINKS: Record<string, AILinkConfig> = {
 const MAY_NEED_CLIPBOARD: Array<keyof typeof AI_LINKS> = ['claude', 'gemini', 'grok'];
 
 export default function AISummarySection() {
-  const [copiedService, setCopiedService] = useState<keyof typeof AI_LINKS | null>(null);
+  const [copiedService, setCopiedService] = useState<'chatgpt' | 'grok' | 'perplexity' | null>(null);
 
   // Reliable clipboard copy
   const copyToClipboard = async (text: string): Promise<boolean> => {
@@ -143,8 +141,10 @@ export default function AISummarySection() {
     // Since URL parameters may not work reliably, always use clipboard copy as backup
     await copyToClipboard(AI_PROMPT);
     
-    // Show message
-    setCopiedService(service as keyof typeof AI_LINKS);
+    // Show message (only for services that are displayed)
+    if (service === 'chatgpt' || service === 'grok' || service === 'perplexity') {
+      setCopiedService(service);
+    }
     
     // Open the service (if not already opened for Claude mobile)
     if (urlToOpen) {
