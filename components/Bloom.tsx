@@ -27,7 +27,7 @@ export default function Bloom() {
             buttonSize={triggerType === 'text' ? { width: 100, height: 40 } : 40}
             menuWidth={menuWidth}
             menuRadius={menuRadius}
-            className="bg-white shadow-lg ring-1 ring-black/5"
+            className="bg-white shadow-lg ring-1 ring-[#292929]/5"
           >
             <Menu.Trigger>
               {triggerType === 'text' ? (

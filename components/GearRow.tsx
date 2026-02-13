@@ -51,7 +51,7 @@ export default function GearRow({ items, title }: GearRowProps) {
     <div className="relative">
       {title && (
         <div className="flex items-baseline justify-between mb-6 px-3.5 sm:px-4">
-          <h2 className="text-[16px] font-medium text-black">{title}</h2>
+          <h2 className="text-[16px] font-medium text-[#292929]">{title}</h2>
         </div>
       )}
       
@@ -77,7 +77,7 @@ export default function GearRow({ items, title }: GearRowProps) {
         {canScrollRight && (
           <button
             onClick={() => scroll('right')}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/80 hover:bg-black text-white flex items-center justify-center transition-colors z-10"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#292929]/80 hover:bg-[#292929] text-white flex items-center justify-center transition-colors z-10"
             aria-label="Scroll right"
           >
             <svg
@@ -99,7 +99,7 @@ export default function GearRow({ items, title }: GearRowProps) {
         {canScrollLeft && (
           <button
             onClick={() => scroll('left')}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/80 hover:bg-black text-white flex items-center justify-center transition-colors z-10"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#292929]/80 hover:bg-[#292929] text-white flex items-center justify-center transition-colors z-10"
             aria-label="Scroll left"
           >
             <svg

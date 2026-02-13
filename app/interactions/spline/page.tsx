@@ -109,7 +109,7 @@ export default function SplinePage() {
                   {/* Close button - positioned on top of video */}
                   <button
                     onClick={() => setIsModalOpen(false)}
-                    className="absolute right-2 sm:right-3 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-black/80 hover:bg-black text-white transition-colors z-[100] cursor-pointer shadow-lg"
+                    className="absolute right-2 sm:right-3 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[#292929]/80 hover:bg-[#292929] text-white transition-colors z-[100] cursor-pointer shadow-lg"
                     style={{ top: 'calc(0.5rem + 2px)' }}
                     aria-label="Close modal"
                   >

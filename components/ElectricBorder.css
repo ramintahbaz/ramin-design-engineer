@@ -319,11 +319,11 @@
   height: 1px;
   background-color: currentColor;
   opacity: 0.1;
-  mask-image: linear-gradient(to right, transparent, black, transparent);
+  mask-image: linear-gradient(to right, transparent, #292929, transparent);
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
-    black,
+    #292929,
     transparent
   );
 }

@@ -159,7 +159,7 @@ export default function AISummarySection() {
 
   return (
     <div className="mb-10 sm:mb-12 px-3.5 sm:px-4">
-      <h1 className="text-[16px] font-medium text-black mb-6 max-w-[560px] mx-auto">
+      <h1 className="text-[16px] font-medium mb-6 max-w-[560px] mx-auto" style={{ color: '#292929' }}>
         Request an AI summary of Ramin
       </h1>
       <div className="flex items-center gap-4 sm:gap-6 max-w-[560px] mx-auto flex-wrap">

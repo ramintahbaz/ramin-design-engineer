@@ -89,7 +89,7 @@ export default function GearPage() {
               }}
             >
               <div className="flex items-baseline justify-between mb-6 px-3.5 sm:px-4">
-                <h2 className="text-[16px] font-medium text-black">
+                <h2 className="text-[16px] font-medium text-[#292929]">
                   Most recently added
                 </h2>
                 <p className="text-[13px] sm:text-[14px] text-gray-500">

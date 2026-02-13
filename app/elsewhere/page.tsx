@@ -18,7 +18,7 @@ export default function ElsewherePage() {
 
               {/* Elsewhere section */}
               <div className="mb-10 sm:mb-14 px-3.5 sm:px-4">
-                <h1 className="text-[16px] font-medium text-black mb-8 max-w-[560px] mx-auto">
+                <h1 className="text-[16px] font-medium text-[#292929] mb-8 max-w-[560px] mx-auto">
                   Elsewhere
                 </h1>
                 <div className="space-y-3 sm:space-y-4 text-[16px] sm:text-[17px] text-gray-700 max-w-[560px] mx-auto">
@@ -77,7 +77,7 @@ export default function ElsewherePage() {
 
               {/* Colophon section */}
               <div className="mb-10 sm:mb-12 px-3.5 sm:px-4">
-                <h1 className="text-[16px] font-medium text-black mb-8 max-w-[560px] mx-auto">
+                <h1 className="text-[16px] font-medium text-[#292929] mb-8 max-w-[560px] mx-auto">
                   Built by
                 </h1>
                 <div className="space-y-3 sm:space-y-4 text-[16px] sm:text-[17px] text-gray-700 leading-relaxed max-w-[560px] mx-auto">

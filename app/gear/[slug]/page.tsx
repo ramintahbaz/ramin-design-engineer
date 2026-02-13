@@ -77,7 +77,7 @@ export default async function GearDetailPage({ params }: GearDetailPageProps) {
         {relatedGear.length > 0 && (
           <div className="mt-16 sm:mt-20">
             <div className="flex items-baseline justify-between mb-6 px-3.5 sm:px-4">
-              <h2 className="text-[16px] font-medium text-black">
+              <h2 className="text-[16px] font-medium text-[#292929]">
                 More from {item.category}
               </h2>
             </div>

@@ -399,7 +399,7 @@ export default function CraftPage() {
             <div
               className="flex items-baseline justify-between mb-8 max-w-[560px] mx-auto"
             >
-              <h2 className="text-[16px] font-medium text-black">
+              <h2 className="text-[16px] font-medium text-[#292929]">
                 Interactions
               </h2>
             </div>
@@ -457,7 +457,7 @@ export default function CraftPage() {
             }}
           >
             <div className="flex items-baseline justify-between mb-8 max-w-[560px] mx-auto">
-              <h2 className="text-[16px] font-medium text-black">
+              <h2 className="text-[16px] font-medium text-[#292929]">
                 Products
               </h2>
             </div>
@@ -515,7 +515,7 @@ export default function CraftPage() {
             }}
           >
             <div className="flex items-baseline justify-between mb-8 max-w-[560px] mx-auto">
-              <h2 className="text-[16px] font-medium text-black">
+              <h2 className="text-[16px] font-medium text-[#292929]">
                 Film
               </h2>
             </div>
@@ -573,7 +573,7 @@ export default function CraftPage() {
             }}
           >
             <div className="flex items-baseline justify-between mb-8 max-w-[560px] mx-auto">
-              <h2 className="text-[16px] font-medium text-black">
+              <h2 className="text-[16px] font-medium text-[#292929]">
                 Writing
               </h2>
             </div>
@@ -630,7 +630,7 @@ export default function CraftPage() {
             }}
           >
             <div className="flex items-baseline justify-between mb-4 max-w-[560px] mx-auto">
-              <h2 className="text-[16px] font-medium text-black">
+              <h2 className="text-[16px] font-medium text-[#292929]">
                 Curious about something else?
               </h2>
             </div>

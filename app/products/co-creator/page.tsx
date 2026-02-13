@@ -178,7 +178,7 @@ export default function CoCreatorPage() {
                 />
                 <button
                   onClick={closeModal}
-                  className="absolute right-2 top-2 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-black/80 hover:bg-black text-white transition-colors z-10 cursor-pointer"
+                  className="absolute right-2 top-2 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[#292929]/80 hover:bg-[#292929] text-white transition-colors z-10 cursor-pointer"
                   aria-label="Close modal"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

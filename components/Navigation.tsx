@@ -19,7 +19,7 @@ export default function Navigation() {
       <div className="max-w-[680px] mx-auto">
         <div className="flex items-center justify-center gap-4 px-3.5 sm:px-4">
           {/* Middle pill menu */}
-          <div className="flex h-12 items-center rounded-full bg-black px-5 sm:px-7 shadow-lg gap-4 sm:gap-6">
+          <div className="flex h-12 items-center rounded-full px-5 sm:px-7 shadow-lg gap-4 sm:gap-6" style={{ backgroundColor: '#292929' }}>
             <Link
               href="/"
               className={`text-xs sm:text-sm font-medium tracking-wide transition-colors ${
@@ -57,9 +57,9 @@ export default function Navigation() {
             href="https://x.com/ramintahbaz"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-black shadow-lg hover:bg-black transition-colors overflow-hidden"
+            className="flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-colors overflow-hidden"
             aria-label="Go to X profile"
-            style={{ backgroundColor: '#000000' }}
+            style={{ backgroundColor: '#292929' }}
           >
             <Image
               src="/images/avatar.png"

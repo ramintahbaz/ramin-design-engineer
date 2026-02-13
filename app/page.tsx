@@ -22,7 +22,7 @@ export default function Home() {
         <main className="relative px-5 sm:px-6 flex items-center justify-center min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-72px)] py-8">
           <div className="max-w-[680px] mx-auto w-full">
             <div className="max-w-[560px] mx-auto">
-              <h1 className="text-[16px] font-medium text-black mb-3 sm:mb-4">
+              <h1 className="text-[16px] font-medium mb-3 sm:mb-4" style={{ color: '#292929' }}>
                 I&apos;m Ramin [rah-MEEN], a DC-based designer who codes.
               </h1>
               <div className="text-[16px] sm:text-[17px] text-gray-700 leading-relaxed space-y-3 sm:space-y-4">

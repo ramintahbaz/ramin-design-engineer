@@ -51,7 +51,7 @@ function PaymentStatusButton() {
             ? '#00A020'
             : status === 'failed'
             ? '#FF3B30'
-            : '#000000',
+            : '#292929',
         background:
           status === 'processing'
             ? 'rgba(0, 122, 255, 0.1)'

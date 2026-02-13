@@ -295,7 +295,7 @@ export default function VisualSystemHoverPage() {
                         isLeftColumn ? 'left-full ml-2' : 'right-full mr-2'
                       }`}
                     >
-                      <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-lg overflow-hidden bg-black">
+                      <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-lg overflow-hidden bg-[#292929]">
                         {/* Video - 10 second clip */}
                         <video
                           ref={(el) => {
@@ -492,12 +492,12 @@ export default function VisualSystemHoverPage() {
                     </div>
 
                     {/* Content area */}
-                    <div className="flex-1 relative overflow-hidden bg-black">
+                    <div className="flex-1 relative overflow-hidden bg-[#292929]">
                       {selectedItem.video ? (
                         <>
                           {/* Loading animation */}
                           {modalVideoLoading[selectedItem.id] && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/90 z-20">
+                            <div className="absolute inset-0 flex items-center justify-center bg-[#292929]/90 z-20">
                               <div className="flex flex-col items-center gap-3">
                                 {/* Spinner */}
                                 <div className="relative w-12 h-12">
@@ -539,7 +539,7 @@ export default function VisualSystemHoverPage() {
                               e.stopPropagation();
                               setIsMuted(!isMuted);
                             }}
-                            className="absolute bottom-2 left-2 z-30 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 flex items-center justify-center transition-colors backdrop-blur-sm cursor-pointer"
+                            className="absolute bottom-2 left-2 z-30 w-8 h-8 rounded-full bg-[#292929]/60 hover:bg-[#292929]/80 flex items-center justify-center transition-colors backdrop-blur-sm cursor-pointer"
                             aria-label={isMuted ? 'Unmute' : 'Mute'}
                           >
                             {isMuted ? (
