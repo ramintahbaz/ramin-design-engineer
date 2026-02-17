@@ -44,7 +44,7 @@ export default function Home() {
               </div>
               
               {/* AI Summary section */}
-              <div className="-mx-3.5 sm:-mx-4 mt-8 sm:mt-10">
+              <div className="-mx-3.5 sm:-mx-4 mt-14">
                 <AISummarySection />
               </div>
             </div>
