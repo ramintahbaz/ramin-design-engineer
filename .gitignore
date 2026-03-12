@@ -40,5 +40,18 @@ next-env.d.ts
 public/videos/*.mp4
 public/videos/*.MOV
 public/videos/*.MP4
-# Exception: track Mr_Rogers.mp4
+# Exceptions: allow these to be committed (add your file to public/videos/ then git add & push)
 !public/videos/Mr_Rogers.mp4
+!public/videos/promise_commercial_preview.mp4
+!public/videos/fedcaddy_video_1 (1).mp4
+!public/videos/m8_video_preview.mp4
+!public/videos/slice of pie.mp4
+!public/videos/zeke sanders.mp4
+!public/videos/photo_boom_video.mp4
+!public/videos/netflix_scroll.mp4
+!public/videos/electric_border.mp4
+!public/videos/bloom_video.mp4
+!public/videos/payment_processing.mp4
+!public/videos/visal_hover.mp4
+!public/videos/craft_video.mp4
+!public/videos/sunset_chaser.mp4
