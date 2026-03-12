@@ -3,7 +3,7 @@ import AnimatedPage from '@/components/AnimatedPage';
 
 export const essay01Metadata = {
   id: 'essay-01',
-  title: "We've been here before",
+  title: "We've Been Here Before",
   date: 'December 2024',
   cardDate: 'Dec 2024',
   cardDescription: 'Every new form of compute triggers the same fears.',
@@ -57,7 +57,7 @@ export default function Essay01() {
         History suggests that this friction is temporary, not because the concerns are unfounded, but because they always resolve, one way or another. Society adjusts. Systems evolve. The boundaries between human work and machine work shift, as they always have.
       </p>
       <p>
-        We've been here before.
+        We've Been Here Before.
       </p>
     </>
   );
@@ -67,6 +67,7 @@ export default function Essay01() {
       <ProjectPageShell
         title={essay01Metadata.title}
         date={essay01Metadata.date}
+        category="Writing"
         description={description}
         backHref="/craft"
         backLabel="Craft"

@@ -1,0 +1,40 @@
+.eb-pipe-wrapper {
+  width: 100%;
+  padding: 40px 24px;
+  background: #111;
+  border-radius: 12px;
+  position: relative;
+}
+.eb-pipe-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.eb-pipe-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.eb-pipe-card {
+  width: 120px;
+  height: 170px;
+  border-radius: 16px;
+  border: 2px solid;
+  background: rgba(255,0,255,0.05);
+}
+.eb-pipe-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.04em;
+}
+.eb-pipe-desc {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.03em;
+  text-align: center;
+  max-width: 100px;
+}

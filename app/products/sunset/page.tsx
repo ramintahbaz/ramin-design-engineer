@@ -29,6 +29,7 @@ export default function SunsetPage() {
       <ProjectPageShell
         title={sunsetMetadata.title}
         date={sunsetMetadata.date}
+        category="Product"
         description={description}
         backHref="/craft"
         backLabel="Craft"

@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { Menu } from 'bloom-menu';
 
-export default function Bloom() {
+type BloomProps = { embedBackground?: boolean };
+
+export default function Bloom({ embedBackground = false }: BloomProps) {
   const [expandDirection, setExpandDirection] = useState<'top' | 'bottom' | 'left' | 'right'>('left');
   const [alignment, setAlignment] = useState<'start' | 'center' | 'end'>('center');
   const [menuWidth, setMenuWidth] = useState(160);
@@ -19,7 +21,7 @@ export default function Bloom() {
 
   const menuItemStyles = "flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-neutral-900 hover:bg-neutral-100";
 
-  return (
+  const content = (
     <div className="w-full flex flex-col items-center gap-24 sm:gap-48 min-h-[400px] pt-8 sm:pt-24 pb-8">
       <div className="flex items-center justify-center">
         <Menu.Root direction={expandDirection} anchor={alignment}>
@@ -119,7 +121,7 @@ export default function Bloom() {
       </div>
 
       <div className="w-full flex flex-col items-center gap-6">
-        <div className="flex flex-nowrap sm:flex-wrap items-center gap-2 justify-center overflow-x-hidden sm:overflow-x-auto w-full">
+        <div className="flex flex-nowrap sm:flex-wrap items-center gap-2 justify-center w-full" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
           <div className="relative flex items-center gap-1 rounded-[24px] p-1" style={{ backgroundColor: '#E8E8E8' }}>
             <div 
               className="absolute w-8 h-8 bg-white rounded-full shadow-sm transition-transform duration-200 ease-out"
@@ -354,5 +356,22 @@ export default function Bloom() {
       </div>
     </div>
   );
+
+  if (embedBackground) {
+    return (
+      <div
+        style={{
+          backgroundColor: '#171717',
+          borderRadius: 12,
+          padding: 24,
+          marginTop: 8,
+          marginBottom: 32,
+        }}
+      >
+        {content}
+      </div>
+    );
+  }
+  return content;
 }
 

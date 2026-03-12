@@ -45,6 +45,7 @@ export default function PhotoBoomPage() {
       <ProjectPageShell
         title={photoboomMetadata.title}
         date={photoboomMetadata.date}
+        category="Interaction"
         description={description}
         backHref="/craft"
         backLabel="Craft"

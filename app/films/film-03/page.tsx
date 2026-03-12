@@ -32,6 +32,7 @@ export default function Film03Page() {
       <ProjectPageShell
         title={film03Metadata.title}
         date={film03Metadata.date}
+        category="Film"
         description={description}
         backHref="/craft"
         backLabel="Craft"

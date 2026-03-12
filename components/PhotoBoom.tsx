@@ -12,9 +12,10 @@ interface ImageData {
 
 interface PhotoBoomProps {
   images: ImageData[];
+  modalMode?: boolean;
 }
 
-export default function PhotoBoom({ images }: PhotoBoomProps) {
+export default function PhotoBoom({ images, modalMode }: PhotoBoomProps) {
   const [exploded, setExploded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -43,7 +44,7 @@ export default function PhotoBoom({ images }: PhotoBoomProps) {
     setIsHovering(false);
     // If images are exploded, return them to stacked state when mouse leaves (desktop only)
     // On mobile, user must tap again to return images to starting position
-    if (exploded && !isMobile) {
+    if (exploded && !effectiveMobile) {
       setExploded(false);
     }
   };
@@ -118,43 +119,22 @@ export default function PhotoBoom({ images }: PhotoBoomProps) {
   };
 
   const getExplodedPosition = (index: number, total: number, imageWidth: number) => {
-    if (isMobile) {
-      // Mobile: use fixed pixel offsets that work reliably across devices
-      // Images are positioned at 50%, 50% (center), so transforms are relative to center
-      const offsetX = 60; // Horizontal spread
-      const offsetY = 60; // Vertical spread
-      // Calculate center shift: account for image width and scale to properly center the group
-      // On mobile, images are min(200px, 40vw), typically around 150px on mobile
-      // When scaled to 1.12, that's ~168px wide. The rightmost image at +60px extends to +60 + 84 = 144px
-      // The leftmost at -60px extends to -60 - 84 = -144px
-      // To center, we need to shift left by about half the visual width difference
-      // Since images are rotated and spread, we need a larger shift to visually center
-      const centerShift = -84; // Shift left to center the exploded group (adjusted 4px left)
-      
-      // Corner positions: top-left, top-right, bottom-left, bottom-right
+    if (effectiveMobile) {
+      const cardW = typeof window !== 'undefined'
+        ? Math.min(200, window.innerWidth * 0.4)
+        : 150;
+      const offsetX = cardW * 0.3;
+      const offsetY = cardW * 0.35;
+      const cx = -(cardW / 2);
+      const cy = -(cardW * 0.625);
+
       const corners = [
-        { 
-          x: -offsetX + centerShift, 
-          y: -offsetY,
-          rotation: -10
-        },
-        { 
-          x: offsetX + centerShift, 
-          y: -offsetY,
-          rotation: 10
-        },
-        { 
-          x: -offsetX + centerShift, 
-          y: offsetY,
-          rotation: -10
-        },
-        { 
-          x: offsetX + centerShift, 
-          y: offsetY,
-          rotation: 10
-        },
+        { x: cx - offsetX, y: cy - offsetY, rotation: -8 },
+        { x: cx + offsetX, y: cy - offsetY, rotation: 8 },
+        { x: cx - offsetX, y: cy + offsetY, rotation: -8 },
+        { x: cx + offsetX, y: cy + offsetY, rotation: 8 },
       ];
-      
+
       return corners[index] || { x: 0, y: 0, rotation: 0 };
     }
     
@@ -186,7 +166,7 @@ export default function PhotoBoom({ images }: PhotoBoomProps) {
     // On desktop, only show when hovering
     // The explosion animation is what requires interaction, not the peek
     if (exploded) return { x: 0, y: 0 };
-    if (!isMobile && !isHovering) return { x: 0, y: 0 };
+    if (!effectiveMobile && !isHovering) return { x: 0, y: 0 };
     
     // Define different directions for each image
     // Each image moves in a different direction: right, left, up-right, down-left, etc.
@@ -226,6 +206,8 @@ export default function PhotoBoom({ images }: PhotoBoomProps) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const effectiveMobile = isMobile;
+
   // Reset on escape key
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -241,18 +223,26 @@ export default function PhotoBoom({ images }: PhotoBoomProps) {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[70vh] sm:h-[60vh] flex items-center justify-center -mt-12 sm:mt-0"
-      style={{ overflow: 'visible', overflowX: 'visible', overflowY: 'visible', minHeight: isMobile ? '400px' : 'auto' }}
+      className="relative w-full flex items-center justify-center rounded-xl bg-neutral-900"
+      style={modalMode
+        ? { overflow: 'visible', height: 320 }
+        : {
+            overflow: 'visible',
+            height: exploded ? 420 : 320,
+            transition: 'height 0.4s ease, margin-bottom 0.4s ease',
+            marginBottom: exploded ? 40 : 0,
+          }
+      }
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <motion.div
         className={exploded ? "relative w-full h-full flex items-center justify-center cursor-pointer" : "relative cursor-pointer"}
         style={!exploded ? { width: 'min(200px, 40vw)', height: 'min(250px, 50vw)' } : { minHeight: '100%', padding: '0px' }}
-        onMouseMove={!exploded && !isMobile ? handleMouseMove : undefined}
-        onMouseEnter={!exploded && !isMobile ? handleMouseEnter : undefined}
-        onMouseLeave={!isMobile ? handleMouseLeave : undefined}
-        onClick={!isMobile ? handleClick : undefined}
+        onMouseMove={!exploded && !effectiveMobile ? handleMouseMove : undefined}
+        onMouseEnter={!exploded && !effectiveMobile ? handleMouseEnter : undefined}
+        onMouseLeave={!effectiveMobile ? handleMouseLeave : undefined}
+        onClick={!effectiveMobile ? handleClick : undefined}
       >
         {images.map((image, index) => {
           const imageWidth = 200;
@@ -268,7 +258,7 @@ export default function PhotoBoom({ images }: PhotoBoomProps) {
             const { x, y, rotation } = getExplodedPosition(index, images.length, imageWidth);
             // For mobile, getExplodedPosition returns full positions relative to center
             // For desktop, it returns variations that need to be added to the center position
-            if (isMobile) {
+            if (effectiveMobile) {
               targetX = x;
               targetY = y;
             } else {
@@ -287,7 +277,7 @@ export default function PhotoBoom({ images }: PhotoBoomProps) {
             targetX = baseOffset + peekOffset.x - 100;
             targetY = baseOffset + peekOffset.y - 125;
             // On mobile, always show tilt. On desktop, only when hovering
-            const shouldShowTilt = isMobile || isHovering;
+            const shouldShowTilt = effectiveMobile || isHovering;
             const tiltAmount = shouldShowTilt ? (index < 2 ? -8 : 8) : 0;
             targetRotate = index * 1.5 + tiltAmount;
           }
@@ -311,14 +301,8 @@ export default function PhotoBoom({ images }: PhotoBoomProps) {
                 top: '50%',
                 zIndex: exploded ? index : images.length - index,
               }}
-              onClick={!exploded && !isMobile ? handleClick : undefined}
-              initial={{
-                opacity: 0,
-                scale: 0.98,
-                x: targetX,
-                y: targetY,
-                rotate: targetRotate,
-              }}
+              onClick={!exploded && !effectiveMobile ? handleClick : undefined}
+              initial={false}
               animate={{
                 opacity: 1,
                 scale: targetScale,

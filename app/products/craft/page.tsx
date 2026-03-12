@@ -29,6 +29,7 @@ export default function CraftPage() {
       <ProjectPageShell
         title={craftMetadata.title}
         date={craftMetadata.date}
+        category="Product"
         description={description}
         backHref="/craft"
         backLabel="Craft"

@@ -3,7 +3,7 @@ import AnimatedPage from '@/components/AnimatedPage';
 
 export const essay03Metadata = {
   id: 'essay-03',
-  title: "Tuesday night heartbreak",
+  title: "Tuesday Night Heartbreak",
   date: 'January 2026',
   cardDate: 'Jan 2026',
   cardDescription: 'The broken heart that comes from never letting yourself love at all.',
@@ -42,6 +42,7 @@ export default function Essay03() {
       <ProjectPageShell
         title={essay03Metadata.title}
         date={essay03Metadata.date}
+        category="Writing"
         description={description}
         backHref="/craft"
         backLabel="Craft"

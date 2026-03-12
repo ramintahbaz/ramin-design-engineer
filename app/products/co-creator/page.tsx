@@ -111,6 +111,7 @@ export default function CoCreatorPage() {
       <ProjectPageShell
         title={coCreatorMetadata.title}
         date={coCreatorMetadata.date}
+        category="Product"
         description={description}
         backHref="/craft"
         backLabel="Craft"

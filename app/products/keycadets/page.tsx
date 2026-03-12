@@ -262,6 +262,7 @@ export default function KeycadetsPage() {
       <ProjectPageShell
         title={keycadetsMetadata.title}
         date={keycadetsMetadata.date}
+        category="Product"
         description={description}
         backHref="/craft"
         backLabel="Craft"

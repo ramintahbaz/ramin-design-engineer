@@ -20,17 +20,28 @@
 }
 
 html {
-  background: #e2dedb;
+  background-color: #000;
+  overscroll-behavior: none;
   overflow-x: hidden;
+  min-height: 100%;
+  min-height: 100dvh;
 }
 
 body {
-  background: #e2dedb;
+  background-color: #000;
+  overscroll-behavior: none;
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  min-height: 100%;
+  min-height: 100dvh;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.splash-hidden {
+  display: none !important;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

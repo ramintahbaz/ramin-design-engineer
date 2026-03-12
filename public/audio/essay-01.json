@@ -1,0 +1,2209 @@
+{
+  "words": [
+    {
+      "word": "In",
+      "startTime": 0,
+      "endTime": 0.13
+    },
+    {
+      "word": "1961,",
+      "startTime": 0.2,
+      "endTime": 0.53
+    },
+    {
+      "word": "IBM",
+      "startTime": 0.6,
+      "endTime": 0.8
+    },
+    {
+      "word": "installed",
+      "startTime": 0.87,
+      "endTime": 1.47
+    },
+    {
+      "word": "one",
+      "startTime": 1.53,
+      "endTime": 1.73
+    },
+    {
+      "word": "of",
+      "startTime": 1.8,
+      "endTime": 1.93
+    },
+    {
+      "word": "its",
+      "startTime": 2,
+      "endTime": 2.2
+    },
+    {
+      "word": "first",
+      "startTime": 2.27,
+      "endTime": 2.6
+    },
+    {
+      "word": "commercial",
+      "startTime": 2.67,
+      "endTime": 3.33
+    },
+    {
+      "word": "computers",
+      "startTime": 3.4,
+      "endTime": 4
+    },
+    {
+      "word": "inside",
+      "startTime": 4.07,
+      "endTime": 4.47
+    },
+    {
+      "word": "an",
+      "startTime": 4.53,
+      "endTime": 4.67
+    },
+    {
+      "word": "American",
+      "startTime": 4.73,
+      "endTime": 5.27
+    },
+    {
+      "word": "office.",
+      "startTime": 5.33,
+      "endTime": 5.8
+    },
+    {
+      "word": "For",
+      "startTime": 5.87,
+      "endTime": 6.07
+    },
+    {
+      "word": "the",
+      "startTime": 6.13,
+      "endTime": 6.33
+    },
+    {
+      "word": "people",
+      "startTime": 6.4,
+      "endTime": 6.8
+    },
+    {
+      "word": "who",
+      "startTime": 6.87,
+      "endTime": 7.07
+    },
+    {
+      "word": "worked",
+      "startTime": 7.13,
+      "endTime": 7.53
+    },
+    {
+      "word": "there,",
+      "startTime": 7.6,
+      "endTime": 8
+    },
+    {
+      "word": "it",
+      "startTime": 8.07,
+      "endTime": 8.2
+    },
+    {
+      "word": "was",
+      "startTime": 8.27,
+      "endTime": 8.47
+    },
+    {
+      "word": "not",
+      "startTime": 8.53,
+      "endTime": 8.73
+    },
+    {
+      "word": "introduced",
+      "startTime": 8.8,
+      "endTime": 9.47
+    },
+    {
+      "word": "as",
+      "startTime": 9.53,
+      "endTime": 9.67
+    },
+    {
+      "word": "a",
+      "startTime": 9.73,
+      "endTime": 9.8
+    },
+    {
+      "word": "helpful",
+      "startTime": 9.87,
+      "endTime": 10.33
+    },
+    {
+      "word": "tool.",
+      "startTime": 10.4,
+      "endTime": 10.73
+    },
+    {
+      "word": "It",
+      "startTime": 10.8,
+      "endTime": 10.93
+    },
+    {
+      "word": "arrived",
+      "startTime": 11,
+      "endTime": 11.47
+    },
+    {
+      "word": "as",
+      "startTime": 11.53,
+      "endTime": 11.67
+    },
+    {
+      "word": "a",
+      "startTime": 11.73,
+      "endTime": 11.8
+    },
+    {
+      "word": "signal.",
+      "startTime": 11.87,
+      "endTime": 12.33
+    },
+    {
+      "word": "A",
+      "startTime": 12.4,
+      "endTime": 12.47
+    },
+    {
+      "word": "machine",
+      "startTime": 12.53,
+      "endTime": 13
+    },
+    {
+      "word": "that",
+      "startTime": 13.07,
+      "endTime": 13.33
+    },
+    {
+      "word": "could",
+      "startTime": 13.4,
+      "endTime": 13.73
+    },
+    {
+      "word": "calculate",
+      "startTime": 13.8,
+      "endTime": 14.4
+    },
+    {
+      "word": "faster",
+      "startTime": 14.47,
+      "endTime": 14.87
+    },
+    {
+      "word": "than",
+      "startTime": 14.93,
+      "endTime": 15.2
+    },
+    {
+      "word": "any",
+      "startTime": 15.27,
+      "endTime": 15.47
+    },
+    {
+      "word": "human",
+      "startTime": 15.53,
+      "endTime": 15.87
+    },
+    {
+      "word": "raised",
+      "startTime": 15.93,
+      "endTime": 16.33
+    },
+    {
+      "word": "immediate",
+      "startTime": 16.4,
+      "endTime": 17
+    },
+    {
+      "word": "questions",
+      "startTime": 17.07,
+      "endTime": 17.67
+    },
+    {
+      "word": "about",
+      "startTime": 17.73,
+      "endTime": 18.07
+    },
+    {
+      "word": "replacement,",
+      "startTime": 18.13,
+      "endTime": 18.93
+    },
+    {
+      "word": "relevance,",
+      "startTime": 19,
+      "endTime": 19.67
+    },
+    {
+      "word": "and",
+      "startTime": 19.73,
+      "endTime": 19.93
+    },
+    {
+      "word": "control.",
+      "startTime": 20,
+      "endTime": 20.53
+    },
+    {
+      "word": "Entire",
+      "startTime": 20.6,
+      "endTime": 21
+    },
+    {
+      "word": "job",
+      "startTime": 21.07,
+      "endTime": 21.27
+    },
+    {
+      "word": "categories",
+      "startTime": 21.33,
+      "endTime": 22
+    },
+    {
+      "word": "were",
+      "startTime": 22.07,
+      "endTime": 22.33
+    },
+    {
+      "word": "suddenly",
+      "startTime": 22.4,
+      "endTime": 22.93
+    },
+    {
+      "word": "uncertain.",
+      "startTime": 23,
+      "endTime": 23.67
+    },
+    {
+      "word": "And",
+      "startTime": 23.73,
+      "endTime": 23.93
+    },
+    {
+      "word": "in",
+      "startTime": 24,
+      "endTime": 24.13
+    },
+    {
+      "word": "many",
+      "startTime": 24.2,
+      "endTime": 24.47
+    },
+    {
+      "word": "cases,",
+      "startTime": 24.53,
+      "endTime": 24.93
+    },
+    {
+      "word": "they",
+      "startTime": 25,
+      "endTime": 25.27
+    },
+    {
+      "word": "disappeared.",
+      "startTime": 25.33,
+      "endTime": 26.13
+    },
+    {
+      "word": "Every",
+      "startTime": 26.27,
+      "endTime": 26.6
+    },
+    {
+      "word": "major",
+      "startTime": 26.67,
+      "endTime": 27
+    },
+    {
+      "word": "technological",
+      "startTime": 27.07,
+      "endTime": 27.93
+    },
+    {
+      "word": "shift",
+      "startTime": 28,
+      "endTime": 28.33
+    },
+    {
+      "word": "begins",
+      "startTime": 28.4,
+      "endTime": 28.8
+    },
+    {
+      "word": "the",
+      "startTime": 28.87,
+      "endTime": 29.07
+    },
+    {
+      "word": "same",
+      "startTime": 29.13,
+      "endTime": 29.4
+    },
+    {
+      "word": "way:",
+      "startTime": 29.47,
+      "endTime": 29.73
+    },
+    {
+      "word": "with",
+      "startTime": 29.8,
+      "endTime": 30.07
+    },
+    {
+      "word": "excitement",
+      "startTime": 30.13,
+      "endTime": 30.8
+    },
+    {
+      "word": "from",
+      "startTime": 30.87,
+      "endTime": 31.13
+    },
+    {
+      "word": "the",
+      "startTime": 31.2,
+      "endTime": 31.4
+    },
+    {
+      "word": "people",
+      "startTime": 31.47,
+      "endTime": 31.87
+    },
+    {
+      "word": "building",
+      "startTime": 31.93,
+      "endTime": 32.47
+    },
+    {
+      "word": "it,",
+      "startTime": 32.53,
+      "endTime": 32.73
+    },
+    {
+      "word": "and",
+      "startTime": 32.8,
+      "endTime": 33
+    },
+    {
+      "word": "anxiety",
+      "startTime": 33.07,
+      "endTime": 33.53
+    },
+    {
+      "word": "from",
+      "startTime": 33.6,
+      "endTime": 33.87
+    },
+    {
+      "word": "the",
+      "startTime": 33.93,
+      "endTime": 34.13
+    },
+    {
+      "word": "people",
+      "startTime": 34.2,
+      "endTime": 34.6
+    },
+    {
+      "word": "living",
+      "startTime": 34.67,
+      "endTime": 35.07
+    },
+    {
+      "word": "alongside",
+      "startTime": 35.13,
+      "endTime": 35.73
+    },
+    {
+      "word": "it.",
+      "startTime": 35.8,
+      "endTime": 36
+    },
+    {
+      "word": "To",
+      "startTime": 36.13,
+      "endTime": 36.27
+    },
+    {
+      "word": "the",
+      "startTime": 36.33,
+      "endTime": 36.53
+    },
+    {
+      "word": "workers",
+      "startTime": 36.6,
+      "endTime": 37.07
+    },
+    {
+      "word": "of",
+      "startTime": 37.13,
+      "endTime": 37.27
+    },
+    {
+      "word": "1961,",
+      "startTime": 37.33,
+      "endTime": 37.67
+    },
+    {
+      "word": "this",
+      "startTime": 37.73,
+      "endTime": 38
+    },
+    {
+      "word": "moment",
+      "startTime": 38.07,
+      "endTime": 38.47
+    },
+    {
+      "word": "felt",
+      "startTime": 38.53,
+      "endTime": 38.8
+    },
+    {
+      "word": "unprecedented.",
+      "startTime": 38.87,
+      "endTime": 39.8
+    },
+    {
+      "word": "Computers",
+      "startTime": 39.87,
+      "endTime": 40.47
+    },
+    {
+      "word": "were",
+      "startTime": 40.53,
+      "endTime": 40.8
+    },
+    {
+      "word": "genuinely",
+      "startTime": 40.87,
+      "endTime": 41.47
+    },
+    {
+      "word": "new.",
+      "startTime": 41.53,
+      "endTime": 41.8
+    },
+    {
+      "word": "There",
+      "startTime": 41.87,
+      "endTime": 42.2
+    },
+    {
+      "word": "was",
+      "startTime": 42.27,
+      "endTime": 42.47
+    },
+    {
+      "word": "no",
+      "startTime": 42.53,
+      "endTime": 42.67
+    },
+    {
+      "word": "playbook,",
+      "startTime": 42.73,
+      "endTime": 43.33
+    },
+    {
+      "word": "no",
+      "startTime": 43.4,
+      "endTime": 43.53
+    },
+    {
+      "word": "established",
+      "startTime": 43.6,
+      "endTime": 44.33
+    },
+    {
+      "word": "pattern",
+      "startTime": 44.4,
+      "endTime": 44.87
+    },
+    {
+      "word": "for",
+      "startTime": 44.93,
+      "endTime": 45.13
+    },
+    {
+      "word": "how",
+      "startTime": 45.2,
+      "endTime": 45.4
+    },
+    {
+      "word": "to",
+      "startTime": 45.47,
+      "endTime": 45.6
+    },
+    {
+      "word": "integrate",
+      "startTime": 45.67,
+      "endTime": 46.27
+    },
+    {
+      "word": "machines",
+      "startTime": 46.33,
+      "endTime": 46.87
+    },
+    {
+      "word": "that",
+      "startTime": 46.93,
+      "endTime": 47.2
+    },
+    {
+      "word": "could",
+      "startTime": 47.27,
+      "endTime": 47.6
+    },
+    {
+      "word": "perform",
+      "startTime": 47.67,
+      "endTime": 48.13
+    },
+    {
+      "word": "cognitive",
+      "startTime": 48.2,
+      "endTime": 48.8
+    },
+    {
+      "word": "work.",
+      "startTime": 48.87,
+      "endTime": 49.2
+    },
+    {
+      "word": "The",
+      "startTime": 49.27,
+      "endTime": 49.47
+    },
+    {
+      "word": "complexity",
+      "startTime": 49.53,
+      "endTime": 50.2
+    },
+    {
+      "word": "was",
+      "startTime": 50.27,
+      "endTime": 50.47
+    },
+    {
+      "word": "real,",
+      "startTime": 50.53,
+      "endTime": 50.87
+    },
+    {
+      "word": "both",
+      "startTime": 50.93,
+      "endTime": 51.2
+    },
+    {
+      "word": "technical",
+      "startTime": 51.27,
+      "endTime": 51.87
+    },
+    {
+      "word": "and",
+      "startTime": 51.93,
+      "endTime": 52.13
+    },
+    {
+      "word": "social.",
+      "startTime": 52.2,
+      "endTime": 52.67
+    },
+    {
+      "word": "The",
+      "startTime": 52.73,
+      "endTime": 52.93
+    },
+    {
+      "word": "fear",
+      "startTime": 53,
+      "endTime": 53.27
+    },
+    {
+      "word": "was",
+      "startTime": 53.33,
+      "endTime": 53.53
+    },
+    {
+      "word": "rational.",
+      "startTime": 53.6,
+      "endTime": 54.2
+    },
+    {
+      "word": "And",
+      "startTime": 54.33,
+      "endTime": 54.53
+    },
+    {
+      "word": "yet,",
+      "startTime": 54.6,
+      "endTime": 54.87
+    },
+    {
+      "word": "looking",
+      "startTime": 54.93,
+      "endTime": 55.4
+    },
+    {
+      "word": "back,",
+      "startTime": 55.47,
+      "endTime": 55.8
+    },
+    {
+      "word": "we",
+      "startTime": 55.87,
+      "endTime": 56
+    },
+    {
+      "word": "can",
+      "startTime": 56.07,
+      "endTime": 56.27
+    },
+    {
+      "word": "see",
+      "startTime": 56.33,
+      "endTime": 56.53
+    },
+    {
+      "word": "it",
+      "startTime": 56.6,
+      "endTime": 56.73
+    },
+    {
+      "word": "wasn't",
+      "startTime": 56.8,
+      "endTime": 57.2
+    },
+    {
+      "word": "the",
+      "startTime": 57.27,
+      "endTime": 57.47
+    },
+    {
+      "word": "first",
+      "startTime": 57.53,
+      "endTime": 57.87
+    },
+    {
+      "word": "time.",
+      "startTime": 57.93,
+      "endTime": 58.27
+    },
+    {
+      "word": "The",
+      "startTime": 58.33,
+      "endTime": 58.53
+    },
+    {
+      "word": "industrial",
+      "startTime": 58.6,
+      "endTime": 59.27
+    },
+    {
+      "word": "revolution",
+      "startTime": 59.33,
+      "endTime": 60
+    },
+    {
+      "word": "introduced",
+      "startTime": 60.07,
+      "endTime": 60.73
+    },
+    {
+      "word": "machines",
+      "startTime": 60.8,
+      "endTime": 61.33
+    },
+    {
+      "word": "that",
+      "startTime": 61.4,
+      "endTime": 61.67
+    },
+    {
+      "word": "replaced",
+      "startTime": 61.73,
+      "endTime": 62.27
+    },
+    {
+      "word": "physical",
+      "startTime": 62.33,
+      "endTime": 62.87
+    },
+    {
+      "word": "labor.",
+      "startTime": 62.93,
+      "endTime": 63.33
+    },
+    {
+      "word": "The",
+      "startTime": 63.4,
+      "endTime": 63.6
+    },
+    {
+      "word": "telegraph",
+      "startTime": 63.67,
+      "endTime": 64.27
+    },
+    {
+      "word": "compressed",
+      "startTime": 64.33,
+      "endTime": 65
+    },
+    {
+      "word": "time",
+      "startTime": 65.07,
+      "endTime": 65.33
+    },
+    {
+      "word": "and",
+      "startTime": 65.4,
+      "endTime": 65.6
+    },
+    {
+      "word": "distance",
+      "startTime": 65.67,
+      "endTime": 66.2
+    },
+    {
+      "word": "in",
+      "startTime": 66.27,
+      "endTime": 66.4
+    },
+    {
+      "word": "ways",
+      "startTime": 66.47,
+      "endTime": 66.73
+    },
+    {
+      "word": "that",
+      "startTime": 66.8,
+      "endTime": 67.07
+    },
+    {
+      "word": "felt",
+      "startTime": 67.13,
+      "endTime": 67.4
+    },
+    {
+      "word": "destabilizing.",
+      "startTime": 67.47,
+      "endTime": 68.4
+    },
+    {
+      "word": "Each",
+      "startTime": 68.47,
+      "endTime": 68.73
+    },
+    {
+      "word": "wave",
+      "startTime": 68.8,
+      "endTime": 69.07
+    },
+    {
+      "word": "of",
+      "startTime": 69.13,
+      "endTime": 69.27
+    },
+    {
+      "word": "automation",
+      "startTime": 69.33,
+      "endTime": 70
+    },
+    {
+      "word": "sparked",
+      "startTime": 70.07,
+      "endTime": 70.53
+    },
+    {
+      "word": "the",
+      "startTime": 70.6,
+      "endTime": 70.8
+    },
+    {
+      "word": "same",
+      "startTime": 70.87,
+      "endTime": 71.13
+    },
+    {
+      "word": "questions:",
+      "startTime": 71.2,
+      "endTime": 71.87
+    },
+    {
+      "word": "What",
+      "startTime": 71.93,
+      "endTime": 72.2
+    },
+    {
+      "word": "happens",
+      "startTime": 72.27,
+      "endTime": 72.73
+    },
+    {
+      "word": "to",
+      "startTime": 72.8,
+      "endTime": 72.93
+    },
+    {
+      "word": "human",
+      "startTime": 73,
+      "endTime": 73.33
+    },
+    {
+      "word": "work?",
+      "startTime": 73.4,
+      "endTime": 73.73
+    },
+    {
+      "word": "What",
+      "startTime": 73.8,
+      "endTime": 74.07
+    },
+    {
+      "word": "gets",
+      "startTime": 74.13,
+      "endTime": 74.4
+    },
+    {
+      "word": "lost?",
+      "startTime": 74.47,
+      "endTime": 74.8
+    },
+    {
+      "word": "Who",
+      "startTime": 74.87,
+      "endTime": 75.07
+    },
+    {
+      "word": "controls",
+      "startTime": 75.13,
+      "endTime": 75.67
+    },
+    {
+      "word": "these",
+      "startTime": 75.73,
+      "endTime": 76.07
+    },
+    {
+      "word": "new",
+      "startTime": 76.13,
+      "endTime": 76.33
+    },
+    {
+      "word": "systems?",
+      "startTime": 76.4,
+      "endTime": 76.93
+    },
+    {
+      "word": "The",
+      "startTime": 77.07,
+      "endTime": 77.27
+    },
+    {
+      "word": "pattern",
+      "startTime": 77.33,
+      "endTime": 77.8
+    },
+    {
+      "word": "repeats",
+      "startTime": 77.87,
+      "endTime": 78.33
+    },
+    {
+      "word": "because",
+      "startTime": 78.4,
+      "endTime": 78.87
+    },
+    {
+      "word": "the",
+      "startTime": 78.93,
+      "endTime": 79.13
+    },
+    {
+      "word": "pattern",
+      "startTime": 79.2,
+      "endTime": 79.67
+    },
+    {
+      "word": "is",
+      "startTime": 79.73,
+      "endTime": 79.87
+    },
+    {
+      "word": "structural.",
+      "startTime": 79.93,
+      "endTime": 80.67
+    },
+    {
+      "word": "New",
+      "startTime": 80.8,
+      "endTime": 81
+    },
+    {
+      "word": "forms",
+      "startTime": 81.07,
+      "endTime": 81.4
+    },
+    {
+      "word": "of",
+      "startTime": 81.47,
+      "endTime": 81.6
+    },
+    {
+      "word": "compute",
+      "startTime": 81.67,
+      "endTime": 82.13
+    },
+    {
+      "word": "arrive.",
+      "startTime": 82.2,
+      "endTime": 82.67
+    },
+    {
+      "word": "They",
+      "startTime": 82.73,
+      "endTime": 83
+    },
+    {
+      "word": "perform",
+      "startTime": 83.07,
+      "endTime": 83.53
+    },
+    {
+      "word": "tasks",
+      "startTime": 83.6,
+      "endTime": 83.93
+    },
+    {
+      "word": "that",
+      "startTime": 84,
+      "endTime": 84.27
+    },
+    {
+      "word": "were",
+      "startTime": 84.33,
+      "endTime": 84.6
+    },
+    {
+      "word": "previously",
+      "startTime": 84.67,
+      "endTime": 85.33
+    },
+    {
+      "word": "human.",
+      "startTime": 85.4,
+      "endTime": 85.8
+    },
+    {
+      "word": "They",
+      "startTime": 85.87,
+      "endTime": 86.13
+    },
+    {
+      "word": "operate",
+      "startTime": 86.2,
+      "endTime": 86.67
+    },
+    {
+      "word": "at",
+      "startTime": 86.73,
+      "endTime": 86.87
+    },
+    {
+      "word": "speeds",
+      "startTime": 86.93,
+      "endTime": 87.33
+    },
+    {
+      "word": "and",
+      "startTime": 87.4,
+      "endTime": 87.6
+    },
+    {
+      "word": "scales",
+      "startTime": 87.67,
+      "endTime": 88.07
+    },
+    {
+      "word": "that",
+      "startTime": 88.13,
+      "endTime": 88.4
+    },
+    {
+      "word": "feel",
+      "startTime": 88.47,
+      "endTime": 88.73
+    },
+    {
+      "word": "overwhelming.",
+      "startTime": 88.8,
+      "endTime": 89.67
+    },
+    {
+      "word": "The",
+      "startTime": 89.73,
+      "endTime": 89.93
+    },
+    {
+      "word": "people",
+      "startTime": 90,
+      "endTime": 90.4
+    },
+    {
+      "word": "building",
+      "startTime": 90.47,
+      "endTime": 91
+    },
+    {
+      "word": "them",
+      "startTime": 91.07,
+      "endTime": 91.33
+    },
+    {
+      "word": "see",
+      "startTime": 91.4,
+      "endTime": 91.6
+    },
+    {
+      "word": "possibility.",
+      "startTime": 91.67,
+      "endTime": 92.47
+    },
+    {
+      "word": "The",
+      "startTime": 92.53,
+      "endTime": 92.73
+    },
+    {
+      "word": "people",
+      "startTime": 92.8,
+      "endTime": 93.2
+    },
+    {
+      "word": "living",
+      "startTime": 93.27,
+      "endTime": 93.67
+    },
+    {
+      "word": "alongside",
+      "startTime": 93.73,
+      "endTime": 94.33
+    },
+    {
+      "word": "them",
+      "startTime": 94.4,
+      "endTime": 94.67
+    },
+    {
+      "word": "see",
+      "startTime": 94.73,
+      "endTime": 94.93
+    },
+    {
+      "word": "uncertainty.",
+      "startTime": 95,
+      "endTime": 95.8
+    },
+    {
+      "word": "And",
+      "startTime": 95.87,
+      "endTime": 96.07
+    },
+    {
+      "word": "for",
+      "startTime": 96.13,
+      "endTime": 96.33
+    },
+    {
+      "word": "a",
+      "startTime": 96.4,
+      "endTime": 96.47
+    },
+    {
+      "word": "period,",
+      "startTime": 96.53,
+      "endTime": 97
+    },
+    {
+      "word": "sometimes",
+      "startTime": 97.07,
+      "endTime": 97.67
+    },
+    {
+      "word": "brief,",
+      "startTime": 97.73,
+      "endTime": 98.13
+    },
+    {
+      "word": "sometimes",
+      "startTime": 98.2,
+      "endTime": 98.8
+    },
+    {
+      "word": "generational,",
+      "startTime": 98.87,
+      "endTime": 99.73
+    },
+    {
+      "word": "there",
+      "startTime": 99.8,
+      "endTime": 100.13
+    },
+    {
+      "word": "is",
+      "startTime": 100.2,
+      "endTime": 100.33
+    },
+    {
+      "word": "friction.",
+      "startTime": 100.4,
+      "endTime": 101
+    },
+    {
+      "word": "Eventually,",
+      "startTime": 101.13,
+      "endTime": 101.87
+    },
+    {
+      "word": "the",
+      "startTime": 101.93,
+      "endTime": 102.13
+    },
+    {
+      "word": "technology",
+      "startTime": 102.2,
+      "endTime": 102.87
+    },
+    {
+      "word": "becomes",
+      "startTime": 102.93,
+      "endTime": 103.4
+    },
+    {
+      "word": "normalized.",
+      "startTime": 103.47,
+      "endTime": 104.2
+    },
+    {
+      "word": "Not",
+      "startTime": 104.27,
+      "endTime": 104.47
+    },
+    {
+      "word": "because",
+      "startTime": 104.53,
+      "endTime": 105
+    },
+    {
+      "word": "the",
+      "startTime": 105.07,
+      "endTime": 105.27
+    },
+    {
+      "word": "anxiety",
+      "startTime": 105.33,
+      "endTime": 105.8
+    },
+    {
+      "word": "was",
+      "startTime": 105.87,
+      "endTime": 106.07
+    },
+    {
+      "word": "irrational,",
+      "startTime": 106.13,
+      "endTime": 106.87
+    },
+    {
+      "word": "but",
+      "startTime": 106.93,
+      "endTime": 107.13
+    },
+    {
+      "word": "because",
+      "startTime": 107.2,
+      "endTime": 107.67
+    },
+    {
+      "word": "society",
+      "startTime": 107.73,
+      "endTime": 108.2
+    },
+    {
+      "word": "adapts.",
+      "startTime": 108.27,
+      "endTime": 108.73
+    },
+    {
+      "word": "New",
+      "startTime": 108.8,
+      "endTime": 109
+    },
+    {
+      "word": "roles",
+      "startTime": 109.07,
+      "endTime": 109.4
+    },
+    {
+      "word": "emerge.",
+      "startTime": 109.47,
+      "endTime": 109.93
+    },
+    {
+      "word": "Systems",
+      "startTime": 110,
+      "endTime": 110.47
+    },
+    {
+      "word": "become",
+      "startTime": 110.53,
+      "endTime": 110.93
+    },
+    {
+      "word": "more",
+      "startTime": 111,
+      "endTime": 111.27
+    },
+    {
+      "word": "predictable.",
+      "startTime": 111.33,
+      "endTime": 112.13
+    },
+    {
+      "word": "The",
+      "startTime": 112.2,
+      "endTime": 112.4
+    },
+    {
+      "word": "thing",
+      "startTime": 112.47,
+      "endTime": 112.8
+    },
+    {
+      "word": "that",
+      "startTime": 112.87,
+      "endTime": 113.13
+    },
+    {
+      "word": "once",
+      "startTime": 113.2,
+      "endTime": 113.47
+    },
+    {
+      "word": "felt",
+      "startTime": 113.53,
+      "endTime": 113.8
+    },
+    {
+      "word": "incomprehensible",
+      "startTime": 113.87,
+      "endTime": 114.93
+    },
+    {
+      "word": "becomes",
+      "startTime": 115,
+      "endTime": 115.47
+    },
+    {
+      "word": "mundane.",
+      "startTime": 115.53,
+      "endTime": 116.07
+    },
+    {
+      "word": "Today,",
+      "startTime": 116.2,
+      "endTime": 116.6
+    },
+    {
+      "word": "we",
+      "startTime": 116.67,
+      "endTime": 116.8
+    },
+    {
+      "word": "are",
+      "startTime": 116.87,
+      "endTime": 117.07
+    },
+    {
+      "word": "at",
+      "startTime": 117.13,
+      "endTime": 117.27
+    },
+    {
+      "word": "the",
+      "startTime": 117.33,
+      "endTime": 117.53
+    },
+    {
+      "word": "beginning",
+      "startTime": 117.6,
+      "endTime": 118.2
+    },
+    {
+      "word": "of",
+      "startTime": 118.27,
+      "endTime": 118.4
+    },
+    {
+      "word": "another",
+      "startTime": 118.47,
+      "endTime": 118.93
+    },
+    {
+      "word": "cycle.",
+      "startTime": 119,
+      "endTime": 119.4
+    },
+    {
+      "word": "Artificial",
+      "startTime": 119.47,
+      "endTime": 120.13
+    },
+    {
+      "word": "intelligence",
+      "startTime": 120.2,
+      "endTime": 121
+    },
+    {
+      "word": "and",
+      "startTime": 121.07,
+      "endTime": 121.27
+    },
+    {
+      "word": "robotics",
+      "startTime": 121.33,
+      "endTime": 121.87
+    },
+    {
+      "word": "are",
+      "startTime": 121.93,
+      "endTime": 122.13
+    },
+    {
+      "word": "no",
+      "startTime": 122.2,
+      "endTime": 122.33
+    },
+    {
+      "word": "longer",
+      "startTime": 122.4,
+      "endTime": 122.8
+    },
+    {
+      "word": "confined",
+      "startTime": 122.87,
+      "endTime": 123.4
+    },
+    {
+      "word": "to",
+      "startTime": 123.47,
+      "endTime": 123.6
+    },
+    {
+      "word": "labs",
+      "startTime": 123.67,
+      "endTime": 123.93
+    },
+    {
+      "word": "or",
+      "startTime": 124,
+      "endTime": 124.13
+    },
+    {
+      "word": "industrial",
+      "startTime": 124.2,
+      "endTime": 124.87
+    },
+    {
+      "word": "settings.",
+      "startTime": 124.93,
+      "endTime": 125.53
+    },
+    {
+      "word": "They",
+      "startTime": 125.6,
+      "endTime": 125.87
+    },
+    {
+      "word": "are",
+      "startTime": 125.93,
+      "endTime": 126.13
+    },
+    {
+      "word": "moving",
+      "startTime": 126.2,
+      "endTime": 126.6
+    },
+    {
+      "word": "into",
+      "startTime": 126.67,
+      "endTime": 126.93
+    },
+    {
+      "word": "homes,",
+      "startTime": 127,
+      "endTime": 127.4
+    },
+    {
+      "word": "workplaces,",
+      "startTime": 127.47,
+      "endTime": 128.2
+    },
+    {
+      "word": "and",
+      "startTime": 128.27,
+      "endTime": 128.47
+    },
+    {
+      "word": "public",
+      "startTime": 128.53,
+      "endTime": 128.93
+    },
+    {
+      "word": "spaces.",
+      "startTime": 129,
+      "endTime": 129.47
+    },
+    {
+      "word": "And",
+      "startTime": 129.53,
+      "endTime": 129.73
+    },
+    {
+      "word": "once",
+      "startTime": 129.8,
+      "endTime": 130.07
+    },
+    {
+      "word": "again,",
+      "startTime": 130.13,
+      "endTime": 130.53
+    },
+    {
+      "word": "the",
+      "startTime": 130.6,
+      "endTime": 130.8
+    },
+    {
+      "word": "dominant",
+      "startTime": 130.87,
+      "endTime": 131.4
+    },
+    {
+      "word": "conversation",
+      "startTime": 131.47,
+      "endTime": 132.27
+    },
+    {
+      "word": "is",
+      "startTime": 132.33,
+      "endTime": 132.47
+    },
+    {
+      "word": "about",
+      "startTime": 132.53,
+      "endTime": 132.87
+    },
+    {
+      "word": "displacement.",
+      "startTime": 132.93,
+      "endTime": 133.8
+    },
+    {
+      "word": "Will",
+      "startTime": 133.87,
+      "endTime": 134.13
+    },
+    {
+      "word": "machines",
+      "startTime": 134.2,
+      "endTime": 134.73
+    },
+    {
+      "word": "replace",
+      "startTime": 134.8,
+      "endTime": 135.27
+    },
+    {
+      "word": "workers?",
+      "startTime": 135.33,
+      "endTime": 135.87
+    },
+    {
+      "word": "Will",
+      "startTime": 135.93,
+      "endTime": 136.2
+    },
+    {
+      "word": "they",
+      "startTime": 136.27,
+      "endTime": 136.53
+    },
+    {
+      "word": "remove",
+      "startTime": 136.6,
+      "endTime": 137
+    },
+    {
+      "word": "agency?",
+      "startTime": 137.07,
+      "endTime": 137.53
+    },
+    {
+      "word": "Will",
+      "startTime": 137.6,
+      "endTime": 137.87
+    },
+    {
+      "word": "they",
+      "startTime": 137.93,
+      "endTime": 138.2
+    },
+    {
+      "word": "make",
+      "startTime": 138.27,
+      "endTime": 138.53
+    },
+    {
+      "word": "human",
+      "startTime": 138.6,
+      "endTime": 138.93
+    },
+    {
+      "word": "roles",
+      "startTime": 139,
+      "endTime": 139.33
+    },
+    {
+      "word": "obsolete?",
+      "startTime": 139.4,
+      "endTime": 140
+    },
+    {
+      "word": "These",
+      "startTime": 140.13,
+      "endTime": 140.47
+    },
+    {
+      "word": "questions",
+      "startTime": 140.53,
+      "endTime": 141.13
+    },
+    {
+      "word": "echo",
+      "startTime": 141.2,
+      "endTime": 141.47
+    },
+    {
+      "word": "almost",
+      "startTime": 141.53,
+      "endTime": 141.93
+    },
+    {
+      "word": "perfectly",
+      "startTime": 142,
+      "endTime": 142.6
+    },
+    {
+      "word": "those",
+      "startTime": 142.67,
+      "endTime": 143
+    },
+    {
+      "word": "asked",
+      "startTime": 143.07,
+      "endTime": 143.4
+    },
+    {
+      "word": "sixty",
+      "startTime": 143.47,
+      "endTime": 143.8
+    },
+    {
+      "word": "years",
+      "startTime": 143.87,
+      "endTime": 144.2
+    },
+    {
+      "word": "ago.",
+      "startTime": 144.27,
+      "endTime": 144.53
+    },
+    {
+      "word": "To",
+      "startTime": 144.67,
+      "endTime": 144.8
+    },
+    {
+      "word": "anyone",
+      "startTime": 144.87,
+      "endTime": 145.27
+    },
+    {
+      "word": "living",
+      "startTime": 145.33,
+      "endTime": 145.73
+    },
+    {
+      "word": "through",
+      "startTime": 145.8,
+      "endTime": 146.27
+    },
+    {
+      "word": "this",
+      "startTime": 146.33,
+      "endTime": 146.6
+    },
+    {
+      "word": "moment,",
+      "startTime": 146.67,
+      "endTime": 147.13
+    },
+    {
+      "word": "it",
+      "startTime": 147.2,
+      "endTime": 147.33
+    },
+    {
+      "word": "feels",
+      "startTime": 147.4,
+      "endTime": 147.73
+    },
+    {
+      "word": "uniquely",
+      "startTime": 147.8,
+      "endTime": 148.33
+    },
+    {
+      "word": "complex.",
+      "startTime": 148.4,
+      "endTime": 148.93
+    },
+    {
+      "word": "And",
+      "startTime": 149,
+      "endTime": 149.2
+    },
+    {
+      "word": "it",
+      "startTime": 149.27,
+      "endTime": 149.4
+    },
+    {
+      "word": "is.",
+      "startTime": 149.47,
+      "endTime": 149.67
+    },
+    {
+      "word": "AI",
+      "startTime": 149.73,
+      "endTime": 149.87
+    },
+    {
+      "word": "operates",
+      "startTime": 149.93,
+      "endTime": 150.47
+    },
+    {
+      "word": "differently",
+      "startTime": 150.53,
+      "endTime": 151.27
+    },
+    {
+      "word": "than",
+      "startTime": 151.33,
+      "endTime": 151.6
+    },
+    {
+      "word": "previous",
+      "startTime": 151.67,
+      "endTime": 152.2
+    },
+    {
+      "word": "forms",
+      "startTime": 152.27,
+      "endTime": 152.6
+    },
+    {
+      "word": "of",
+      "startTime": 152.67,
+      "endTime": 152.8
+    },
+    {
+      "word": "compute.",
+      "startTime": 152.87,
+      "endTime": 153.4
+    },
+    {
+      "word": "It",
+      "startTime": 153.47,
+      "endTime": 153.6
+    },
+    {
+      "word": "learns,",
+      "startTime": 153.67,
+      "endTime": 154.13
+    },
+    {
+      "word": "adapts,",
+      "startTime": 154.2,
+      "endTime": 154.67
+    },
+    {
+      "word": "and",
+      "startTime": 154.73,
+      "endTime": 154.93
+    },
+    {
+      "word": "makes",
+      "startTime": 155,
+      "endTime": 155.33
+    },
+    {
+      "word": "decisions",
+      "startTime": 155.4,
+      "endTime": 156
+    },
+    {
+      "word": "in",
+      "startTime": 156.07,
+      "endTime": 156.2
+    },
+    {
+      "word": "ways",
+      "startTime": 156.27,
+      "endTime": 156.53
+    },
+    {
+      "word": "that",
+      "startTime": 156.6,
+      "endTime": 156.87
+    },
+    {
+      "word": "are",
+      "startTime": 156.93,
+      "endTime": 157.13
+    },
+    {
+      "word": "less",
+      "startTime": 157.2,
+      "endTime": 157.47
+    },
+    {
+      "word": "predictable",
+      "startTime": 157.53,
+      "endTime": 158.27
+    },
+    {
+      "word": "than",
+      "startTime": 158.33,
+      "endTime": 158.6
+    },
+    {
+      "word": "deterministic",
+      "startTime": 158.67,
+      "endTime": 159.53
+    },
+    {
+      "word": "code.",
+      "startTime": 159.6,
+      "endTime": 159.93
+    },
+    {
+      "word": "The",
+      "startTime": 160,
+      "endTime": 160.2
+    },
+    {
+      "word": "opacity",
+      "startTime": 160.27,
+      "endTime": 160.73
+    },
+    {
+      "word": "is",
+      "startTime": 160.8,
+      "endTime": 160.93
+    },
+    {
+      "word": "real.",
+      "startTime": 161,
+      "endTime": 161.33
+    },
+    {
+      "word": "The",
+      "startTime": 161.4,
+      "endTime": 161.6
+    },
+    {
+      "word": "uncertainty",
+      "startTime": 161.67,
+      "endTime": 162.4
+    },
+    {
+      "word": "is",
+      "startTime": 162.47,
+      "endTime": 162.6
+    },
+    {
+      "word": "real.",
+      "startTime": 162.67,
+      "endTime": 163
+    },
+    {
+      "word": "But",
+      "startTime": 163.13,
+      "endTime": 163.33
+    },
+    {
+      "word": "the",
+      "startTime": 163.4,
+      "endTime": 163.6
+    },
+    {
+      "word": "shape",
+      "startTime": 163.67,
+      "endTime": 164
+    },
+    {
+      "word": "of",
+      "startTime": 164.07,
+      "endTime": 164.2
+    },
+    {
+      "word": "the",
+      "startTime": 164.27,
+      "endTime": 164.47
+    },
+    {
+      "word": "moment",
+      "startTime": 164.53,
+      "endTime": 164.93
+    },
+    {
+      "word": "is",
+      "startTime": 165,
+      "endTime": 165.13
+    },
+    {
+      "word": "familiar.",
+      "startTime": 165.2,
+      "endTime": 165.8
+    },
+    {
+      "word": "What",
+      "startTime": 165.87,
+      "endTime": 166.13
+    },
+    {
+      "word": "we're",
+      "startTime": 166.2,
+      "endTime": 166.53
+    },
+    {
+      "word": "experiencing",
+      "startTime": 166.6,
+      "endTime": 167.4
+    },
+    {
+      "word": "is",
+      "startTime": 167.47,
+      "endTime": 167.6
+    },
+    {
+      "word": "not",
+      "startTime": 167.67,
+      "endTime": 167.87
+    },
+    {
+      "word": "a",
+      "startTime": 167.93,
+      "endTime": 168
+    },
+    {
+      "word": "rupture.",
+      "startTime": 168.07,
+      "endTime": 168.6
+    },
+    {
+      "word": "It's",
+      "startTime": 168.67,
+      "endTime": 168.93
+    },
+    {
+      "word": "a",
+      "startTime": 169,
+      "endTime": 169.07
+    },
+    {
+      "word": "repetition.",
+      "startTime": 169.13,
+      "endTime": 169.87
+    },
+    {
+      "word": "The",
+      "startTime": 169.93,
+      "endTime": 170.13
+    },
+    {
+      "word": "technology",
+      "startTime": 170.2,
+      "endTime": 170.87
+    },
+    {
+      "word": "is",
+      "startTime": 170.93,
+      "endTime": 171.07
+    },
+    {
+      "word": "new.",
+      "startTime": 171.13,
+      "endTime": 171.4
+    },
+    {
+      "word": "The",
+      "startTime": 171.47,
+      "endTime": 171.67
+    },
+    {
+      "word": "human",
+      "startTime": 171.73,
+      "endTime": 172.07
+    },
+    {
+      "word": "response",
+      "startTime": 172.13,
+      "endTime": 172.67
+    },
+    {
+      "word": "is",
+      "startTime": 172.73,
+      "endTime": 172.87
+    },
+    {
+      "word": "not.",
+      "startTime": 172.93,
+      "endTime": 173.2
+    },
+    {
+      "word": "History",
+      "startTime": 173.33,
+      "endTime": 173.8
+    },
+    {
+      "word": "suggests",
+      "startTime": 173.87,
+      "endTime": 174.4
+    },
+    {
+      "word": "that",
+      "startTime": 174.47,
+      "endTime": 174.73
+    },
+    {
+      "word": "this",
+      "startTime": 174.8,
+      "endTime": 175.07
+    },
+    {
+      "word": "friction",
+      "startTime": 175.13,
+      "endTime": 175.67
+    },
+    {
+      "word": "is",
+      "startTime": 175.73,
+      "endTime": 175.87
+    },
+    {
+      "word": "temporary,",
+      "startTime": 175.93,
+      "endTime": 176.6
+    },
+    {
+      "word": "not",
+      "startTime": 176.67,
+      "endTime": 176.87
+    },
+    {
+      "word": "because",
+      "startTime": 176.93,
+      "endTime": 177.4
+    },
+    {
+      "word": "the",
+      "startTime": 177.47,
+      "endTime": 177.67
+    },
+    {
+      "word": "concerns",
+      "startTime": 177.73,
+      "endTime": 178.27
+    },
+    {
+      "word": "are",
+      "startTime": 178.33,
+      "endTime": 178.53
+    },
+    {
+      "word": "unfounded,",
+      "startTime": 178.6,
+      "endTime": 179.27
+    },
+    {
+      "word": "but",
+      "startTime": 179.33,
+      "endTime": 179.53
+    },
+    {
+      "word": "because",
+      "startTime": 179.6,
+      "endTime": 180.07
+    },
+    {
+      "word": "they",
+      "startTime": 180.13,
+      "endTime": 180.4
+    },
+    {
+      "word": "always",
+      "startTime": 180.47,
+      "endTime": 180.87
+    },
+    {
+      "word": "resolve,",
+      "startTime": 180.93,
+      "endTime": 181.47
+    },
+    {
+      "word": "one",
+      "startTime": 181.53,
+      "endTime": 181.73
+    },
+    {
+      "word": "way",
+      "startTime": 181.8,
+      "endTime": 182
+    },
+    {
+      "word": "or",
+      "startTime": 182.07,
+      "endTime": 182.2
+    },
+    {
+      "word": "another.",
+      "startTime": 182.27,
+      "endTime": 182.8
+    },
+    {
+      "word": "Society",
+      "startTime": 182.87,
+      "endTime": 183.33
+    },
+    {
+      "word": "adjusts.",
+      "startTime": 183.4,
+      "endTime": 183.93
+    },
+    {
+      "word": "Systems",
+      "startTime": 184,
+      "endTime": 184.47
+    },
+    {
+      "word": "evolve.",
+      "startTime": 184.53,
+      "endTime": 185
+    },
+    {
+      "word": "The",
+      "startTime": 185.07,
+      "endTime": 185.27
+    },
+    {
+      "word": "boundaries",
+      "startTime": 185.33,
+      "endTime": 186
+    },
+    {
+      "word": "between",
+      "startTime": 186.07,
+      "endTime": 186.53
+    },
+    {
+      "word": "human",
+      "startTime": 186.6,
+      "endTime": 186.93
+    },
+    {
+      "word": "work",
+      "startTime": 187,
+      "endTime": 187.27
+    },
+    {
+      "word": "and",
+      "startTime": 187.33,
+      "endTime": 187.53
+    },
+    {
+      "word": "machine",
+      "startTime": 187.6,
+      "endTime": 188.07
+    },
+    {
+      "word": "work",
+      "startTime": 188.13,
+      "endTime": 188.4
+    },
+    {
+      "word": "shift,",
+      "startTime": 188.47,
+      "endTime": 188.87
+    },
+    {
+      "word": "as",
+      "startTime": 188.93,
+      "endTime": 189.07
+    },
+    {
+      "word": "they",
+      "startTime": 189.13,
+      "endTime": 189.4
+    },
+    {
+      "word": "always",
+      "startTime": 189.47,
+      "endTime": 189.87
+    },
+    {
+      "word": "have.",
+      "startTime": 189.93,
+      "endTime": 190.27
+    },
+    {
+      "word": "We've",
+      "startTime": 190.4,
+      "endTime": 190.73
+    },
+    {
+      "word": "been",
+      "startTime": 190.8,
+      "endTime": 191.07
+    },
+    {
+      "word": "here",
+      "startTime": 191.13,
+      "endTime": 191.4
+    },
+    {
+      "word": "before.",
+      "startTime": 191.47,
+      "endTime": 191.93
+    }
+  ]
+}

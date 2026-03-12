@@ -15,6 +15,7 @@ type ProjectPageShellProps = {
   title: string;
   date: string;
   description: ReactNode;
+  category?: string;
   backHref?: string;
   backLabel?: string;
   shareConfig?: ShareConfig;
@@ -26,6 +27,7 @@ export default function ProjectPageShell({
   title,
   date,
   description,
+  category,
   backHref = '/craft',
   backLabel = 'Craft',
   shareConfig,
@@ -36,6 +38,8 @@ export default function ProjectPageShell({
   const textContentRef = useRef<HTMLDivElement>(null);
   const [spacing, setSpacing] = useState<number>(12); // Default spacing in px (desktop default)
   const [isMobile, setIsMobile] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
+  useEffect(() => { setFadeIn(true); }, []);
 
   const handleBackClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     // If going back to craft page, save current scroll position (though we're leaving, not coming back)
@@ -119,9 +123,20 @@ export default function ProjectPageShell({
   }, [hasChildren, description]);
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#E2DEDB', overflowX: 'hidden', overflowY: 'visible' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: '#000' }}>
+      <div
+        className="min-h-[100dvh] flex flex-col"
+        style={{
+          minHeight: '100dvh',
+          backgroundColor: '#E2DEDB',
+          overflowX: 'hidden',
+          overflowY: 'visible',
+          opacity: fadeIn ? 1 : 0,
+          transition: 'opacity 300ms ease',
+        }}
+      >
       {/* Header + content wrapper */}
-      <main className={`relative z-10 px-5 sm:px-6 pt-24 sm:pt-32 flex flex-col ${hasChildren ? 'min-h-[1064px]' : ''} ${hasChildren ? '' : 'pb-28 sm:pb-32'}`} style={{ overflow: 'visible', overflowX: 'visible', overflowY: 'visible' }}>
+      <main className={`relative z-10 px-5 sm:px-6 pt-24 sm:pt-32 flex flex-col ${hasChildren ? '' : 'pb-28 sm:pb-32'}`} style={{ overflow: 'visible', overflowX: 'visible', overflowY: 'visible' }}>
         <div className={`max-w-[680px] mx-auto w-full flex flex-col ${hasChildren ? '' : ''}`} style={{ overflow: 'visible', overflowX: 'visible', overflowY: 'visible' }}>
           {/* Text content section */}
           <div className={`flex flex-col ${hasChildren ? 'pb-8 sm:pb-0' : ''}`} style={{ overflowX: 'visible' }}>
@@ -149,15 +164,22 @@ export default function ProjectPageShell({
 
               {/* Content column with title, date, and body */}
               <div className="max-w-[560px] flex-1" ref={textContentRef}>
-                <div className="mb-0.5">
+                {category && date && (
+                  <p className="text-[11px] font-medium tracking-[0.12em] uppercase mb-3" style={{ color: '#9CA3AF', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                    {category} · {date}
+                  </p>
+                )}
+                <div className={category ? 'mb-4 sm:mb-6' : 'mb-0.5'}>
                   <h1 className="text-[18px] font-bold text-gray-900" style={{ color: '#111827' }}>
                     {title || 'Photo boom'}
                   </h1>
                 </div>
 
-                <p className="text-[16px] text-gray-600 mb-4 sm:mb-6" style={{ color: '#4B5563' }}>
-                  {date || 'March 23, 2025'}
-                </p>
+                {!category && (
+                  <p className="text-[16px] text-gray-600 mb-4 sm:mb-6" style={{ color: '#4B5563' }}>
+                    {date || 'March 23, 2025'}
+                  </p>
+                )}
 
                 <div className="text-[18px] text-gray-800 leading-[1.65] sm:leading-[1.5] w-full [&_p:not(:first-child)]:mt-4 [&_p:not(:first-child)]:sm:mt-6">
                   {description}
@@ -191,6 +213,7 @@ export default function ProjectPageShell({
           })()}
         </div>
       </main>
+    </div>
     </div>
   );
 }

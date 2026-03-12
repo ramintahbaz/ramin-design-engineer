@@ -54,32 +54,39 @@ export default function CarouselPage() {
 
   const cardGap = 12;
 
-  // Calculate card styles based on scroll position
+  // Calculate card styles; only ONE card is "in focus" (closest to center)
   const getCardStyles = (index: number) => {
     const scrollWrapper = scrollWrapperRef.current;
     if (!scrollWrapper) return { scale: 1, x: 0, isInFocus: false };
 
-    // Account for initial transform offset (120px padding)
     const transformOffset = 120;
-    const cardLeft = index * (cardWidth + cardGap) + transformOffset;
     const viewportCenter = scrollWrapper.clientWidth / 2;
+
+    // Single focused card: the one whose center is closest to viewport center
+    let focusedIndex = 0;
+    let minDist = Infinity;
+    for (let i = 0; i < carouselImages.length; i++) {
+      const cardLeft = i * (cardWidth + cardGap) + transformOffset;
+      const cardCenter = cardLeft - scrollLeft + cardWidth / 2;
+      const dist = Math.abs(cardCenter - viewportCenter);
+      if (dist < minDist) {
+        minDist = dist;
+        focusedIndex = i;
+      }
+    }
+    const isInFocus = isMobile && index === focusedIndex;
+
+    const cardLeft = index * (cardWidth + cardGap) + transformOffset;
     const cardCenter = cardLeft - scrollLeft + cardWidth / 2;
     const distanceFromCenter = Math.abs(cardCenter - viewportCenter);
-    const maxDistance = scrollWrapper.clientWidth / 2 + cardWidth;
 
-    // On mobile, first card should be in focus when scrollLeft is 0
-    const isInFocus = isMobile && ((index === 0 && scrollLeft === 0) || (distanceFromCenter < cardWidth * 0.6));
-    
-    // Smoother parallax with easing
     const parallaxOffset = (cardCenter - viewportCenter) * 0.03;
-    
-    // Smoother scale transition with wider focus zone
     const focusZone = cardWidth * 0.8;
-    const scaleProgress = isMobile 
-      ? Math.max(0, Math.min(1, 1 - (distanceFromCenter / focusZone)))
+    const scaleProgress = isMobile
+      ? Math.max(0, Math.min(1, 1 - distanceFromCenter / focusZone))
       : 0;
-    const baseScale = isMobile 
-      ? (isInFocus ? 1.1 : 0.9 + (scaleProgress * 0.2))
+    const baseScale = isMobile
+      ? (isInFocus ? 1.1 : 0.9 + scaleProgress * 0.2)
       : 1;
 
     return { x: parallaxOffset, scale: baseScale, isInFocus };
@@ -115,11 +122,52 @@ export default function CarouselPage() {
     return () => window.removeEventListener('wheel', preventHorizontalScroll);
   }, []);
 
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    let startX = 0;
+    let startY = 0;
+    let startScrollLeft = 0;
+    let lockedDirection: 'horizontal' | 'vertical' | null = null;
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startScrollLeft = scrollLeft;
+      lockedDirection = null;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+      if (lockedDirection === null && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
+        lockedDirection = Math.abs(dx) >= Math.abs(dy) ? 'horizontal' : 'vertical';
+      }
+      if (lockedDirection === 'horizontal') {
+        e.preventDefault();
+        const containerWidth = scrollContainerRef.current?.scrollWidth || 0;
+        const wrapperWidth = scrollWrapperRef.current?.clientWidth || 0;
+        const maxScroll = Math.max(0, containerWidth - wrapperWidth + 240);
+        setScrollLeft(Math.max(0, Math.min(maxScroll, startScrollLeft - dx)));
+      }
+    };
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+    };
+  }, [scrollLeft]);
+
   return (
     <AnimatedPage variant="dramatic">
       <ProjectPageShell
         title={carouselMetadata.title}
         date={carouselMetadata.date}
+        category="Interaction"
         description={description}
         backHref="/craft"
         backLabel="Craft"
@@ -145,7 +193,7 @@ export default function CarouselPage() {
               marginLeft: '-120px',
               paddingRight: '120px',
               marginRight: '-120px',
-              touchAction: isMobile ? 'pan-x pan-y' : 'auto', // Allow both horizontal and vertical scrolling on mobile
+              touchAction: 'pan-y',
             }}
             onWheel={(e) => {
               if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
@@ -157,58 +205,6 @@ export default function CarouselPage() {
                 setScrollLeft(newScroll);
               }
             }}
-            onTouchStart={(e) => {
-              const touch = e.touches[0];
-              const startX = touch.clientX;
-              const startY = touch.clientY;
-              const startScrollLeft = scrollLeft;
-              let isHorizontalScroll = false;
-              let hasMoved = false;
-              
-              const handleTouchMove = (moveEvent: TouchEvent) => {
-                const moveTouch = moveEvent.touches[0];
-                const deltaX = moveTouch.clientX - startX;
-                const deltaY = moveTouch.clientY - startY;
-                const absDeltaX = Math.abs(deltaX);
-                const absDeltaY = Math.abs(deltaY);
-                
-                // Only proceed if there's been some movement
-                if (absDeltaX < 5 && absDeltaY < 5) {
-                  return;
-                }
-                
-                hasMoved = true;
-                
-                // Determine if this is primarily a horizontal scroll
-                // Require horizontal movement to be at least 1.5x greater than vertical movement
-                // and at least 15px to avoid accidental triggers
-                if (!isHorizontalScroll && absDeltaX > absDeltaY * 1.5 && absDeltaX > 15) {
-                  isHorizontalScroll = true;
-                }
-                
-                // Only trigger horizontal scroll if it's clearly a horizontal gesture
-                // If vertical movement is dominant, don't interfere with page scrolling
-                if (isHorizontalScroll) {
-                  moveEvent.preventDefault();
-                  const containerWidth = scrollContainerRef.current?.scrollWidth || 0;
-                  const wrapperWidth = scrollWrapperRef.current?.clientWidth || 0;
-                  const maxScroll = Math.max(0, containerWidth - wrapperWidth + 240);
-                  const newScroll = Math.max(0, Math.min(maxScroll, startScrollLeft - deltaX));
-                  setScrollLeft(newScroll);
-                } else if (absDeltaY > absDeltaX * 1.5 && absDeltaY > 15) {
-                  // This is clearly a vertical scroll - don't prevent default, let page scroll
-                  return;
-                }
-              };
-              
-              const handleTouchEnd = () => {
-                document.removeEventListener('touchmove', handleTouchMove);
-                document.removeEventListener('touchend', handleTouchEnd);
-              };
-              
-              document.addEventListener('touchmove', handleTouchMove, { passive: false });
-              document.addEventListener('touchend', handleTouchEnd);
-            }}
           >
             {/* Cards container - uses transform for scrolling, no overflow constraints */}
             <div
@@ -219,7 +215,9 @@ export default function CarouselPage() {
                 minWidth: '100%',
                 transform: `translateX(${120 - scrollLeft}px)`,
                 transition: 'transform 0.1s ease-out',
+                touchAction: 'pan-y',
               }}
+              onTouchStart={(e) => e.stopPropagation()}
             >
               {carouselImages.map((card, index) => {
                 const isHovered = hoveredIndex === index;
@@ -257,6 +255,8 @@ export default function CarouselPage() {
                       style={{ 
                         height: 'clamp(240px, 45vw, 360px)',
                         width: '100%',
+                        transform: 'translateZ(0)',
+                        backfaceVisibility: 'hidden',
                       }}
                       animate={{
                         boxShadow: isHovered 

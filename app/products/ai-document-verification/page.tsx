@@ -9,12 +9,12 @@ const VIDEO_SRC = '/images/ai-document-verification/demo_ritl.mp4';
 
 export const aiDocumentVerificationMetadata = {
   id: 'ai-document-verification',
-  title: 'AI-Assisted Document Verification',
+  title: 'Intelligent Document Review',
   date: 'January 2026',
   cardDate: 'Jan 2026',
   cardDescription: 'AI-powered eligibility verification that keeps humans in the loop.',
   href: '/products/ai-document-verification',
-  shareTitle: 'AI-Assisted Document Verification — Ramin — Designer',
+  shareTitle: 'Intelligent Document Review — Ramin — Designer',
   shareText: 'An end-to-end product concept for scaling eligibility verification in government benefit programs using AI.',
 };
 
@@ -111,6 +111,7 @@ export default function AIDocumentVerificationPage() {
       <ProjectPageShell
         title={aiDocumentVerificationMetadata.title}
         date={aiDocumentVerificationMetadata.date}
+        category="Product"
         description={description}
         backHref="/craft"
         backLabel="Craft"

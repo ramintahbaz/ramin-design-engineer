@@ -10,7 +10,7 @@ import { essay01Metadata } from '@/app/essays/essay-01/page';
 import { essay02Metadata } from '@/app/essays/essay-02/page';
 import { essay03Metadata } from '@/app/essays/essay-03/page';
 import { essay04Metadata } from '@/app/essays/essay-04/page';
-import { paymentStatusMetadata } from '@/app/paymentstatus/page';
+import { paymentStatusMetadata } from '@/app/payment-status/page';
 import { visualSystemHoverMetadata } from '@/app/visual-system-hover/page';
 import { carouselMetadata } from '@/app/interactions/carousel/page';
 import { electricBorderMetadata } from '@/app/interactions/electric-border/page';

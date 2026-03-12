@@ -77,6 +77,7 @@ export default function VisualSystemHoverPage() {
   const [openModal, setOpenModal] = useState<string | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [canHover, setCanHover] = useState(false);
   const [previewVideoLoading, setPreviewVideoLoading] = useState<Record<string, boolean>>({});
   const [modalVideoLoading, setModalVideoLoading] = useState<Record<string, boolean>>({});
   const modalRef = useRef<HTMLDivElement>(null);
@@ -93,6 +94,14 @@ export default function VisualSystemHoverPage() {
   useEffect(() => {
     setIsMounted(true);
     setHoveredCard(null); // Explicitly reset hover state on mount
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover)');
+    setCanHover(mq.matches);
+    const listener = () => setCanHover(mq.matches);
+    mq.addEventListener('change', listener);
+    return () => mq.removeEventListener('change', listener);
   }, []);
 
   // Preload metadata for all videos in the background for instant hover previews
@@ -216,6 +225,7 @@ export default function VisualSystemHoverPage() {
       <ProjectPageShell
         title={visualSystemHoverMetadata.title}
         date={visualSystemHoverMetadata.date}
+        category="Interaction"
         description={description}
         backHref="/craft"
         backLabel="Craft"
@@ -283,62 +293,64 @@ export default function VisualSystemHoverPage() {
                   transition={{ duration: 0.2 }}
                 />
                 
-                {/* Video preview on hover - positioned outside card */}
-                <AnimatePresence>
-                  {hoveredCard === item.id && item.video && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8, x: isLeftColumn ? 20 : -20 }}
-                      animate={{ opacity: 1, scale: 1, x: 0 }}
-                      exit={{ opacity: 0, scale: 0.8, x: isLeftColumn ? 20 : -20 }}
-                      transition={{ duration: 0.2 }}
-                      className={`absolute top-1/2 -translate-y-1/2 z-20 ${
-                        isLeftColumn ? 'left-full ml-2' : 'right-full mr-2'
-                      }`}
-                    >
-                      <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-lg overflow-hidden bg-[#292929]">
-                        {/* Video - 10 second clip */}
-                        <video
-                          ref={(el) => {
-                            previewVideoRefs.current[item.id] = el;
-                          }}
-                          src={item.video}
-                          autoPlay
-                          muted
-                          playsInline
-                          preload="metadata"
-                          className="w-full h-full object-cover"
-                          onLoadedData={() => {
-                            setPreviewVideoLoading((prev) => ({ ...prev, [item.id]: false }));
-                            const video = previewVideoRefs.current[item.id];
-                            if (video) {
-                              video.currentTime = 0;
-                              video.play().catch(() => {
-                                // Ignore play errors
-                              });
-                            }
-                          }}
-                          onCanPlay={() => {
-                            setPreviewVideoLoading((prev) => ({ ...prev, [item.id]: false }));
-                          }}
-                          onWaiting={() => {
-                            setPreviewVideoLoading((prev) => ({ ...prev, [item.id]: true }));
-                          }}
-                          onTimeUpdate={(e) => {
-                            const video = e.currentTarget;
-                            // Stop at 10 seconds and reset to start
-                            if (video.currentTime >= 10) {
-                              video.pause();
-                              video.currentTime = 0;
-                              video.play().catch(() => {
-                                // Ignore play errors
-                              });
-                            }
-                          }}
-                        />
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Video preview on hover - desktop only; on mobile tap opens modal directly */}
+                {canHover && (
+                  <AnimatePresence>
+                    {hoveredCard === item.id && item.video && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: isLeftColumn ? 20 : -20 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, x: isLeftColumn ? 20 : -20 }}
+                        transition={{ duration: 0.2 }}
+                        className={`absolute top-1/2 -translate-y-1/2 z-20 ${
+                          isLeftColumn ? 'left-full ml-2' : 'right-full mr-2'
+                        }`}
+                      >
+                        <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-lg overflow-hidden bg-[#292929]">
+                          {/* Video - 10 second clip */}
+                          <video
+                            ref={(el) => {
+                              previewVideoRefs.current[item.id] = el;
+                            }}
+                            src={item.video}
+                            autoPlay
+                            muted
+                            playsInline
+                            preload="metadata"
+                            className="w-full h-full object-cover"
+                            onLoadedData={() => {
+                              setPreviewVideoLoading((prev) => ({ ...prev, [item.id]: false }));
+                              const video = previewVideoRefs.current[item.id];
+                              if (video) {
+                                video.currentTime = 0;
+                                video.play().catch(() => {
+                                  // Ignore play errors
+                                });
+                              }
+                            }}
+                            onCanPlay={() => {
+                              setPreviewVideoLoading((prev) => ({ ...prev, [item.id]: false }));
+                            }}
+                            onWaiting={() => {
+                              setPreviewVideoLoading((prev) => ({ ...prev, [item.id]: true }));
+                            }}
+                            onTimeUpdate={(e) => {
+                              const video = e.currentTarget;
+                              // Stop at 10 seconds and reset to start
+                              if (video.currentTime >= 10) {
+                                video.pause();
+                                video.currentTime = 0;
+                                video.play().catch(() => {
+                                  // Ignore play errors
+                                });
+                              }
+                            }}
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
                 
                 {/* Content */}
                 <div className="relative z-10 h-full" style={{ fontFamily: 'var(--font-ibm-plex-mono), monospace' }}>

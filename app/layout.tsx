@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import Navigation from "@/components/Navigation";
+import TopBar from "@/components/TopBar";
 import HiddenMetadata from "@/components/HiddenMetadata";
+import { CategoryFilterProvider } from "@/contexts/CategoryFilterContext";
+import NeuralPortfolioLayer from "@/app/NeuralPortfolioLayer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,7 +29,7 @@ export const metadata: Metadata = {
   title: "Ramin — Designer",
   description:
     "Designer who codes, working across product, film, hardware, and writing. Self-taught, learning by doing.",
-  themeColor: "#E2DEDB",
+  themeColor: "#000000",
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -82,10 +86,42 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: '#000' }}>
+      <head>
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `
+(function() {
+  var isMobile = window.innerWidth < 768;
+  var leftForWork = localStorage.getItem('leftForWork') === 'true';
+  if (isMobile && !leftForWork) {
+    document.head.insertAdjacentHTML('beforeend', '<style>.splash-hidden{display:none}</style>');
+  }
+})();
+`,
+          }}
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexMono.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexMono.variable} font-sans antialiased bg-black`}
+        style={{ backgroundColor: '#000', minHeight: '100dvh' }}
       >
+        <Script
+          id="bfcache-detect"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+  window.__fromBFCache = false;
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      window.__fromBFCache = true;
+      sessionStorage.setItem('splashDone', 'true');
+    }
+  });
+`,
+          }}
+        />
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -93,10 +129,18 @@ export default async function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
-        {children}
+        <CategoryFilterProvider>
+          <Suspense fallback={<div className="h-12 shrink-0" />}>
+            <TopBar />
+          </Suspense>
+          <div className="pt-12 bg-black min-h-screen min-h-[100dvh]">
+            <NeuralPortfolioLayer />
+            {children}
+          </div>
+        </CategoryFilterProvider>
 
-        {/* Bottom Navbar (global, non-animated) */}
-        <Navigation />
+        {/* Bottom Navbar (global, non-animated) — hidden for now */}
+        {/* <Navigation /> */}
         
         {/* Hidden metadata for AI crawlers and search tools */}
         <HiddenMetadata />

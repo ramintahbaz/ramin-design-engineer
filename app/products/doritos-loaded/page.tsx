@@ -361,6 +361,7 @@ export default function DoritosLoadedPage() {
       <ProjectPageShell
         title={doritosLoadedMetadata.title}
         date={doritosLoadedMetadata.date}
+        category="Product"
         description={description}
         backHref="/craft"
         backLabel="Craft"

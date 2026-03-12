@@ -34,6 +34,7 @@ export default function ElectricBorderPage() {
         <ProjectPageShell
           title={electricBorderMetadata.title}
           date={electricBorderMetadata.date}
+          category="Interaction"
           description={description}
           backHref="/craft"
           backLabel="Craft"

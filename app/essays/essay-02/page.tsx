@@ -78,6 +78,7 @@ export default function Essay02() {
       <ProjectPageShell
         title={essay02Metadata.title}
         date={essay02Metadata.date}
+        category="Writing"
         description={description}
         backHref="/craft"
         backLabel="Craft"

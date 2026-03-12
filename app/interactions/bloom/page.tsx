@@ -32,6 +32,7 @@ export default function BloomPage() {
       <ProjectPageShell
         title={bloomMetadata.title}
         date={bloomMetadata.date}
+        category="Interaction"
         description={description}
         backHref="/craft"
         backLabel="Craft"

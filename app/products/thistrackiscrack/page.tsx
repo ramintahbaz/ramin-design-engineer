@@ -8,12 +8,12 @@ import ProjectPageShell from '@/components/ProjectPageShell';
 
 export const thisTrackisCrackMetadata = {
   id: 'thistrackiscrack',
-  title: 'this track is crack (acquired)',
+  title: 'ThisTrackisCrack (acquired)',
   date: 'March 2008',
   cardDate: 'Mar 2008',
   cardDescription: 'Music discovery site',
   href: '/products/thistrackiscrack',
-  shareTitle: 'this track is crack (acquired) — Ramin — Designer',
+  shareTitle: 'ThisTrackisCrack (acquired) — Ramin — Designer',
   shareText: 'Music discovery site',
 };
 
@@ -251,6 +251,7 @@ export default function ThisTrackisCrackPage() {
       <ProjectPageShell
         title={thisTrackisCrackMetadata.title}
         date={thisTrackisCrackMetadata.date}
+        category="Product"
         description={description}
         backHref="/craft"
         backLabel="Craft"

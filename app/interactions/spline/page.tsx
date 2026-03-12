@@ -45,6 +45,7 @@ export default function SplinePage() {
         <ProjectPageShell
           title={splineMetadata.title}
           date={splineMetadata.date}
+          category="Interaction"
           description={description}
           backHref="/craft"
           backLabel="Craft"

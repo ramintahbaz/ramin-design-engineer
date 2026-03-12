@@ -1,0 +1,50 @@
+.eb-color-wrapper {
+  width: 100%;
+  padding: 40px 24px;
+  background: #111;
+  border-radius: 12px;
+  position: relative;
+}
+.eb-color-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.eb-color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.eb-color-card-wrapper {
+  position: relative;
+}
+.eb-color-card {
+  width: 140px;
+  height: 200px;
+  border-radius: 18px;
+  border: 2px solid;
+  background: rgba(0,0,0,0.6);
+}
+.eb-color-glow-1 {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  border: 2px solid;
+  filter: blur(1px);
+  pointer-events: none;
+}
+.eb-color-glow-2 {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  border: 2px solid;
+  pointer-events: none;
+}
+.eb-color-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.04em;
+}
