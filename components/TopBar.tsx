@@ -217,7 +217,7 @@ export default function TopBar() {
           <Link href="https://www.linkedin.com/in/ramin-tahbaz/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-2">
             Connect
           </Link>
-          <Link href="https://x.com/home" target="_blank" rel="noopener noreferrer" className="flex items-center hover:opacity-80" aria-label="X profile">
+          <Link href="https://x.com/ramintahbaz" target="_blank" rel="noopener noreferrer" className="flex items-center hover:opacity-80" aria-label="X profile">
             <XLogo className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -298,7 +298,7 @@ export default function TopBar() {
         </Link>
         <span className="shrink-0 text-white/60 cursor-default">Resume</span>
         <Link
-          href="https://x.com/home"
+          href="https://x.com/ramintahbaz"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center shrink-0 hover:opacity-80"
