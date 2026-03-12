@@ -129,7 +129,7 @@ export default function ProjectPageShell({
         style={{
           minHeight: '100dvh',
           backgroundColor: '#E2DEDB',
-          overflowX: 'hidden',
+          overflowX: 'clip',
           overflowY: 'visible',
           opacity: fadeIn ? 1 : 0,
           transition: 'opacity 300ms ease',
