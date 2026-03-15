@@ -2271,12 +2271,12 @@ export default function NeuralPortfolio() {
             ))}
           </div>
 
-          {/* Bio block — mobile only: inline below cards, grid view only */}
+          {/* Bio block — mobile only: inline below cards, grid view only; padding above fixed menu */}
           {isMobile && view === 'grid' && (
             <div style={{
               width: '100%',
               marginTop: 32,
-              paddingBottom: 16,
+              paddingBottom: 40,
             }}>
               <p style={{
                 margin: 0,
@@ -2298,11 +2298,11 @@ export default function NeuralPortfolio() {
         </div>
       )}
 
-      {/* Bio block — desktop only: fixed bottom-left (both neural and grid views) */}
+      {/* Bio block — desktop: fixed bottom-left (both views); padding above filter menu */}
       {!isMobile && (
         <div style={{
           position: 'fixed',
-          bottom: 112,
+          bottom: 95,
           left: 32,
           zIndex: 10,
           maxWidth: 950,
@@ -2345,9 +2345,9 @@ export default function NeuralPortfolio() {
           role="group"
           aria-label="Filter by category"
           style={{
-            position: view === 'grid' && !isMobile ? 'fixed' : 'absolute',
+            position: isMobile || (view === 'grid' && !isMobile) ? 'fixed' : 'absolute',
             ...(filterMenuPosition ? { left: filterMenuPosition.x, top: filterMenuPosition.y } : { left: isMobile ? 12 : 32, bottom: 48 }),
-            zIndex: view === 'grid' && !isMobile ? 25 : 10,
+            zIndex: isMobile || (view === 'grid' && !isMobile) ? 25 : 10,
             display: 'flex', alignItems: 'center',
             gap: isMobile ? 2 : 4,
             backdropFilter: 'blur(16px)',
