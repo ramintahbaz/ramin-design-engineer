@@ -135,9 +135,14 @@ export default async function RootLayout({
             <Suspense fallback={<div className="h-12 shrink-0" />}>
               <TopBar />
             </Suspense>
-            <div className="pt-12 bg-black min-h-screen min-h-[100dvh]">
+            <div
+              className="pt-12 bg-black"
+              style={{ height: '100dvh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
+            >
               <NeuralPortfolioLayer />
-              {children}
+              <div style={{ flex: 1, minHeight: 0, overflowY: 'auto' }}>
+                {children}
+              </div>
             </div>
           </SplashProvider>
         </CategoryFilterProvider>
