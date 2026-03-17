@@ -239,7 +239,7 @@ export function BentoCard({ item, index, active, visited = false, year, minHeigh
               fontSize: isMobile ? 12 : 14,
               fontWeight: 500,
               color: hovered && !isMobile ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.85)',
-              fontFamily: 'var(--font-geist-mono), monospace',
+              fontFamily: 'var(--font-geist-sans), sans-serif',
               lineHeight: 1.4,
               transition: 'color 0.2s ease',
             }}>

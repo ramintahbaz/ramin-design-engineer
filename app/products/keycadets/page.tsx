@@ -47,7 +47,7 @@ export default function KeycadetsPage() {
   const description = (
     <>
       <p className="mb-2 sm:mb-3">
-        I founded and bootstrapped keycadets, a premium mechanical keyboard brand. I designed the full product line (deskmats, keyboards, metal trays, artisan keycap cases), sourced manufacturing, and built the business from the ground up. The company scaled to national retail placement before being acquired.
+        I founded and bootstrapped keycadets, a premium mechanical keyboard brand. I designed the full product line, sourced manufacturing, and built the business from the ground up. Acquired in 2024.
       </p>
     </>
   );

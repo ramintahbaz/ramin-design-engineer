@@ -1,7 +1,7 @@
 'use client';
 import { useRef } from 'react';
 
-const VIDEO_SRC = '/images/ai-document-verification/demo_ritl.mp4';
+const VIDEO_SRC = '/videos/document intelligent review.mp4';
 
 export default function AIDocVerificationEmbed() {
   const videoRef = useRef<HTMLVideoElement>(null);

@@ -98,10 +98,7 @@ export default function CoCreatorPage() {
   const description = (
     <>
       <p className="mb-2 sm:mb-3">
-        What if design inspiration started anywhere, like it naturally does? You see something in a bazaar that catches your eye and think &quot;that would be perfect for the product I&apos;m building.&quot; You capture it, bring it to your canvas, describe what you love about it, and a complete system builds from your vision.
-      </p>
-      <p className="mb-2 sm:mb-3">
-        What if your taste could scale faster than you could execute it yourself?
+        You see something — in a market, a photo, a screenshot — and you know immediately: that's the feeling I want. Co-Creator starts there. Drop in a reference image, describe what you love about it, and a complete design system builds from your vision.
       </p>
     </>
   );

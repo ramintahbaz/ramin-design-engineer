@@ -18,11 +18,11 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   }, []);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setShowSecond(true), 1200);
+    const t1 = setTimeout(() => setShowSecond(true), 700);
     const t2 = setTimeout(() => {
       setVisible(false);
-    }, 3100);
-    const t3 = setTimeout(() => onComplete(), 3700);
+    }, 2600);
+    const t3 = setTimeout(() => onComplete(), 3200);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onComplete]);
 

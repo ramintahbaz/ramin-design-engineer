@@ -36,8 +36,9 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Intelligent Document Review',
     category: 'product',
     thumbnail: '/thumbnails/ai-document-verification.jpg',
-    video: '/images/ai-document-verification/demo_ritl.mp4',
-    videoObjectFit: 'contain',
+    video: '/videos/document intelligent review.mp4',
+    videoObjectFit: 'cover',
+    videoFullLoop: true,
     href: '/products/ai-document-verification',
     excerpt: 'AI-powered eligibility verification that keeps humans in the loop.',
   },
@@ -112,7 +113,7 @@ export const WORK_ITEMS: WorkItem[] = [
     thumbnail: '',
     video: '/videos/bloom_video.mp4',
     videoFullLoop: true,
-    href: '',
+    href: '/interactions/bloom',
     excerpt: 'iOS-inspired pull-down menu, reverse-engineered and packaged.',
   },
   {
@@ -121,7 +122,7 @@ export const WORK_ITEMS: WorkItem[] = [
     category: 'interaction',
     thumbnail: '',
     video: '/videos/payment_processing.mp4',
-    href: '',
+    href: '/payment-status',
     excerpt: 'A button that cycles through payment states. Each state gets its own motion.',
   },
   {
@@ -364,18 +365,18 @@ const DORITOS_SECTIONS = [
 
 const KEYCADETS_SECTIONS = [
   { type: 'component' as const, componentId: 'keycadets' },
-  { type: 'text' as const, content: `Keycadets was acquired in 2024. Before that, it was a mechanical keyboard brand I founded from nothing — no investors, no co-founders, no manufacturing background. I designed the full product line, sourced factories, and built the business until it was on shelves at Target, Walmart, Best Buy, MicroCenter, and Drop.com.` },
+  { type: 'text' as const, content: `I designed the product line, sourced factories, and built the business from scratch until it was on shelves at Target, Walmart, Best Buy, MicroCenter, and Drop.com. Acquired in 2024.` },
   { type: 'heading' as const, content: 'The product line' },
-  { type: 'text' as const, content: `Over 20 SKUs across five categories: deskmats, keyboards, metal trays, artisan keycap cases, and accessories. Every product was designed from scratch — dimensions, materials, colorways, packaging. The deskmat line came first: large-format, stitched-edge, with surface textures tuned for both mouse glide and aesthetics. The metal trays were a personal obsession — desk organization as an object worth owning.` },
+  { type: 'text' as const, content: `Over 20 SKUs across five categories: deskmats, keyboards, metal trays, artisan keycap cases, and accessories. Every product was designed from scratch — dimensions, materials, colorways, packaging. The deskmat line came first. The metal trays were a personal obsession: desk organization as an object worth owning.` },
   { type: 'heading' as const, content: 'Design process' },
-  { type: 'text' as const, content: `I had no industrial design training. The process was: find a gap in the market, spec the product, find a factory willing to work at small MOQs, iterate on samples until it was right, then launch. Most products went through three to five sample rounds before hitting production. The keyboard line was the hardest — tolerances, switch compatibility, plate materials, case resonance. All of it learned on the job.` },
+  { type: 'text' as const, content: `Find a gap in the market, spec the product, find a factory willing to work at small MOQs, iterate on samples until it was right, then launch. Most products went through three to five sample rounds before hitting production. The keyboard line was the hardest — tolerances, switch compatibility, plate materials, case resonance. All of it learned on the job.` },
   { type: 'heading' as const, content: 'Manufacturing' },
-  { type: 'text' as const, content: `Everything was sourced and managed directly — no middlemen, no fulfillment partners until scale demanded it. I negotiated tooling costs, managed production timelines, handled quality control on incoming inventory. Getting to national retail requires certifications, barcodes, EDI compliance, vendor portals. I built that infrastructure myself.` },
+  { type: 'text' as const, content: `Everything was sourced and managed directly. I negotiated tooling costs, managed production timelines, handled quality control on incoming inventory. Getting to national retail requires certifications, barcodes, EDI compliance, vendor portals. I built that infrastructure myself.` },
   { type: 'heading' as const, content: 'Retail' },
-  { type: 'text' as const, content: `National retail placement isn't handed to small brands. Target, Walmart, Best Buy, MicroCenter, and Drop.com each have their own vendor requirements, margin expectations, and replenishment processes. Getting on those shelves meant meeting all of it — packaging that scanned correctly, product that didn't generate returns, logistics that could handle purchase orders at scale.` },
+  { type: 'text' as const, content: `Target, Walmart, Best Buy, MicroCenter, and Drop.com each have their own vendor requirements, margin expectations, and replenishment processes. Getting on those shelves meant meeting all of it — packaging that scanned correctly, product that didn't generate returns, logistics that could handle purchase orders at scale.` },
   { type: 'component' as const, componentId: 'keycadets-retail' },
   { type: 'heading' as const, content: 'Acquisition' },
-  { type: 'text' as const, content: `The company was acquired in 2024. The acquirer got the brand, the SKUs, the retail relationships, and the supplier network. What I got was five years of building something real — a product company with physical goods, national distribution, and a community of customers who actually cared about what we made. It's the foundation everything since has been built on.` },
+  { type: 'text' as const, content: `The company was acquired in 2024. The acquirer got the brand, the SKUs, the retail relationships, and the supplier network. Five years of building a product company with physical goods, national distribution, and a community of customers who cared about what we made.` },
 ];
 
 const CRAFT_SECTIONS = [
@@ -416,42 +417,38 @@ const SUNSET_SECTIONS = [
 
 const CO_CREATOR_SECTIONS = [
   { type: 'component' as const, componentId: 'co-creator' },
-  { type: 'text' as const, content: `Design systems start from taste. You see something — a product in a market, a photo, a screenshot — and you know immediately: that's the feeling I want. Co-Creator starts there. Drop in a reference image, describe what you love about it, and the system extracts a full design fingerprint: color palette, typography, border radius, spacing, iconography style, and material properties. Taste becomes system.` },
+  { type: 'text' as const, content: `Drop in a reference image, describe what you love about it, and the system extracts a full design fingerprint: color palette, typography, border radius, spacing, iconography style, and material properties. Taste becomes system.` },
   { type: 'heading' as const, content: 'The fingerprint' },
-  { type: 'text' as const, content: `The core output is a TasteFingerprint — a structured object that describes every design primitive needed to build a coherent visual system. Palette splits into primary, accent, and neutral. Typography captures font family, weight, scale, and line height. Material captures eight physical properties: translucency, blur, gloss, texture, softness, elevation, contrast, and edge highlight. Each one is a number between 0 and 1.` },
+  { type: 'text' as const, content: `The core output is a TasteFingerprint, a structured object describing every design primitive needed to build a coherent visual system. Palette splits into primary, accent, and neutral. Typography captures font family, weight, scale, and line height. Material captures eight physical properties: translucency, blur, gloss, texture, softness, elevation, contrast, and edge highlight. Each one is a number between 0 and 1.` },
   { type: 'code' as const, content: `type TasteFingerprint = {\n  palette: { primary: string[]; accent: string[]; neutral: string[]; contrast: 'low' | 'medium' | 'high' };\n  typography: { category: 'serif' | 'sans-serif' | 'mono'; weight: 'light' | 'regular' | 'medium' | 'bold'; fontFamily?: string };\n  radius: 'sharp' | 'subtle' | 'rounded' | 'pill';\n  spacing: 'tight' | 'medium' | 'airy';\n  material: { translucency: number; blur: number; gloss: number; texture: number; softness: number; elevation: number; contrast: number; edgeHighlight: number };\n  materialStyle: 'flat' | 'glass' | 'neuo' | 'skeuo' | 'solid' | string;\n}` },
   { type: 'heading' as const, content: 'Extraction' },
-  { type: 'text' as const, content: `Images are sent to GPT-4o with a structured prompt that instructs the model to think in seven stages: identify content type, extract colors directly, extract typography if visible, infer typography from color mood if not, extract iconography, extract UI-specific details if applicable, and finally infer material style. Temperature is set to 0.2 to keep outputs consistent.` },
-  { type: 'text' as const, content: `When typography exists in the image, the model extracts it directly — font family, category, weight, scale. When it doesn't, the model infers what typography would feel right based on the color mood. Earthy browns map to serif fonts. Futuristic blues map to mono. Luxury golds map to elegant display faces. The system derives taste even from images with no text.` },
+  { type: 'text' as const, content: `Images are sent to GPT-4o with a structured prompt that instructs the model to think in seven stages: identify content type, extract colors, extract typography if visible, infer typography from color mood if not, extract iconography, extract UI-specific details if applicable, then infer material style. Temperature is set to 0.2 to keep outputs consistent.` },
+  { type: 'text' as const, content: `When typography exists in the image, the model extracts it directly. When it doesn't, the model infers what typography would feel right based on the color mood. Earthy browns map to serif fonts. Futuristic blues map to mono. Luxury golds map to elegant display faces.` },
   { type: 'code' as const, content: `const response = await client.chat.completions.create({\n  model: 'gpt-4o',\n  temperature: 0.2,\n  response_format: { type: 'json_object' },\n  messages: [{\n    role: 'user',\n    content: [\n      { type: 'text', text: prompt },\n      ...imageBuffers.map(b => ({\n        type: 'image_url',\n        image_url: { url: \`data:\${b.mimeType};base64,\${b.base64}\` }\n      }))\n    ]\n  }]\n});` },
   { type: 'heading' as const, content: 'The style modifier' },
-  { type: 'text' as const, content: `Alongside the image, users can describe what they love in plain text — "glass-like", "soft shadows", "3D depth". The style text is injected into the prompt as a modifier that nudges specific material properties. Glass-like increases translucency and blur. Matte decreases gloss. 3D depth increases elevation and contrast. The image sets the baseline. The description steers the details.` },
+  { type: 'text' as const, content: `Alongside the image, users describe what they love in plain text. Glass-like, soft shadows, 3D depth. The style text is injected into the prompt as a modifier that nudges specific material properties. Glass-like increases translucency and blur. Matte decreases gloss. 3D depth increases elevation and contrast. The image sets the baseline. The description steers the details.` },
   { type: 'heading' as const, content: 'Material' },
-  { type: 'text' as const, content: `Material is the most novel part of the fingerprint. Beyond color and typography, Co-Creator captures the physical feel of a surface — how translucent it is, how much it blurs what's behind it, how glossy, how elevated. These eight values feed a MaterialShowcase component that renders the extracted aesthetic as a live preview: a card surface that reflects the exact material spec extracted from the reference.` },
+  { type: 'text' as const, content: `Beyond color and typography, Co-Creator captures the physical feel of a surface: how translucent, how much blur, how glossy, how elevated. These eight values feed a MaterialShowcase component that renders the extracted aesthetic as a live preview, a card surface that reflects the exact material spec from the reference image.` },
   { type: 'component' as const, componentId: 'co-creator-fingerprint' },
   { type: 'heading' as const, content: 'Typography inference' },
-  { type: 'text' as const, content: `Mood-to-font mapping runs across thirteen categories. Earthy and organic images get Crimson Text or Lora. Futuristic and tech images get JetBrains Mono or Fira Code. Luxury and elegant images get Playfair Display or Cormorant Garamond. The selected font is loaded dynamically via Google Fonts and applied to the output UI, so the result looks and feels like the reference — not just structurally, but typographically.` },
+  { type: 'text' as const, content: `Mood-to-font mapping runs across thirteen categories. Earthy and organic images get Crimson Text or Lora. Futuristic and tech images get JetBrains Mono or Fira Code. Luxury and elegant images get Playfair Display or Cormorant Garamond. The selected font loads dynamically via Google Fonts and applies to the output UI, so the result looks and feels like the reference typographically, not just structurally.` },
 ];
 
 const AI_DOC_VERIFICATION_SECTIONS = [
   { type: 'component' as const, componentId: 'ai-document-verification' },
-  { type: 'text' as const, content: `Government benefit programs run on documents. Utility bills, IDs, award letters, lease agreements — caseworkers manually review each one to confirm eligibility. At scale, that backlog breaks the system. This is an end-to-end product concept for automating that verification with AI while keeping humans in the loop for everything the model isn't confident about.` },
+  { type: 'text' as const, content: `Government benefit programs run on documents. At scale, manual review breaks the system. This is a product for automating the routine, surfacing the exceptions, and making human review fast enough that caseworkers handle more without more headcount.` },
   { type: 'heading' as const, content: 'The problem' },
-  { type: 'text' as const, content: `SNAP, LIHEAP, and similar programs require residents to submit proof documents at application and renewal. A caseworker reviews each submission, extracts the relevant data, and makes an eligibility determination. The process is slow, error-prone, and doesn't scale — a single caseworker might process dozens of cases a day, and any backlog directly delays benefits reaching people who need them.` },
-  { type: 'text' as const, content: `The goal was to automate the routine cases entirely, surface edge cases for human review, and make the human review workflow fast enough that caseworkers could handle higher volume without higher headcount.` },
+  { type: 'text' as const, content: `SNAP, LIHEAP, and similar programs require proof documents at application and renewal. A caseworker reviews each one, extracts the relevant data, makes a determination. The process doesn't scale — any backlog directly delays benefits reaching people who need them.` },
   { type: 'heading' as const, content: 'The pipeline' },
-  { type: 'text' as const, content: `Documents are uploaded by residents and routed through Google Cloud Document AI, which extracts structured fields — name, address, amount, date, issuing entity. The extracted data is validated against the case record: does the name match? Is the address in the service area? Is the document dated within the required window?` },
-  { type: 'text' as const, content: `Cases where all fields extract cleanly and pass validation are auto-approved. Cases where extraction confidence falls below threshold, or where validation fails, are flagged for human review. In testing, the model auto-processed 94% of submissions.` },
+  { type: 'text' as const, content: `Documents route through Google Cloud Document AI, which extracts structured fields — name, address, amount, date, issuing entity — and validates them against the case record. Cases where everything checks out are auto-approved. Cases where confidence falls below threshold or validation fails are flagged for review. In testing, the model auto-processed 94% of submissions.` },
   { type: 'code' as const, content: `const confidence = result.pages[0].formFields\n  .every(field => field.valueDetectedLanguages[0].confidence > 0.85);\n\nif (confidence && validationPassed) {\n  return { status: 'auto-approved' };\n} else {\n  return { status: 'needs-review', flags };\n}` },
   { type: 'heading' as const, content: 'The review interface' },
-  { type: 'text' as const, content: `Flagged cases surface in a review queue. The caseworker sees the document on the left, the extracted fields on the right, and any validation failures highlighted inline. They can accept the extracted value, correct it, or mark the document as insufficient. Corrections feed back into the model as labeled training data.` },
-  { type: 'text' as const, content: `The feedback loop is the product. Every correction improves extraction accuracy for that document type. Over time, the model handles more edge cases automatically — the human review queue shrinks as the model gets better at the cases it used to flag.` },
+  { type: 'text' as const, content: `Flagged cases surface in a queue. Document on the left, extracted fields on the right, validation failures highlighted inline. Caseworkers accept, correct, or mark insufficient. Corrections feed back as labeled training data — the review queue shrinks as the model gets better at what it used to flag.` },
   { type: 'component' as const, componentId: 'ai-document-verification-review' },
   { type: 'heading' as const, content: 'Resident experience' },
-  { type: 'text' as const, content: `On the resident side, real-time validation catches problems at upload rather than days later. If a document is blurry, expired, or the wrong type, the resident is told immediately with a plain-language explanation and a specific ask. No waiting for a rejection letter. No calling the helpline. The system tells you what it needs.` },
-  { type: 'text' as const, content: `Redundant questions disappear. If the document confirms the address, the form doesn't ask for the address again. The AI pre-fills what it can extract and flags only what it can't confirm.` },
+  { type: 'text' as const, content: `Real-time validation catches problems at upload rather than days later. If a document is blurry, expired, or the wrong type, the resident gets a plain-language explanation and a specific ask. If the document confirms the address, the form doesn't ask for it again.` },
   { type: 'heading' as const, content: 'Stack' },
-  { type: 'text' as const, content: `React 18 on the front end, Node.js/Express for the API layer, Google Cloud Document AI for extraction. The review queue is a separate interface from the resident-facing upload flow — caseworkers and residents never share the same surface.` },
+  { type: 'text' as const, content: `React 18, Node.js/Express, Google Cloud Document AI. The review queue and resident upload flow are separate surfaces — caseworkers and residents never share the same interface.` },
 ];
 
 const VISUAL_SYSTEM_HOVER_SECTIONS = [
@@ -633,26 +630,23 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           content: {
             sections: [
               { type: 'component', componentId: 'photoboom' },
-              { type: 'text', content: `A stack of photos sitting on a surface. You click and they explode outward — fanning across the screen from the exact point you touched, each card landing with its own rotation and vertical drift. Click again and they collapse back into the pile. The interaction is the whole point.` },
+              { type: 'text', content: `The interaction is the whole point.` },
               { type: 'heading', content: 'The stack' },
-              { type: 'text', content: `At rest, the photos sit in a tight pile. Each card is offset by index * -3 pixels from the one below it, creating visible depth without spreading out. The front card gets a subtle scale on hover — 1.03 — just enough to signal the stack is interactive without giving away what happens next.` },
-              { type: 'text', content: `The peek is the second signal. On hover, each card shifts 10 pixels in a different direction — right, left, up-right, down-left — so the stack opens slightly like a hand of cards being fanned. It hints at the explosion before it happens.` },
+              { type: 'text', content: `At rest, the photos sit in a tight pile with visible depth. Hover and the stack opens slightly — each card shifting in a different direction, like a hand of cards being fanned. A hint of what's coming.` },
               { type: 'code', content: `const peekAmount = 10;\nconst directions = [\n  { x: 1, y: 0 },   // right\n  { x: -1, y: 0 },  // left\n  { x: 0.7, y: -0.7 },\n  { x: -0.7, y: 0.7 },\n];` },
               { type: 'component', componentId: 'photoboom-peek' },
               { type: 'heading', content: 'The explosion' },
-              { type: 'text', content: `Click lands at a specific point. That point becomes the explosion origin. The cards fan outward from it — not from the center of the stack, but from wherever you clicked. If you click the top-left corner, they spread from there. If you click the bottom-right, they spread from there.` },
-              { type: 'text', content: `Desktop layout spaces cards with 160px between centers (200px wide with 40px overlap), starting from the horizontal center. Each card gets a per-index vertical variation — [-22, 14, -12, 20] pixels — and a slight horizontal nudge, so the fanned layout looks natural rather than mechanical.` },
+              { type: 'text', content: `Click lands at a point. That point becomes the origin. Cards fan outward from wherever you touched — not from the center, but from exactly where your cursor or finger landed. Each card gets its own vertical drift and rotation so the layout feels found, not calculated.` },
               { type: 'code', content: `const overlap = 40;\nconst spacing = imageWidth - overlap; // 160px\nconst verticalVariation = [-22, 14, -12, 20, -18];\nconst rotation = (index % 2 === 0 ? -3 : 2) + (index * 0.5);` },
               { type: 'heading', content: 'The spring' },
-              { type: 'text', content: `The explosion uses three separate spring configurations running in parallel. Position uses stiffness 180 and damping 12 with a mass of 0.6 — low mass makes it feel light and fast, the low damping lets it overshoot slightly before settling. Scale uses a tighter spring at 260/18 so the cards grow crisply. Rotation uses the loosest spring at 150/10, so each card settles into its angle with a slight wobble.` },
+              { type: 'text', content: `Three springs run in parallel. Position is light and fast with enough undershoot to feel physical. Scale is tighter — cards grow crisply. Rotation is the loosest, so each card wobbles into its angle rather than snapping. The collapse is different: a single easeOut so everything returns as a unit.` },
               { type: 'code', content: `// explosion\nx: { type: 'spring', stiffness: 180, damping: 12, mass: 0.6 },\nscale: { type: 'spring', stiffness: 260, damping: 18 },\nrotate: { type: 'spring', stiffness: 150, damping: 10 },\ndelay: index * 0.04,` },
               { type: 'component', componentId: 'photoboom-spring' },
-              { type: 'text', content: `The collapse is different — it uses easeOut with a 0.5s duration and a fixed 0.08s delay, so all cards begin moving back together rather than cascading in reverse. The stack reforms as a unit.` },
               { type: 'heading', content: 'The cascade' },
-              { type: 'text', content: `Each card is delayed by index * 0.04 seconds, so the explosion radiates outward in a cascade rather than all at once. The difference is subtle but meaningful — without it the explosion feels mechanical. With it, the cards feel like they have individual weight.` },
+              { type: 'text', content: `Each card is delayed by 0.04 seconds. The explosion radiates outward rather than firing all at once. Without it the interaction feels mechanical. With it, the cards have individual weight.` },
               { type: 'component', componentId: 'photoboom-cascade' },
               { type: 'heading', content: 'Touch' },
-              { type: 'text', content: `On mobile the explosion becomes a 2x2 grid centered at x: -84. Tap detection distinguishes a tap from a scroll by measuring total touch movement — anything under 10 pixels is a tap, anything over is a scroll that passes through. This means the interaction never accidentally fires while the user is scrolling the page.` },
+              { type: 'text', content: `On mobile the layout shifts to a 2×2 grid. A tap is distinguished from a scroll by measuring total movement — under 10px fires the explosion, anything over passes through. The interaction never accidentally fires while scrolling.` },
               { type: 'code', content: `const isTap = totalMovement < 10;\nif (!isTap) return; // let scroll pass through` },
             ],
           },
@@ -1139,14 +1133,16 @@ void main() {
 const CONN_FRAG = `
 uniform float uTime;
 uniform vec3 uPulseColors[3];
+uniform float uLineOpacity;
+uniform float uLineBrightness;
 varying vec3 vColor;
 varying float vConnectionStrength;
 varying float vPulseIntensity;
 varying float vPathPosition;
 varying float vDistanceFromCamera;
 void main() {
-  vec3 finalColor = vColor * 0.5;
-  float alpha = 0.15 * vConnectionStrength;
+  vec3 finalColor = vColor * uLineBrightness;
+  float alpha = uLineOpacity * vConnectionStrength;
   if (vPulseIntensity > 0.0) {
     vec3 pulseColor = mix(vec3(1.0), uPulseColors[0], 0.3);
     finalColor = mix(finalColor, pulseColor * 1.2, vPulseIntensity * 0.7);
@@ -1170,7 +1166,7 @@ type DevParams = {
 };
 
 const DEV_PARAMS_DEFAULTS: DevParams = {
-  lineOpacity: 0.06,
+  lineOpacity: 0.15,
   lineBrightness: 0.5,
   workNodeSizeMult: 1.0,
   workNodeBrightness: 1.0,
@@ -1383,6 +1379,12 @@ export default function NeuralPortfolio() {
     const t = setTimeout(() => setMobilePreview(null), 250);
     return () => clearTimeout(t);
   }, [view]);
+  const goToNeuralView = useCallback(() => {
+    setView('neural');
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('view', 'neural');
+    router.replace(`/?${params.toString()}`);
+  }, [searchParams, router]);
   const VIEW_TOGGLE_USED_KEY = 'viewToggleUsed';
   const [viewToggleUsed, setViewToggleUsed] = useState(false);
   const viewToggledByTouchRef = useRef(false);
@@ -1567,6 +1569,36 @@ export default function NeuralPortfolio() {
   const [gridHovered, setGridHovered] = useState<{ item: WorkItem; screenX: number; screenY: number } | null>(null);
   const [gridCardVisible, setGridCardVisible] = useState(false);
   const gridHoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const [showreelIndex, setShowreelIndex] = useState(0);
+  const [displayTitle, setDisplayTitle] = useState(SHOWREEL_ITEMS[0].title);
+  const [titleVisible, setTitleVisible] = useState(true);
+  const prevShowreelIndexRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (activeProject) return; // pause showreel while modal is open so card stays clickable when user returns
+    const id = setInterval(() => {
+      setShowreelIndex((i) => (i + 1) % SHOWREEL_ITEMS.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [activeProject]);
+
+  useEffect(() => {
+    const nextTitle = SHOWREEL_ITEMS[showreelIndex].title;
+    if (prevShowreelIndexRef.current === null) {
+      setDisplayTitle(nextTitle);
+      prevShowreelIndexRef.current = showreelIndex;
+      return;
+    }
+    if (prevShowreelIndexRef.current === showreelIndex) return;
+    prevShowreelIndexRef.current = showreelIndex;
+    setTitleVisible(false);
+    const t = setTimeout(() => {
+      setDisplayTitle(nextTitle);
+      setTitleVisible(true);
+    }, 900);
+    return () => clearTimeout(t);
+  }, [showreelIndex]);
 
   // When a project modal opens, hide grid hover card and disable grid hover until modal closes
   useEffect(() => {
@@ -1906,7 +1938,7 @@ export default function NeuralPortfolio() {
       cGeo.setAttribute('pathIndex', new THREE.Float32BufferAttribute(cPath, 1));
 
       const cMat = new THREE.ShaderMaterial({
-        uniforms: { ...pulseUniforms, uLineOpacity: { value: 0.06 }, uLineBrightness: { value: 0.5 } },
+        uniforms: { ...pulseUniforms, uLineOpacity: { value: 0.15 }, uLineBrightness: { value: 0.5 } },
         vertexShader: CONN_VERT, fragmentShader: CONN_FRAG,
         transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
       });
@@ -2182,7 +2214,7 @@ export default function NeuralPortfolio() {
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: '#050508', fontFamily: "'Outfit', sans-serif" }}>
-      <style dangerouslySetInnerHTML={{ __html: '@keyframes gridFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } } @keyframes bentoCardEntry { from { transform: translateY(20px); } to { transform: translateY(0); } }' }} />
+      <style dangerouslySetInnerHTML={{ __html: '@keyframes gridFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } } @keyframes bentoCardEntry { from { transform: translateY(20px); } to { transform: translateY(0); } } @keyframes neuralDot { 0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; } 50% { transform: translate(6px, -10px) scale(1.15); opacity: 0.5; } } @keyframes neuralTwinkle { 0%, 100% { opacity: 0.2; transform: scale(0.85); } 50% { opacity: 0.6; transform: scale(1.1); } } @keyframes neuralWeb { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.22; } }' }} />
       {/* Neural network wrapper — dimmed in grid view, non-interactive; calm fade-in on load */}
       <div
         style={{
@@ -2232,59 +2264,355 @@ export default function NeuralPortfolio() {
               zIndex: 1,
               display: 'grid',
               gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
-              gridAutoFlow: 'row',
+              gridAutoRows: isMobile ? GRID_ROW_HEIGHT_MOBILE : GRID_ROW_HEIGHT_DESKTOP,
+              gridAutoFlow: 'dense',
               gap: isMobile ? 8 : 6,
               width: isMobile ? '100%' : '90vw',
               maxWidth: isMobile ? '100%' : 1400,
             }}
           >
-            {WORK_ITEMS.map((item, i) => (
-              <BentoCard
-                key={item.id}
-                  item={item}
-                  index={i}
-                  active={categoryFilter === 'all' || item.category === categoryFilter}
-                  visited={visitedProjectIds.has(item.id)}
-                  year={PROJECT_DETAILS[item.id]?.year}
-                  minHeight={100}
-                  isMobile={isMobile}
-                  skipEntryAnimation={hasSeenGridBefore || returnedFromProject}
-                  startEntryAnimation={splashDone}
-                  onSelect={() => {
-                    if (isMobile) {
-                      setMobilePreview(item);
-                      setMobilePreviewVisible(true);
-                      const id = item.id;
-                      setTimeout(() => {
-                        setVisitedProjectIds(prev => new Set(prev).add(id));
-                        try {
-                          const raw = sessionStorage.getItem(CRAFT_VISITED_IDS_KEY);
-                          const set = new Set(raw ? (JSON.parse(raw) as string[]) : []);
-                          set.add(id);
-                          sessionStorage.setItem(CRAFT_VISITED_IDS_KEY, JSON.stringify([...set]));
-                        } catch { /* ignore */ }
-                      }, 500);
-                    } else {
-                      openProject(PROJECT_DETAILS[item.id] ?? null);
-                    }
-                  }}
-                  onHoverChange={(hoverItem, _e, cardRect) => {
-                    if (hoverItem && cardRect) {
-                      if (gridHoverTimeout.current) clearTimeout(gridHoverTimeout.current);
-                      const cx = Math.max(24, cardRect.left - HOVER_CARD_SIZE - HOVER_CARD_GAP);
-                      const cy = Math.max(10, Math.min(cardRect.top, window.innerHeight - 200));
-                      setGridHovered({ item: hoverItem as WorkItem, screenX: cx, screenY: cy });
-                      setGridCardVisible(true);
-                    } else {
-                      if (gridHoverTimeout.current) clearTimeout(gridHoverTimeout.current);
-                      gridHoverTimeout.current = setTimeout(() => {
-                        setGridCardVisible(false);
-                        setTimeout(() => setGridHovered(null), 150);
-                      }, 40);
-                    }
-                  }}
-                />
-            ))}
+            {(() => {
+              const anchorIdx = WORK_ITEMS.findIndex((i) => i.id === SHOWREEL_ANCHOR_ID);
+              const showreelInsertDesktop = anchorIdx >= 0 ? Math.min(anchorIdx + 1, WORK_ITEMS.length) : 0;
+              const showreelInsertMobile = Math.floor(WORK_ITEMS.length / 2);
+              const showreelInsertIndex = isMobile ? showreelInsertMobile : showreelInsertDesktop;
+              const itemsBefore = WORK_ITEMS.slice(0, showreelInsertIndex);
+              const itemsAfter = WORK_ITEMS.slice(showreelInsertIndex);
+              return (
+                <>
+                  {itemsBefore.map((item, i) => (
+                    <BentoCard
+                      key={item.id}
+                      item={item}
+                      index={i}
+                      active={categoryFilter === 'all' || item.category === categoryFilter}
+                      visited={visitedProjectIds.has(item.id)}
+                      year={PROJECT_DETAILS[item.id]?.year}
+                      minHeight={100}
+                      isMobile={isMobile}
+                      skipEntryAnimation={hasSeenGridBefore || returnedFromProject}
+                      startEntryAnimation={splashDone}
+                      onSelect={() => {
+                        if (isMobile) {
+                          setMobilePreview(item);
+                          setMobilePreviewVisible(true);
+                          const id = item.id;
+                          setTimeout(() => {
+                            setVisitedProjectIds(prev => new Set(prev).add(id));
+                            try {
+                              const raw = sessionStorage.getItem(CRAFT_VISITED_IDS_KEY);
+                              const set = new Set(raw ? (JSON.parse(raw) as string[]) : []);
+                              set.add(id);
+                              sessionStorage.setItem(CRAFT_VISITED_IDS_KEY, JSON.stringify([...set]));
+                            } catch { /* ignore */ }
+                          }, 500);
+                        } else {
+                          openProject(PROJECT_DETAILS[item.id] ?? null);
+                        }
+                      }}
+                      onHoverChange={(hoverItem, _e, cardRect) => {
+                        if (hoverItem && cardRect) {
+                          if (gridHoverTimeout.current) clearTimeout(gridHoverTimeout.current);
+                          const cx = Math.max(24, cardRect.left - HOVER_CARD_SIZE - HOVER_CARD_GAP);
+                          const cy = Math.max(10, Math.min(cardRect.top, window.innerHeight - 200));
+                          setGridHovered({ item: hoverItem as WorkItem, screenX: cx, screenY: cy });
+                          setGridCardVisible(true);
+                        } else {
+                          if (gridHoverTimeout.current) clearTimeout(gridHoverTimeout.current);
+                          gridHoverTimeout.current = setTimeout(() => {
+                            setGridCardVisible(false);
+                            setTimeout(() => setGridHovered(null), 150);
+                          }, 40);
+                        }
+                      }}
+                    />
+                  ))}
+                  {/* Showreel: cycling video + overlay; key on video forces remount for autoplay on change */}
+                  {(() => {
+                    const current = SHOWREEL_ITEMS[showreelIndex];
+                    const isClickable = !!current.href;
+                    const showreelWorkItem = WORK_ITEMS.find((i) => i.id === current.id);
+                    const handleShowreelSelect = () => {
+                      if (!isClickable) return;
+                      if (isMobile && showreelWorkItem) {
+                        setMobilePreview(showreelWorkItem);
+                        setMobilePreviewVisible(true);
+                        const id = showreelWorkItem.id;
+                        setTimeout(() => {
+                          setVisitedProjectIds(prev => new Set(prev).add(id));
+                          try {
+                            const raw = sessionStorage.getItem(CRAFT_VISITED_IDS_KEY);
+                            const set = new Set(raw ? (JSON.parse(raw) as string[]) : []);
+                            set.add(id);
+                            sessionStorage.setItem(CRAFT_VISITED_IDS_KEY, JSON.stringify([...set]));
+                          } catch { /* ignore */ }
+                        }, 500);
+                      } else {
+                        openProject(PROJECT_DETAILS[current.id] ?? null);
+                      }
+                    };
+                    const wrapperStyle = {
+                      gridColumn: isMobile ? 'span 1' : '4 / span 1',
+                      gridRow: isMobile ? 'span 2' : '2 / span 2',
+                      position: 'relative' as const,
+                      overflow: 'hidden' as const,
+                      minHeight: 100,
+                      borderRadius: 8,
+                      opacity: 1,
+                      transition: 'opacity 0.2s ease-out',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06), 0 1px 8px rgba(0,0,0,0.3)',
+                      background: 'transparent',
+                      border: '1px solid rgba(255,255,255,0.07)',
+                      borderTop: '1px solid rgba(255,255,255,0.11)',
+                      cursor: isClickable ? 'pointer' : 'default',
+                    };
+                    const content = (
+                      <>
+                        <video
+                          key={showreelIndex}
+                          src={current.video}
+                          muted
+                          loop
+                          playsInline
+                          autoPlay
+                          preload="metadata"
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            filter: 'grayscale(0) brightness(0.65)',
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.16) 50%, rgba(0,0,0,0.05) 100%)',
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            zIndex: 3,
+                            pointerEvents: 'none',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'flex-end',
+                            height: '100%',
+                            padding: 14,
+                          }}
+                        >
+                          <div
+                            style={{
+                              fontSize: 16,
+                              fontWeight: 500,
+                              lineHeight: 1.3,
+                              color: 'rgba(255,255,255,0.9)',
+                              fontFamily: 'var(--font-geist-sans), sans-serif',
+                              transition: titleVisible
+                                ? 'opacity 2s cubic-bezier(0.16, 1, 0.3, 1)'
+                                : 'opacity 0.9s cubic-bezier(0.33, 1, 0.68, 1)',
+                              opacity: titleVisible ? 1 : 0,
+                            }}
+                          >
+                            {displayTitle}
+                          </div>
+                          {isClickable && (
+                            <div
+                              style={{
+                                fontSize: 12,
+                                color: 'rgba(255,255,255,0.45)',
+                                fontFamily: 'var(--font-geist-sans), sans-serif',
+                                marginTop: 6,
+                              }}
+                            >
+                              View project
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    );
+                    return (
+                      <div
+                        key="showreel"
+                        role={isClickable ? 'button' : undefined}
+                        tabIndex={isClickable ? 0 : undefined}
+                        onClick={isClickable ? handleShowreelSelect : undefined}
+                        onKeyDown={isClickable ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleShowreelSelect(); } } : undefined}
+                        style={wrapperStyle}
+                      >
+                        {content}
+                      </div>
+                    );
+                  })()}
+                  {/* On mobile: render four cards before neural so neural appears four cards lower, left column */}
+                  {isMobile && itemsAfter.slice(0, 4).map((item, i) => (
+                    <BentoCard
+                      key={item.id}
+                      item={item}
+                      index={showreelInsertIndex + i}
+                      active={categoryFilter === 'all' || item.category === categoryFilter}
+                      visited={visitedProjectIds.has(item.id)}
+                      year={PROJECT_DETAILS[item.id]?.year}
+                      minHeight={100}
+                      isMobile={isMobile}
+                      skipEntryAnimation={hasSeenGridBefore || returnedFromProject}
+                      startEntryAnimation={splashDone}
+                      onSelect={() => {
+                        setMobilePreview(item);
+                        setMobilePreviewVisible(true);
+                        const id = item.id;
+                        setTimeout(() => {
+                          setVisitedProjectIds(prev => new Set(prev).add(id));
+                          try {
+                            const raw = sessionStorage.getItem(CRAFT_VISITED_IDS_KEY);
+                            const set = new Set(raw ? (JSON.parse(raw) as string[]) : []);
+                            set.add(id);
+                            sessionStorage.setItem(CRAFT_VISITED_IDS_KEY, JSON.stringify([...set]));
+                          } catch { /* ignore */ }
+                        }, 500);
+                      }}
+                      onHoverChange={() => {}}
+                    />
+                  ))}
+                  {/* Neural preview card: looping video, click goes to neural view */}
+                  <div
+                    key="neural-preview"
+                    role="button"
+                    tabIndex={0}
+                    onClick={goToNeuralView}
+                    onTouchStartCapture={(e) => { e.preventDefault(); e.stopPropagation(); goToNeuralView(); }}
+                    onTouchEnd={(e) => e.preventDefault()}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToNeuralView(); } }}
+                    style={{
+                      gridColumn: isMobile ? '1 / span 1' : '1 / span 1',
+                      gridRow: isMobile ? 'span 3' : '4 / span 3',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      minHeight: 100,
+                      borderRadius: 8,
+                      opacity: 1,
+                      background: '#050505',
+                      border: '1px solid rgba(255,255,255,0.12)',
+                      cursor: 'pointer',
+                      touchAction: 'manipulation',
+                    }}
+                  >
+                    {/* Simplified neural-style dots (non-interactive); above gradient so they’re visible */}
+                    <video
+                      src="/videos/neural_video.mp4"
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      preload="metadata"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        zIndex: 3,
+                        pointerEvents: 'none',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        height: '100%',
+                        padding: 14,
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: 16,
+                          fontWeight: 500,
+                          lineHeight: 1.3,
+                          color: 'rgba(255,255,255,0.9)',
+                          fontFamily: 'var(--font-geist-sans), sans-serif',
+                        }}
+                      >
+                        Neural network
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 12,
+                          color: 'rgba(255,255,255,0.45)',
+                          fontFamily: 'var(--font-geist-sans), sans-serif',
+                          marginTop: 6,
+                        }}
+                      >
+                        Explore
+                      </div>
+                    </div>
+                  </div>
+                  {(isMobile ? itemsAfter.slice(4) : itemsAfter).map((item, i) => {
+                    const originalIndex = isMobile ? i + 4 : i;
+                    const nextToNeural =
+                      !isMobile && originalIndex === 4
+                        ? { gridColumn: '2 / span 1', gridRow: '4 / span 1' } as const
+                        : undefined;
+                    const wrapperStyle = nextToNeural ?? undefined;
+                    const card = (
+                      <BentoCard
+                        key={item.id}
+                        item={item}
+                        index={showreelInsertIndex + originalIndex}
+                        active={categoryFilter === 'all' || item.category === categoryFilter}
+                        visited={visitedProjectIds.has(item.id)}
+                        year={PROJECT_DETAILS[item.id]?.year}
+                        minHeight={100}
+                        isMobile={isMobile}
+                        skipEntryAnimation={hasSeenGridBefore || returnedFromProject}
+                        startEntryAnimation={splashDone}
+                        onSelect={() => {
+                          if (isMobile) {
+                            setMobilePreview(item);
+                            setMobilePreviewVisible(true);
+                            const id = item.id;
+                            setTimeout(() => {
+                              setVisitedProjectIds(prev => new Set(prev).add(id));
+                              try {
+                                const raw = sessionStorage.getItem(CRAFT_VISITED_IDS_KEY);
+                                const set = new Set(raw ? (JSON.parse(raw) as string[]) : []);
+                                set.add(id);
+                                sessionStorage.setItem(CRAFT_VISITED_IDS_KEY, JSON.stringify([...set]));
+                              } catch { /* ignore */ }
+                            }, 500);
+                          } else {
+                            openProject(PROJECT_DETAILS[item.id] ?? null);
+                          }
+                        }}
+                        onHoverChange={(hoverItem, _e, cardRect) => {
+                          if (hoverItem && cardRect) {
+                            if (gridHoverTimeout.current) clearTimeout(gridHoverTimeout.current);
+                            const cx = Math.max(24, cardRect.left - HOVER_CARD_SIZE - HOVER_CARD_GAP);
+                            const cy = Math.max(10, Math.min(cardRect.top, window.innerHeight - 200));
+                            setGridHovered({ item: hoverItem as WorkItem, screenX: cx, screenY: cy });
+                            setGridCardVisible(true);
+                          } else {
+                            if (gridHoverTimeout.current) clearTimeout(gridHoverTimeout.current);
+                            gridHoverTimeout.current = setTimeout(() => {
+                              setGridCardVisible(false);
+                              setTimeout(() => setGridHovered(null), 150);
+                            }, 40);
+                          }
+                        }}
+                      />
+                    );
+                    return wrapperStyle ? <div key={item.id} style={wrapperStyle}>{card}</div> : card;
+                  })}
+                </>
+              );
+            })()}
           </div>
 
           {/* Bio block — mobile only: inline below cards, grid view only; padding above fixed menu */}
@@ -2780,7 +3108,7 @@ function WorkCard({ item, x, y, visible, onNavigate }: {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Mobile preview card (bottom sheet) — redesigned
+// Mobile preview — small centered modal (video preview)
 // ─────────────────────────────────────────────────────────────
 const MOBILE_PREVIEW_CATEGORY_LABELS: Record<string, string> = {
   product: 'Product',
@@ -2789,12 +3117,30 @@ const MOBILE_PREVIEW_CATEGORY_LABELS: Record<string, string> = {
   writing: 'Writing',
 };
 
-const MOBILE_PREVIEW_CATEGORY_COLORS: Record<string, string> = {
-  product: 'rgba(99,102,241,0.85)',
-  film: 'rgba(239,68,68,0.85)',
-  interaction: 'rgba(16,185,129,0.85)',
-  writing: 'rgba(245,158,11,0.85)',
-};
+const MOBILE_PREVIEW_MODAL_WIDTH = 'min(88vw, 320px)';
+const MOBILE_PREVIEW_CARD_HEIGHT = 300;
+
+const SHOWREEL_VIDEO = '/videos/document intelligent review.mp4';
+const SHOWREEL_ANCHOR_ID = 'visual-system-hover'; // desktop: showreel placed to the right of this card
+
+const SHOWREEL_ITEMS = [
+  { id: 'photoboom', title: 'PhotoBoom', video: '/videos/photo_boom_video.mp4', href: '/photoboom' },
+  { id: 'ai-document-verification', title: 'Intelligent Document Review', video: '/videos/document intelligent review.mp4', href: '/products/ai-document-verification' },
+  { id: 'co-creator', title: 'Co-Creator', video: '/images/co-creator/taste%20%E2%86%92%20system%20demo.mp4', href: '/products/co-creator' },
+  { id: 'keycadets', title: 'keycadets (acquired)', video: '/images/keycadets/248285912_4711445322210021_8637902604872814185_n.MOV', href: '/products/keycadets' },
+  { id: 'carousel', title: 'Netflix Film Scroll', video: '/videos/netflix_scroll.mp4', href: '/interactions/carousel' },
+  { id: 'electric-border', title: 'Electric Border', video: '/videos/electric_border.mp4', href: '/interactions/electric-border' },
+  { id: 'bloom', title: 'Bloom', video: '/videos/bloom_video.mp4', href: '/interactions/bloom' },
+  { id: 'payment-status', title: 'Payment Status', video: '/videos/payment_processing.mp4', href: '/payment-status' },
+  { id: 'visual-system-hover', title: 'Visual System Hover', video: '/videos/visal_hover.mp4', href: '/visual-system-hover' },
+  { id: 'craft', title: 'Craft', video: '/videos/craft_video.mp4', href: '/products/craft' },
+  { id: 'sunset', title: 'Sunset Chaser', video: '/videos/sunset_chaser.mp4', href: '/products/sunset' },
+  { id: 'thistrackiscrack', title: 'ThisTrackisCrack (acquired)', video: '/images/thistrackiscrack/trackiscrack.MOV', href: '/products/thistrackiscrack' },
+  { id: 'doritos-loaded', title: 'Doritos Loaded', video: '/images/doritos/231215_The-Garage_Doritos_S01_1x1_H264.mp4', href: '/products/doritos-loaded' },
+];
+// Row height fixed to short card size so the 1:1 showreel never drives row size; showreel fits within 2 rows.
+const GRID_ROW_HEIGHT_DESKTOP = 98;
+const GRID_ROW_HEIGHT_MOBILE = 98;
 
 function MobilePreviewCard({ item, visible, onNavigate, onDismiss }: {
   item: WorkItem;
@@ -2812,7 +3158,7 @@ function MobilePreviewCard({ item, visible, onNavigate, onDismiss }: {
       setMediaReady(false);
       return;
     }
-    const t = setTimeout(() => setMediaReady(true), 280);
+    const t = setTimeout(() => setMediaReady(true), 200);
     return () => clearTimeout(t);
   }, [visible]);
 
@@ -2841,9 +3187,8 @@ function MobilePreviewCard({ item, visible, onNavigate, onDismiss }: {
   const videoStartSec = item.videoStart ?? 0;
   const loopEndSec = videoStartSec + (item.videoLoopSec ?? 4);
 
-  // Mobile preview: Intelligent Document Review video fills the card (override contain)
-  const mobileObjectFit = item.id === 'ai-document-verification' ? 'cover' : (item.videoObjectFit ?? 'cover');
-  const mobileVideoScale = item.id === 'ai-document-verification' ? 1.1 : (item.videoScale ?? undefined);
+  const mobileObjectFit = item.videoObjectFit ?? 'cover';
+  const mobileVideoScale = item.videoScale ?? undefined;
 
   useEffect(() => {
     const v = videoRef.current;
@@ -2864,49 +3209,49 @@ function MobilePreviewCard({ item, visible, onNavigate, onDismiss }: {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop — tap to dismiss */}
       <div
         onClick={onDismiss}
         style={{
           position: 'fixed', inset: 0, zIndex: 48,
-          background: 'rgba(0,0,0,0.5)',
+          background: 'rgba(0,0,0,0.55)',
           opacity: visible ? 1 : 0,
-          transition: 'opacity 0.3s ease',
+          transition: 'opacity 0.25s ease',
           pointerEvents: visible ? 'auto' : 'none',
         }}
       />
 
-      {/* Sheet */}
+      {/* Small centered modal — content fills card, overlay at bottom */}
       <div
         style={{
           position: 'fixed',
-          bottom: 0, left: 0, right: 0,
+          left: '50%',
+          top: '50%',
+          transform: `translate(-50%, -50%) scale(${visible ? 1 : 0.92})`,
+          width: MOBILE_PREVIEW_MODAL_WIDTH,
+          maxWidth: 320,
+          height: MOBILE_PREVIEW_CARD_HEIGHT,
           zIndex: 49,
-          borderRadius: '24px 24px 0 0',
-          overflow: 'hidden',
-          background: 'rgba(10,10,14,0.97)',
-          boxShadow: '0 -24px 80px rgba(0,0,0,0.9)',
-          transform: `translateY(${visible ? '0' : '110%'})`,
-          transition: 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
-          pointerEvents: visible ? 'auto' : 'none',
-        }}
-      >
-        {/* Video / image area */}
-        <div style={{
-          position: 'relative',
-          width: '100%',
-          height: 220,
+          borderRadius: 8,
           overflow: 'hidden',
           background: '#0a0a0e',
-        }}>
-          {/* Writing: typewriter (no mediaReady gate) */}
+          boxShadow: '0 24px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06)',
+          opacity: visible ? 1 : 0,
+          transition: 'transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.2s ease',
+          pointerEvents: visible ? 'auto' : 'none',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Full-bleed content (video / image / writing) */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
           {item.category === 'writing' ? (
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
                 background: 'rgba(10,10,14,0.97)',
-                padding: 20,
+                padding: 14,
+                paddingBottom: 100,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'flex-start',
@@ -2915,11 +3260,11 @@ function MobilePreviewCard({ item, visible, onNavigate, onDismiss }: {
               <p
                 style={{
                   margin: 0,
-                  fontSize: 14,
-                  lineHeight: 1.6,
+                  fontSize: 13,
+                  lineHeight: 1.55,
                   color: '#fff',
                   display: '-webkit-box',
-                  WebkitLineClamp: 7,
+                  WebkitLineClamp: 6,
                   WebkitBoxOrient: 'vertical',
                   overflow: 'hidden',
                 }}
@@ -2932,7 +3277,6 @@ function MobilePreviewCard({ item, visible, onNavigate, onDismiss }: {
             </div>
           ) : (
             <>
-              {/* Media (mediaReady gate) */}
               {mediaReady ? (
                 isVideo ? (
                   <video
@@ -2969,25 +3313,30 @@ function MobilePreviewCard({ item, visible, onNavigate, onDismiss }: {
               ) : (
                 <div style={{ position: 'absolute', inset: 0, background: '#0a0a0e' }} />
               )}
-
-              {/* Gradient scrim */}
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 50%, rgba(10,10,14,0.6) 85%, rgba(10,10,14,1) 100%)',
-              }} />
             </>
           )}
         </div>
 
-        {/* Bottom section: category, title+year, button */}
-        <div style={{ padding: '14px 20px 36px', display: 'flex', flexDirection: 'column', gap: 24 }}>
-          {/* Title (left) + category (right) */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12 }}>
+        {/* Overlay: gradient + title, category, View project */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            padding: '24px 14px 14px',
+            background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 10,
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
             <div style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: 17,
+              fontSize: 15,
               fontWeight: 600,
-              color: 'rgba(255,255,255,0.9)',
+              color: 'rgba(255,255,255,0.95)',
               letterSpacing: '-0.02em',
               flex: 1,
               minWidth: 0,
@@ -2996,33 +3345,28 @@ function MobilePreviewCard({ item, visible, onNavigate, onDismiss }: {
             </div>
             <div style={{
               fontFamily: 'var(--font-geist-mono), monospace',
-              fontSize: 10,
-              letterSpacing: '0.12em',
+              fontSize: 9,
+              letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.35)',
+              color: 'rgba(255,255,255,0.5)',
               flexShrink: 0,
             }}>
               {MOBILE_PREVIEW_CATEGORY_LABELS[item.category] ?? item.category}
             </div>
           </div>
-
-          {/* View Project — full-width glass button */}
           <button
             onClick={onNavigate}
             style={{
               width: '100%',
-              background: 'rgba(255,255,255,0.02)',
-              border: '0.5px solid rgba(255,255,255,0.04)',
-              borderRadius: 12,
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              boxShadow: '0 2px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
-              color: 'rgba(255,255,255,0.9)',
+              background: 'rgba(255,255,255,0.12)',
+              border: '0.5px solid rgba(255,255,255,0.15)',
+              borderRadius: 10,
+              color: 'rgba(255,255,255,0.95)',
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: 11,
-              letterSpacing: '0.12em',
+              letterSpacing: '0.08em',
               fontWeight: 500,
-              padding: '12px 20px',
+              padding: '10px 14px',
               cursor: 'pointer',
               textAlign: 'center',
             }}
