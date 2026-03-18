@@ -18,7 +18,7 @@ const gridItems: GridItem[] = [
     year: '1987',
     bgColor: 'rgba(42, 42, 42, 0.5)',
     image: '/images/image1.jpeg',
-    video: '/videos/Michael_Jordan.mp4',
+    video: '/videos/Michael_Jordan.mp4?v=2',
   },
   {
     id: '2',
@@ -26,7 +26,7 @@ const gridItems: GridItem[] = [
     year: '2007',
     bgColor: 'rgba(58, 42, 26, 0.5)',
     image: '/images/image2.jpeg',
-    video: '/videos/Steve Jobs introduces iPhone in 2007.mp4',
+    video: '/videos/Steve Jobs.mp4?v=2',
   },
   {
     id: '3',
@@ -34,7 +34,7 @@ const gridItems: GridItem[] = [
     year: '2001',
     bgColor: 'rgba(42, 42, 42, 0.5)',
     image: '/images/image3.jpeg',
-    video: '/videos/Robin Williams.mp4',
+    video: '/videos/Robin Williams.mp4?v=2',
   },
   {
     id: '4',
@@ -42,7 +42,7 @@ const gridItems: GridItem[] = [
     year: '1997',
     bgColor: 'rgba(42, 42, 42, 0.5)',
     image: '/images/image4.jpeg',
-    video: '/videos/Mr_Rogers.mp4',
+    video: '/videos/Mr_Rogers.mp4?v=2',
   },
 ];
 

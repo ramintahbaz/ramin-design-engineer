@@ -139,8 +139,10 @@ export default async function RootLayout({
               className="pt-12 bg-black"
               style={{ height: '100dvh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
             >
+              <Suspense fallback={null}>
               <NeuralPortfolioLayer />
-              <div style={{ flex: 1, minHeight: 0, overflowY: 'auto' }}>
+            </Suspense>
+              <div id="main-scroll" style={{ flex: 1, minHeight: 0, overflowY: 'auto', position: 'relative', zIndex: 1 }}>
                 {children}
               </div>
             </div>

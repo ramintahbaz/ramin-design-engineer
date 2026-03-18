@@ -1,660 +1,706 @@
 'use client';
 
-import { useEffect, useLayoutEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useLayoutEffect, useRef, useCallback, useState, memo } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
-import AnimatedPage from '@/components/AnimatedPage';
-import { photoboomMetadata } from '@/app/page';
-import { essay01Metadata } from '@/app/essays/essay-01/page';
-import { essay02Metadata } from '@/app/essays/essay-02/page';
-import { essay03Metadata } from '@/app/essays/essay-03/page';
-import { essay04Metadata } from '@/app/essays/essay-04/page';
-import { paymentStatusMetadata } from '@/app/payment-status/page';
-import { visualSystemHoverMetadata } from '@/app/visual-system-hover/page';
-import { carouselMetadata } from '@/app/interactions/carousel/page';
-import { electricBorderMetadata } from '@/app/interactions/electric-border/page';
-import { bloomMetadata } from '@/app/interactions/bloom/page';
-import { splineMetadata } from '@/app/interactions/spline/page';
-import { keycadetsMetadata } from '@/app/products/keycadets/page';
-import { doritosLoadedMetadata } from '@/app/products/doritos-loaded/page';
-import { craftMetadata } from '@/app/products/craft/page';
-import { sunsetMetadata } from '@/app/products/sunset/page';
-import { thisTrackisCrackMetadata } from '@/app/products/thistrackiscrack/page';
-import { aiDocumentVerificationMetadata } from '@/app/products/ai-document-verification/page';
-import { coCreatorMetadata } from '@/app/products/co-creator/page';
-import { film01Metadata } from '@/app/films/film-01/page';
-import { film02Metadata } from '@/app/films/film-02/page';
-import { film03Metadata } from '@/app/films/film-03/page';
-import { film04Metadata } from '@/app/films/film-04/page';
-import { film05Metadata } from '@/app/films/film-05/page';
+import { WORK_ITEMS } from '@/lib/work-items';
+import type { WorkItem } from '@/lib/work-items';
 
-type WorkItem = {
-  id: string;
-  date?: string;
-  title: string;
-  description: string;
-  badge?: string;
-  href?: string;
-};
+type FilterValue = 'all' | WorkItem['category'];
 
-
-const fragments: WorkItem[] = [
-  {
-    id: photoboomMetadata.id,
-    date: photoboomMetadata.cardDate,
-    title: photoboomMetadata.title,
-    description: photoboomMetadata.cardDescription,
-    href: photoboomMetadata.href,
-  },
-  {
-    id: paymentStatusMetadata.id,
-    date: paymentStatusMetadata.cardDate,
-    title: paymentStatusMetadata.title,
-    description: paymentStatusMetadata.cardDescription,
-    href: paymentStatusMetadata.href,
-  },
-  {
-    id: visualSystemHoverMetadata.id,
-    date: visualSystemHoverMetadata.cardDate,
-    title: visualSystemHoverMetadata.title,
-    description: visualSystemHoverMetadata.cardDescription,
-    href: visualSystemHoverMetadata.href,
-  },
-  {
-    id: carouselMetadata.id,
-    date: carouselMetadata.cardDate,
-    title: carouselMetadata.title,
-    description: carouselMetadata.cardDescription,
-    href: carouselMetadata.href,
-  },
-  {
-    id: electricBorderMetadata.id,
-    date: electricBorderMetadata.cardDate,
-    title: electricBorderMetadata.title,
-    description: electricBorderMetadata.cardDescription,
-    href: electricBorderMetadata.href,
-  },
-  {
-    id: bloomMetadata.id,
-    date: bloomMetadata.cardDate,
-    title: bloomMetadata.title,
-    description: bloomMetadata.cardDescription,
-    href: bloomMetadata.href,
-  },
-  {
-    id: splineMetadata.id,
-    date: splineMetadata.cardDate,
-    title: splineMetadata.title,
-    description: splineMetadata.cardDescription,
-    href: splineMetadata.href,
-  },
-].sort((a, b) => {
-  // Sort by date descending (most recent first)
-  const dateA = parseDate(a.date || '');
-  const dateB = parseDate(b.date || '');
-  return dateB - dateA;
-});
-
-const products: WorkItem[] = [
-  {
-    id: keycadetsMetadata.id,
-    date: keycadetsMetadata.cardDate,
-    title: keycadetsMetadata.title,
-    description: keycadetsMetadata.cardDescription,
-    href: keycadetsMetadata.href,
-  },
-  {
-    id: doritosLoadedMetadata.id,
-    date: doritosLoadedMetadata.cardDate,
-    title: doritosLoadedMetadata.title,
-    description: doritosLoadedMetadata.cardDescription,
-    href: doritosLoadedMetadata.href,
-  },
-  {
-    id: craftMetadata.id,
-    date: craftMetadata.cardDate,
-    title: craftMetadata.title,
-    description: craftMetadata.cardDescription,
-    href: craftMetadata.href,
-  },
-  {
-    id: sunsetMetadata.id,
-    date: sunsetMetadata.cardDate,
-    title: sunsetMetadata.title,
-    description: sunsetMetadata.cardDescription,
-    href: sunsetMetadata.href,
-  },
-  {
-    id: thisTrackisCrackMetadata.id,
-    date: thisTrackisCrackMetadata.cardDate,
-    title: thisTrackisCrackMetadata.title,
-    description: thisTrackisCrackMetadata.cardDescription,
-    href: thisTrackisCrackMetadata.href,
-  },
-  {
-    id: aiDocumentVerificationMetadata.id,
-    date: aiDocumentVerificationMetadata.cardDate,
-    title: aiDocumentVerificationMetadata.title,
-    description: aiDocumentVerificationMetadata.cardDescription,
-    href: aiDocumentVerificationMetadata.href,
-  },
-  {
-    id: coCreatorMetadata.id,
-    date: coCreatorMetadata.cardDate,
-    title: coCreatorMetadata.title,
-    description: coCreatorMetadata.cardDescription,
-    href: coCreatorMetadata.href,
-  },
+const FILTER_OPTIONS: { value: FilterValue; label: string }[] = [
+  { value: 'all', label: 'All' },
+  { value: 'interaction', label: 'Interaction' },
+  { value: 'product', label: 'Product' },
+  { value: 'film', label: 'Film' },
+  { value: 'writing', label: 'Writing' },
 ];
 
-const films: WorkItem[] = [
-  {
-    id: film01Metadata.id,
-    date: film01Metadata.cardDate,
-    title: film01Metadata.title,
-    description: film01Metadata.cardDescription,
-    href: film01Metadata.href,
-  },
-  {
-    id: film02Metadata.id,
-    date: film02Metadata.cardDate,
-    title: film02Metadata.title,
-    description: film02Metadata.cardDescription,
-    href: film02Metadata.href,
-  },
-  {
-    id: film03Metadata.id,
-    date: film03Metadata.cardDate,
-    title: film03Metadata.title,
-    description: film03Metadata.cardDescription,
-    href: film03Metadata.href,
-  },
-  {
-    id: film04Metadata.id,
-    date: film04Metadata.cardDate,
-    title: film04Metadata.title,
-    description: film04Metadata.cardDescription,
-    href: film04Metadata.href,
-  },
-  {
-    id: film05Metadata.id,
-    date: film05Metadata.cardDate,
-    title: film05Metadata.title,
-    description: film05Metadata.cardDescription,
-    href: film05Metadata.href,
-  },
-];
+// ─────────────────────────────────────────────────────────────
+// Scroll restoration: run before paint, re-apply after layout, don't clear key immediately
+// ─────────────────────────────────────────────────────────────
+const MAIN_SCROLL_ID = 'main-scroll';
 
-const essays: WorkItem[] = [
-  {
-    id: essay01Metadata.id,
-    date: essay01Metadata.cardDate,
-    title: essay01Metadata.title,
-    description: essay01Metadata.cardDescription,
-    href: essay01Metadata.href,
-  },
-  {
-    id: essay02Metadata.id,
-    date: essay02Metadata.cardDate,
-    title: essay02Metadata.title,
-    description: essay02Metadata.cardDescription,
-    href: essay02Metadata.href,
-  },
-  {
-    id: essay03Metadata.id,
-    date: essay03Metadata.cardDate,
-    title: essay03Metadata.title,
-    description: essay03Metadata.cardDescription,
-    href: essay03Metadata.href,
-  },
-  {
-    id: essay04Metadata.id,
-    date: essay04Metadata.cardDate,
-    title: essay04Metadata.title,
-    description: essay04Metadata.cardDescription,
-    href: essay04Metadata.href,
-  },
-];
-
-const caseStudies: WorkItem[] = [
-  {
-    id: 'selected-case-studies',
-    title: 'Curious about something else?',
-    description:
-      "Deep dives into specific products, problems, and outcomes. Reach out if you'd like to see examples tailored to your interests.",
-    badge: 'By request',
-  },
-];
-
-// Helper function to parse date strings and convert to sortable format
-function parseDate(dateStr: string | undefined): number {
-  if (!dateStr) return 0;
-  
-  // Handle year-only formats (e.g., "2024")
-  if (/^\d{4}$/.test(dateStr)) {
-    return parseInt(dateStr, 10) * 100;
+function applyScroll(el: HTMLElement | null, top: number) {
+  if (!el) {
+    window.scrollTo({ top, behavior: 'auto' });
+    return;
   }
-  
-  // Handle month + year formats (e.g., "July 2025", "Nov 2016", "Jan 2019")
-  const monthNames: { [key: string]: number } = {
-    'january': 1, 'jan': 1,
-    'february': 2, 'feb': 2,
-    'march': 3, 'mar': 3,
-    'april': 4, 'apr': 4,
-    'may': 5,
-    'june': 6, 'jun': 6,
-    'july': 7, 'jul': 7,
-    'august': 8, 'aug': 8,
-    'september': 9, 'sep': 9, 'sept': 9,
-    'october': 10, 'oct': 10,
-    'november': 11, 'nov': 11,
-    'december': 12, 'dec': 12,
-  };
-  
-  const parts = dateStr.toLowerCase().split(/\s+/);
-  let month = 0;
-  let year = 0;
-  
-  for (const part of parts) {
-    if (monthNames[part]) {
-      month = monthNames[part];
-    } else if (/^\d{4}$/.test(part)) {
-      year = parseInt(part, 10);
-    }
-  }
-  
-  // Return as YYYYMM format for sorting (most recent first = higher numbers)
-  return year * 100 + month;
+  el.scrollTop = top;
 }
 
-// Sort arrays by date (most recent first)
-const sortedFragments = [...fragments].sort((a, b) => parseDate(b.date) - parseDate(a.date));
-// Filter out any products with missing required fields before sorting
-const validProducts = products.filter(p => p.id && p.title && p.description);
-const sortedProducts = [...validProducts].sort((a, b) => parseDate(b.date) - parseDate(a.date));
-const sortedFilms = [...films].sort((a, b) => parseDate(b.date) - parseDate(a.date));
-const sortedEssays = [...essays].sort((a, b) => parseDate(b.date) - parseDate(a.date));
-
-const sectionVariants = {
-  hidden: { opacity: 0, filter: 'blur(28px)' },
-  visible: { opacity: 1, filter: 'blur(0px)' },
-};
-
-export default function CraftPage() {
-  // Debug: Log products to verify AI Document Verification is included
-  useEffect(() => {
-    console.log('=== DEBUG: Products ===');
-    console.log('Products array:', products);
-    console.log('Sorted products:', sortedProducts);
-    console.log('AI Document Verification metadata:', aiDocumentVerificationMetadata);
-    console.log('Product count:', sortedProducts.length);
-    console.log('AI Doc Verification in array?', products.some(p => p.id === 'ai-document-verification'));
-    console.log('AI Doc Verification in sorted?', sortedProducts.some(p => p.id === 'ai-document-verification'));
-    if (aiDocumentVerificationMetadata) {
-      console.log('AI Doc Verification date:', aiDocumentVerificationMetadata.cardDate);
-      console.log('AI Doc Verification parsed date:', parseDate(aiDocumentVerificationMetadata.cardDate));
-    }
-    console.log('All product dates:', sortedProducts.map(p => ({ id: p.id, date: p.date, parsed: parseDate(p.date) })));
-  }, []);
-
-  // Restore scroll position on mount - use useLayoutEffect to run before paint
+function useCraftScrollRestore() {
   useLayoutEffect(() => {
-    const savedScrollPosition = sessionStorage.getItem('craftPageScrollPosition');
-    if (savedScrollPosition) {
-      // Restore immediately to prevent visual jump
-      const scrollY = parseInt(savedScrollPosition, 10);
-      window.scrollTo(0, scrollY);
-      sessionStorage.removeItem('craftPageScrollPosition');
-    }
-  }, []);
+    const saved = sessionStorage.getItem('craft-scroll');
+    if (saved == null) return;
+    const top = parseInt(saved, 10);
+    if (Number.isNaN(top) || top < 0) return;
 
-  // Continuously save scroll position as user scrolls
+    const el = document.getElementById(MAIN_SCROLL_ID);
+
+    // Apply immediately (before paint) so we win any race with Next.js or layout
+    applyScroll(el, top);
+
+    // Re-apply after layout settles so we're correct once masonry/media have height
+    const getEl = () => document.getElementById(MAIN_SCROLL_ID);
+    const t1 = setTimeout(() => applyScroll(getEl(), top), 100);
+    const t2 = setTimeout(() => applyScroll(getEl(), top), 300);
+
+    // Clear key only after delay so a second mount (e.g. after /craft → / redirect) can still restore
+    const tClear = setTimeout(() => sessionStorage.removeItem('craft-scroll'), 600);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(tClear);
+    };
+  }, []);
+}
+
+// ─────────────────────────────────────────────────────────────
+// Neural preview card: fixed 4/3 frame, lazy video, blur reveal
+// ─────────────────────────────────────────────────────────────
+function NeuralPreviewCard({
+  onNavigate,
+  dimmed,
+  hideWhenFiltered,
+}: {
+  onNavigate: () => void;
+  dimmed?: boolean;
+  hideWhenFiltered?: boolean;
+}) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const srcSetRef = useRef(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => {
-      sessionStorage.setItem('craftPageScrollPosition', window.scrollY.toString());
-    };
-
-    // Throttle scroll events for better performance
-    let ticking = false;
-    const throttledScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-    return () => window.removeEventListener('scroll', throttledScroll);
+    const card = cardRef.current;
+    const video = videoRef.current;
+    if (!card || !video) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            if (!srcSetRef.current) {
+              video.src = '/videos/neural_video.mp4';
+              srcSetRef.current = true;
+            }
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        }
+      },
+      { threshold: 0.2, rootMargin: '200px' }
+    );
+    io.observe(card);
+    return () => io.disconnect();
   }, []);
-
-  // Save scroll position when clicking on links
-  const handleLinkClick = () => {
-    sessionStorage.setItem('craftPageScrollPosition', window.scrollY.toString());
-  };
 
   return (
-    <AnimatedPage>
-      <div className="min-h-screen" style={{ backgroundColor: '#E2DEDB' }}>
-        <main className="relative px-5 sm:px-6 pt-24 sm:pt-32 pb-28 sm:pb-32">
-          <div className="max-w-[680px] mx-auto">
-          {/* Intro copy (no explicit page title text) */}
-          <motion.section
-            className="mb-14"
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{
-              opacity: {
-                type: 'tween',
-                duration: 1.1,
-                delay: 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              },
-              filter: {
-                type: 'tween',
-                duration: 1.6,
-                delay: 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              },
-            }}
-          >
-            <div className="text-[16px] sm:text-[17px] text-gray-700 leading-relaxed max-w-[560px] mx-auto space-y-3 sm:space-y-4">
-              <p>
-                I&apos;m a design engineer who practices across product, film, hardware, and writing. Each form offers a different way to tell a story.
-              </p>
-              <p>
-                I learn by doing, building and iterating through hands-on work and continuous exploration.
-              </p>
-              <p>
-                This is a curated collection of my work I&apos;m proud to share.
-              </p>
-            </div>
-          </motion.section>
-
-          {/* Interactions */}
-          <motion.section
-            className="mb-10 sm:mb-12"
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{
-              opacity: {
-                type: 'tween',
-                duration: 1.1,
-                delay: 0.22,
-                ease: [0.22, 1, 0.36, 1],
-              },
-              filter: {
-                type: 'tween',
-                duration: 1.6,
-                delay: 0.22,
-                ease: [0.22, 1, 0.36, 1],
-              },
-            }}
-          >
-            <div
-              className="flex items-baseline justify-between mb-8 max-w-[560px] mx-auto"
-            >
-              <h2 className="text-[16px] font-medium text-[#292929]">
-                Interactions
-              </h2>
-            </div>
-
-            <div className="space-y-1.5 sm:space-y-2 max-w-[560px] mx-auto">
-              {sortedFragments.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="group rounded-lg px-3.5 py-2.5 sm:px-4 sm:py-3 cursor-pointer bg-transparent hover:bg-[#E0DCD7] border border-transparent hover:border-[#D0CECA] shadow-none hover:shadow-sm transition-all duration-200"
-                >
-                  <Link
-                    href={item.href ?? '#'}
-                    className="flex items-baseline gap-6 w-full"
-                    aria-label={item.title}
-                    onClick={handleLinkClick}
-                  >
-                    {item.date && (
-                      <p className="text-[13px] sm:text-[14px] text-gray-500 min-w-[72px]">
-                        {item.date}
-                      </p>
-                    )}
-                    <div className="flex-1">
-                      <p className="text-[14px] font-medium text-gray-900 underline sm:no-underline">
-                        {item.title}
-                      </p>
-                      <p className="text-[14px] sm:text-[15px] text-gray-600 mt-0.5">
-                        {item.description}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Products */}
-          <motion.section
-            className="mb-10 sm:mb-12"
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{
-              opacity: {
-                type: 'tween',
-                duration: 1.1,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1],
-              },
-              filter: {
-                type: 'tween',
-                duration: 1.6,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1],
-              },
-            }}
-          >
-            <div className="flex items-baseline justify-between mb-8 max-w-[560px] mx-auto">
-              <h2 className="text-[16px] font-medium text-[#292929]">
-                Products
-              </h2>
-            </div>
-
-            <div className="space-y-1.5 sm:space-y-2 max-w-[560px] mx-auto">
-              {sortedProducts.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="group rounded-lg px-3.5 py-2.5 sm:px-4 sm:py-3 cursor-pointer bg-transparent hover:bg-[#E0DCD7] border border-transparent hover:border-[#D0CECA] shadow-none hover:shadow-sm transition-all duration-200"
-                >
-                  <Link
-                    href={item.href ?? '#'}
-                    className="flex items-baseline gap-6 w-full"
-                    aria-label={item.title}
-                    onClick={handleLinkClick}
-                  >
-                    {item.date && (
-                      <p className="text-[13px] sm:text-[14px] text-gray-500 min-w-[72px]">
-                        {item.date}
-                      </p>
-                    )}
-                    <div className="flex-1">
-                      <p className="text-[14px] font-medium text-gray-900 underline sm:no-underline">
-                        {item.title}
-                      </p>
-                      <p className="text-[14px] sm:text-[15px] text-gray-600 mt-0.5">
-                        {item.description}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Film */}
-          <motion.section
-            className="mb-10 sm:mb-12"
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{
-              opacity: {
-                type: 'tween',
-                duration: 1.1,
-                delay: 0.34,
-                ease: [0.22, 1, 0.36, 1],
-              },
-              filter: {
-                type: 'tween',
-                duration: 1.6,
-                delay: 0.34,
-                ease: [0.22, 1, 0.36, 1],
-              },
-            }}
-          >
-            <div className="flex items-baseline justify-between mb-8 max-w-[560px] mx-auto">
-              <h2 className="text-[16px] font-medium text-[#292929]">
-                Film
-              </h2>
-            </div>
-
-            <div className="space-y-1.5 sm:space-y-2 max-w-[560px] mx-auto">
-              {sortedFilms.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="group rounded-lg px-3.5 py-2.5 sm:px-4 sm:py-3 cursor-pointer bg-transparent hover:bg-[#E0DCD7] border border-transparent hover:border-[#D0CECA] shadow-none hover:shadow-sm transition-all duration-200"
-                >
-                  <Link
-                    href={item.href ?? '#'}
-                    className="flex items-baseline gap-6 w-full"
-                    aria-label={item.title}
-                    onClick={handleLinkClick}
-                  >
-                    {item.date && (
-                      <p className="text-[13px] sm:text-[14px] text-gray-500 min-w-[72px]">
-                        {item.date}
-                      </p>
-                    )}
-                    <div className="flex-1">
-                      <p className="text-[14px] font-medium text-gray-900 underline sm:no-underline">
-                        {item.title}
-                      </p>
-                      <p className="text-[14px] sm:text-[15px] text-gray-600 mt-0.5">
-                        {item.description}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Writing */}
-          <motion.section
-            className="mb-10 sm:mb-12"
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{
-              opacity: {
-                type: 'tween',
-                duration: 1.1,
-                delay: 0.38,
-                ease: [0.22, 1, 0.36, 1],
-              },
-              filter: {
-                type: 'tween',
-                duration: 1.6,
-                delay: 0.38,
-                ease: [0.22, 1, 0.36, 1],
-              },
-            }}
-          >
-            <div className="flex items-baseline justify-between mb-8 max-w-[560px] mx-auto">
-              <h2 className="text-[16px] font-medium text-[#292929]">
-                Writing
-              </h2>
-            </div>
-
-            <div className="space-y-1.5 sm:space-y-2 max-w-[560px] mx-auto">
-              {sortedEssays.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="group rounded-lg px-3.5 py-2.5 sm:px-4 sm:py-3 cursor-pointer bg-transparent hover:bg-[#E0DCD7] border border-transparent hover:border-[#D0CECA] shadow-none hover:shadow-sm transition-all duration-200"
-                >
-                  <Link
-                    href={item.href ?? '#'}
-                    className="flex items-baseline gap-6 w-full"
-                    aria-label={item.title}
-                    onClick={handleLinkClick}
-                  >
-                    {item.date && (
-                      <p className="text-[13px] sm:text-[14px] text-gray-500 min-w-[72px]">
-                        {item.date}
-                      </p>
-                    )}
-                    <div className="flex-1">
-                      <p className="text-[14px] font-medium text-gray-900 underline sm:no-underline">
-                        {item.title}
-                      </p>
-                      <p className="text-[14px] sm:text-[15px] text-gray-600 mt-0.5">
-                        {item.description}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Case studies */}
-          <motion.section
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{
-              opacity: {
-                type: 'tween',
-                duration: 1.1,
-                delay: 0.38,
-                ease: [0.22, 1, 0.36, 1],
-              },
-              filter: {
-                type: 'tween',
-                duration: 1.6,
-                delay: 0.38,
-                ease: [0.22, 1, 0.36, 1],
-              },
-            }}
-          >
-            <div className="flex items-baseline justify-between mb-4 max-w-[560px] mx-auto">
-              <h2 className="text-[16px] font-medium text-[#292929]">
-                Curious about something else?
-              </h2>
-            </div>
-
-            <div className="space-y-3 sm:space-y-4 text-[15px] sm:text-[16px] text-gray-700 leading-relaxed max-w-[560px] mx-auto">
-              <p>
-                If you want to see how I approach problems or go deeper on specific work,{' '}
-                <Link
-                  href="/elsewhere"
-                  className="underline underline-offset-2"
-                >
-                  let&apos;s talk.
-                </Link>
-                {' '}I&apos;m happy to walk through projects that match what you&apos;re curious about.
-              </p>
-            </div>
-          </motion.section>
-          </div>
-        </main>
+    <a
+      ref={cardRef}
+      href="/?view=neural"
+      onClick={(e) => {
+        e.preventDefault();
+        onNavigate();
+      }}
+      style={{
+        display: hideWhenFiltered ? 'none' : 'inline-block',
+        width: '100%',
+        marginBottom: '12px',
+        breakInside: 'avoid',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        position: 'relative',
+        verticalAlign: 'top',
+        textDecoration: 'none',
+        color: 'inherit',
+        opacity: dimmed ? 0.25 : 1,
+        transition: 'opacity 0.2s ease',
+        background: '#0a0a0a',
+        border: '1px solid rgba(255,255,255,0.06)',
+      }}
+      className="work-masonry-card"
+    >
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          aspectRatio: '4/3',
+          overflow: 'hidden',
+          background: '#0a0a0a',
+        }}
+      >
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onCanPlay={() => {
+            if (videoRef.current) videoRef.current.style.opacity = '1';
+            setIsLoaded(true);
+          }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            display: 'block',
+            objectFit: 'cover',
+            opacity: 0,
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 1,
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            opacity: isLoaded ? 0 : 1,
+            transition: 'opacity 0.4s ease',
+            pointerEvents: 'none',
+          }}
+        />
       </div>
-    </AnimatedPage>
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          bottom: 52,
+          zIndex: 2,
+          opacity: 0,
+          transition: 'opacity 0.2s',
+        }}
+        className="work-view-production-btn"
+      >
+        <span
+          style={{
+            fontFamily: 'var(--font-geist-mono), monospace',
+            fontSize: 12,
+            color: '#fff',
+            background: 'rgba(255,255,255,0.12)',
+            border: '1px solid rgba(255,255,255,0.2)',
+            borderRadius: 6,
+            padding: '6px 14px',
+            display: 'inline-block',
+          }}
+        >
+          Explore
+        </span>
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          padding: 16,
+          background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'space-between',
+          gap: 12,
+        }}
+      >
+        <span style={{ fontSize: 14, fontWeight: 500, color: '#fff' }}>
+          Neural network
+        </span>
+        <span
+          style={{
+            fontSize: 12,
+            fontFamily: 'var(--font-geist-mono), monospace',
+            color: 'rgba(255,255,255,0.5)',
+          }}
+        >
+          Explore
+        </span>
+      </div>
+    </a>
   );
 }
 
+// ─────────────────────────────────────────────────────────────
+// Masonry card: video (or placeholder for writing without video) + overlay
+// ─────────────────────────────────────────────────────────────
+const MasonryCard = memo(function MasonryCard({
+  item,
+  onNavigate,
+  dimmed,
+  hideWhenFiltered,
+  isMobile,
+}: {
+  item: WorkItem;
+  onNavigate: () => void;
+  dimmed: boolean;
+  hideWhenFiltered?: boolean;
+  isMobile: boolean;
+}) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const srcSetRef = useRef(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const hasVideo = !!item.video;
+  const cardImage = item.cardImage;
 
+  useEffect(() => {
+    if (!hasVideo) return;
+    const card = cardRef.current;
+    if (!card) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          const video = videoRef.current;
+          if (e.isIntersecting) {
+            if (!srcSetRef.current && video && item.video) {
+              video.src = `${item.video}#t=0.01`;
+              srcSetRef.current = true;
+            }
+            video?.play().catch(() => {});
+          } else {
+            video?.pause();
+          }
+        }
+      },
+      { threshold: 0.2, rootMargin: '200px' }
+    );
+    io.observe(card);
+    return () => io.disconnect();
+  }, [hasVideo, item.video]);
 
+  const year = item.year ?? '';
 
+  return (
+    <a
+      ref={cardRef}
+      href={item.href}
+      onClick={(e) => {
+        e.preventDefault();
+        onNavigate();
+      }}
+      style={{
+        display: hideWhenFiltered ? 'none' : 'inline-block',
+        width: '100%',
+        marginBottom: '12px',
+        breakInside: 'avoid',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        position: 'relative',
+        verticalAlign: 'top',
+        textDecoration: 'none',
+        color: 'inherit',
+        opacity: dimmed ? 0.25 : 1,
+        transition: 'opacity 0.2s ease',
+        background: '#111',
+        border: '1px solid rgba(255,255,255,0.06)',
+      }}
+      className="work-masonry-card"
+    >
+      {hasVideo ? (
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            aspectRatio: isMobile ? '4/3' : (item.cardAspectRatio ?? '4/3'),
+            overflow: 'hidden',
+            background: '#0a0a0a',
+          }}
+        >
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onCanPlay={() => {
+              if (videoRef.current) videoRef.current.style.opacity = '1';
+              setIsLoaded(true);
+            }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              display: 'block',
+              objectFit: 'cover',
+              opacity: 0,
+              transition: 'opacity 0.4s ease',
+              ...(item.videoScale != null
+                ? {
+                    transform: `scale(${item.videoScale})`,
+                    transformOrigin: 'center center',
+                  }
+                : {}),
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              opacity: isLoaded ? 0 : 1,
+              transition: 'opacity 0.4s ease',
+              pointerEvents: 'none',
+            }}
+          />
+        </div>
+      ) : cardImage ? (
+        <div
+          style={{
+            width: '100%',
+            aspectRatio: '4/3',
+            overflow: 'hidden',
+            display: 'block',
+          }}
+        >
+          <img
+            src={cardImage}
+            alt=""
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'block',
+              objectFit: 'cover',
+              aspectRatio: '4/3',
+              ...(cardImage === '/images/essays/retro_vintage.png'
+                ? { transform: 'scale(1.1)', transformOrigin: 'center center' }
+                : {}),
+            }}
+          />
+        </div>
+      ) : (
+        <div
+          style={{
+            width: '100%',
+            aspectRatio: '4/3',
+            background: '#1a1a1a',
+            display: 'block',
+          }}
+        />
+      )}
+      {/* View Production button — above overlay, visible on hover (desktop) or always (mobile) */}
+      {hasVideo && (
+        <div
+          style={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            bottom: 52,
+            zIndex: 2,
+            opacity: 0,
+            transition: 'opacity 0.2s',
+          }}
+          className="work-view-production-btn"
+        >
+          <span
+            style={{
+              fontFamily: 'var(--font-geist-mono), monospace',
+              fontSize: 12,
+              color: '#fff',
+              background: 'rgba(255,255,255,0.12)',
+              border: '1px solid rgba(255,255,255,0.2)',
+              borderRadius: 6,
+              padding: '6px 14px',
+              display: 'inline-block',
+            }}
+          >
+            View Production
+          </span>
+        </div>
+      )}
+      {/* Bottom overlay: gradient + title + year */}
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          padding: 16,
+          background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'space-between',
+          gap: 12,
+        }}
+      >
+        <span
+          style={{
+            fontSize: 14,
+            fontWeight: 500,
+            color: '#fff',
+          }}
+        >
+          {item.title}
+        </span>
+        {year ? (
+          <span
+            style={{
+              fontSize: 12,
+              fontFamily: 'var(--font-geist-mono), monospace',
+              color: 'rgba(255,255,255,0.5)',
+              flexShrink: 0,
+            }}
+          >
+            {year}
+          </span>
+        ) : null}
+      </div>
+    </a>
+  );
+});
+
+export default function CraftPage() {
+  const router = useRouter();
+  useCraftScrollRestore();
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [filter, setFilter] = useState<FilterValue>('all');
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout> | null = null;
+    let last = 0;
+    const throttleMs = 150;
+    const check = () => {
+      const now = Date.now();
+      if (now - last >= throttleMs || last === 0) {
+        last = now;
+        setIsMobile(window.innerWidth < 768);
+      } else if (timeout == null) {
+        timeout = setTimeout(() => {
+          timeout = null;
+          last = Date.now();
+          setIsMobile(window.innerWidth < 768);
+        }, throttleMs - (now - last));
+      }
+    };
+    setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', check);
+    return () => {
+      window.removeEventListener('resize', check);
+      if (timeout != null) clearTimeout(timeout);
+    };
+  }, []);
+
+  const saveCraftScroll = useCallback(() => {
+    if (typeof document === 'undefined') return;
+    const el = document.getElementById(MAIN_SCROLL_ID);
+    const top = el ? el.scrollTop : window.scrollY;
+    sessionStorage.setItem('craft-scroll', String(top));
+  }, []);
+
+  const handleCardClick = useCallback(
+    (item: WorkItem) => {
+      saveCraftScroll();
+      router.push(item.href);
+    },
+    [router, saveCraftScroll]
+  );
+
+  const handleNeuralPreviewClick = useCallback(() => {
+    saveCraftScroll();
+    if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('splashDone', 'true');
+    router.push('/?view=neural');
+  }, [router, saveCraftScroll]);
+
+  const handleFilterClick = useCallback((value: FilterValue) => {
+    setFilter((prev) => (prev === value ? 'all' : value));
+  }, []);
+
+  return (
+    <>
+      <style>{`
+        .work-masonry-card:hover .work-view-production-btn {
+          opacity: 1;
+        }
+        @media (max-width: 767px) {
+          .work-view-production-btn {
+            display: none !important;
+          }
+        }
+      `}</style>
+      <div
+        style={{
+          background: '#0a0a0a',
+          minHeight: '100dvh',
+        }}
+      >
+        {/* Filter bar — fixed at bottom like neural view */}
+        <div
+          role="group"
+          aria-label="Filter by category"
+          style={{
+            position: 'fixed',
+            left: 24,
+            bottom: 48,
+            zIndex: 10,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 4,
+            backdropFilter: 'blur(16px)',
+            background: 'rgba(28,28,32,0.92)',
+            border: '1px solid rgba(255,255,255,0.06)',
+            borderRadius: 8,
+            padding: '5px 10px 5px 8px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.15)',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+          }}
+        >
+              {FILTER_OPTIONS.map(({ value, label }) => {
+                const isAll = value === 'all';
+                const selected = (isAll && filter === 'all') || (!isAll && filter === value);
+                return (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => handleFilterClick(value)}
+                    aria-pressed={selected}
+                    aria-label={isAll ? 'Show all' : `Filter by ${label}`}
+                    style={{
+                      padding: '4px 12px',
+                      borderRadius: 8,
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontFamily: 'inherit',
+                      fontSize: 11,
+                      fontWeight: 500,
+                      background: selected ? '#fff' : 'transparent',
+                      color: selected ? '#1a1a1a' : 'rgba(255,255,255,0.65)',
+                      transition: 'background 0.15s ease, color 0.15s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!selected) e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = selected ? '#fff' : 'transparent';
+                    }}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          style={{
+            columns: isMobile ? 1 : 3,
+            columnGap: '12px',
+            padding: '72px 24px 24px',
+          }}
+        >
+          {isMobile ? (
+            <>
+              {WORK_ITEMS[0] && (
+                <MasonryCard
+                  key={WORK_ITEMS[0].id}
+                  item={WORK_ITEMS[0]}
+                  onNavigate={() => handleCardClick(WORK_ITEMS[0]!)}
+                  dimmed={filter !== 'all' && WORK_ITEMS[0].category !== filter}
+                  hideWhenFiltered={filter !== 'all' && WORK_ITEMS[0].category !== filter}
+                  isMobile={true}
+                />
+              )}
+              {WORK_ITEMS[15] && (
+                <MasonryCard
+                  key={WORK_ITEMS[15].id}
+                  item={WORK_ITEMS[15]}
+                  onNavigate={() => handleCardClick(WORK_ITEMS[15]!)}
+                  dimmed={filter !== 'all' && WORK_ITEMS[15].category !== filter}
+                  hideWhenFiltered={filter !== 'all' && WORK_ITEMS[15].category !== filter}
+                  isMobile={true}
+                />
+              )}
+              {WORK_ITEMS[2] && (
+                <MasonryCard
+                  key={WORK_ITEMS[2].id}
+                  item={WORK_ITEMS[2]}
+                  onNavigate={() => handleCardClick(WORK_ITEMS[2]!)}
+                  dimmed={filter !== 'all' && WORK_ITEMS[2].category !== filter}
+                  hideWhenFiltered={filter !== 'all' && WORK_ITEMS[2].category !== filter}
+                  isMobile={true}
+                />
+              )}
+              <NeuralPreviewCard
+                onNavigate={handleNeuralPreviewClick}
+                dimmed={filter !== 'all' && filter !== 'interaction'}
+                hideWhenFiltered={filter !== 'all' && filter !== 'interaction'}
+              />
+              {/* Rest: FedCaddy (5) ↔ Engineering at Promise (11) swapped */}
+              {[1, 3, 4, 11, 6, 7, 8, 9, 10, 5, 12, 13, 14, 16, 17, 18, 19, 20].map((i) => {
+                const item = WORK_ITEMS[i];
+                return item ? (
+                  <MasonryCard
+                    key={item.id}
+                    item={item}
+                    onNavigate={() => handleCardClick(item)}
+                    dimmed={filter !== 'all' && item.category !== filter}
+                    hideWhenFiltered={filter !== 'all' && item.category !== filter}
+                    isMobile={true}
+                  />
+                ) : null;
+              })}
+            </>
+          ) : (
+            <>
+              {WORK_ITEMS[0] && (
+                <MasonryCard
+                  key={WORK_ITEMS[0].id}
+                  item={WORK_ITEMS[0]}
+                  onNavigate={() => handleCardClick(WORK_ITEMS[0]!)}
+                  dimmed={filter !== 'all' && WORK_ITEMS[0].category !== filter}
+                  hideWhenFiltered={filter !== 'all' && WORK_ITEMS[0].category !== filter}
+                  isMobile={false}
+                />
+              )}
+              <NeuralPreviewCard
+                onNavigate={handleNeuralPreviewClick}
+                dimmed={filter !== 'all' && filter !== 'interaction'}
+                hideWhenFiltered={filter !== 'all' && filter !== 'interaction'}
+              />
+              {WORK_ITEMS[2] && (
+                <MasonryCard
+                  key={WORK_ITEMS[2].id}
+                  item={WORK_ITEMS[2]}
+                  onNavigate={() => handleCardClick(WORK_ITEMS[2]!)}
+                  dimmed={filter !== 'all' && WORK_ITEMS[2].category !== filter}
+                  hideWhenFiltered={filter !== 'all' && WORK_ITEMS[2].category !== filter}
+                  isMobile={false}
+                />
+              )}
+              {WORK_ITEMS[1] && (
+                <MasonryCard
+                  key={WORK_ITEMS[1].id}
+                  item={WORK_ITEMS[1]}
+                  onNavigate={() => handleCardClick(WORK_ITEMS[1]!)}
+                  dimmed={filter !== 'all' && WORK_ITEMS[1].category !== filter}
+                  hideWhenFiltered={filter !== 'all' && WORK_ITEMS[1].category !== filter}
+                  isMobile={false}
+                />
+              )}
+              {WORK_ITEMS.slice(3).map((item) => (
+                <MasonryCard
+                  key={item.id}
+                  item={item}
+                  onNavigate={() => handleCardClick(item)}
+                  dimmed={filter !== 'all' && item.category !== filter}
+                  hideWhenFiltered={filter !== 'all' && item.category !== filter}
+                  isMobile={false}
+                />
+              ))}
+            </>
+          )}
+        </motion.div>
+      </div>
+    </>
+  );
+}

@@ -9,7 +9,8 @@ interface SplashScreenProps {
 export default function SplashScreen({ onComplete }: SplashScreenProps) {
   const [visible, setVisible] = useState(true);
   const [showSecond, setShowSecond] = useState(false);
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const check = () => setIsMobile(typeof window !== 'undefined' && window.innerWidth < 768);
     check();
@@ -36,26 +37,34 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           style={{
             position: 'fixed',
             inset: 0,
-            background: '#000',
+            background: 'transparent',
             zIndex: 9999,
             display: 'flex',
             alignItems: 'flex-end',
             justifyContent: 'flex-start',
-            paddingTop: (isMobile ?? false) ? 24 : 48,
-            paddingRight: (isMobile ?? false) ? 24 : 48,
-            paddingBottom: (isMobile ?? false) ? 80 : 162,
-            paddingLeft: (isMobile ?? false) ? 24 : 77,
+            paddingTop: isMobile ? 24 : 'clamp(24px, 4vw, 48px)',
+            paddingRight: isMobile ? 12 : 'clamp(24px, 4vw, 48px)',
+            paddingBottom: isMobile ? 100 : 'clamp(80px, 12vw, 162px)',
+            paddingLeft: isMobile ? 12 : 'clamp(24px, 4vw, 77px)',
             textAlign: 'left',
             direction: 'ltr',
           }}
         >
-          <div style={{ maxWidth: 480, position: 'relative' }}>
+          <div
+            style={{
+              maxWidth: 480,
+              position: 'relative',
+              minHeight: '5.5em',
+              padding: '12px 16px',
+              transform: isMobile ? 'translateY(40px)' : 'none',
+            }}
+          >
             <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
               style={{
-                fontSize: (isMobile ?? false) ? 'clamp(14px, 2.5vw, 16px)' : 'clamp(15px, 2vw, 18px)',
+                fontSize: isMobile ? '13px' : 'clamp(14px, 2.5vw, 18px)',
                 color: 'rgba(255,255,255,0.9)',
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontWeight: 400,
@@ -73,11 +82,9 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
                   animate={{ opacity: 0.7, y: 0 }}
                   transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                   style={{
-                    position: 'absolute',
-                    top: '100%',
-                    marginTop: 2,
-                    left: 0,
-                    fontSize: (isMobile ?? false) ? 'clamp(11px, 2vw, 12px)' : 'clamp(13px, 1.6vw, 15px)',
+                    margin: 0,
+                    marginTop: isMobile ? 8 : 2,
+                    fontSize: isMobile ? 'clamp(12px, 2vw, 14px)' : 'clamp(11px, 1.8vw, 15px)',
                     color: 'rgba(255,255,255,0.7)',
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontWeight: 400,

@@ -9,230 +9,14 @@ import { useSplash } from '@/contexts/SplashContext';
 import type { ProjectModalProject } from '@/components/ProjectModal';
 import { BentoCard } from '@/components/BentoCard';
 import SignalIcon from '@/components/SignalIcon';
+import { WORK_ITEMS, type WorkItem } from '@/lib/work-items';
+
+export { WORK_ITEMS, type WorkItem };
 
 const ProjectModal = dynamic(
   () => import('@/components/ProjectModal').then((m) => ({ default: m.ProjectModal })),
   { ssr: false, loading: () => null }
 );
-
-// ─────────────────────────────────────────────────────────────
-// WORK ITEMS CONFIG
-// Add / remove / edit items here to manage your portfolio.
-// thumbnail: path relative to /public  (e.g. '/thumbnails/foo.jpg')
-// video:     optional looping mp4 preview (also in /public)
-// ─────────────────────────────────────────────────────────────
-export const WORK_ITEMS: WorkItem[] = [
-  {
-    id: 'photoboom',
-    title: 'PhotoBoom',
-    category: 'interaction',
-    thumbnail: '',
-    video: '/videos/photo_boom_video.mp4',
-    href: '/photoboom',
-    excerpt: 'A photo stack that explodes from wherever you click.',
-  },
-  {
-    id: 'ai-document-verification',
-    title: 'Intelligent Document Review',
-    category: 'product',
-    thumbnail: '/thumbnails/ai-document-verification.jpg',
-    video: '/videos/document intelligent review.mp4',
-    videoObjectFit: 'cover',
-    videoFullLoop: true,
-    href: '/products/ai-document-verification',
-    excerpt: 'AI-powered eligibility verification that keeps humans in the loop.',
-  },
-  {
-    id: 'co-creator',
-    title: 'Co-Creator',
-    category: 'product',
-    thumbnail: '/thumbnails/co-creator.jpg',
-    video: '/images/co-creator/taste%20%E2%86%92%20system%20demo.mp4',
-    href: '/products/co-creator',
-    excerpt: 'AI co-designer that turns taste into a complete design system.',
-  },
-  {
-    id: 'keycadets',
-    title: 'keycadets (acquired)',
-    category: 'product',
-    thumbnail: '/thumbnails/keycadets.png',
-    video: '/images/keycadets/248285912_4711445322210021_8637902604872814185_n.MOV',
-    href: '/products/keycadets',
-    excerpt: 'Founded, designed, and scaled a premium mechanical keyboard brand to national retail. Acquired 2024.',
-  },
-  {
-    id: 'film-01',
-    title: 'Engineering at Promise',
-    category: 'film',
-    thumbnail: '/thumbnails/film-01.jpg',
-    video: '/videos/promise_commercial_preview.mp4',
-    videoFullLoop: true,
-    href: '/films/film-01',
-    excerpt: 'Brief description of the project.',
-  },
-  {
-    id: 'film-02',
-    title: 'FedCaddy Commercial',
-    category: 'film',
-    thumbnail: '/thumbnails/film-02.jpg',
-    video: '/videos/fedcaddy_video_1%20(1).mp4',
-    videoFullLoop: true,
-    href: '/films/film-02',
-    excerpt: 'Brief description of the project.',
-  },
-  {
-    id: 'essay-01',
-    title: "We've Been Here Before",
-    category: 'writing',
-    thumbnail: '/thumbnails/essay-01.jpg',
-    href: '/essays/essay-01',
-    excerpt: "Every generation believes it is living through the most consequential technological moment in history. Usually they're right.",
-  },
-  {
-    id: 'carousel',
-    title: 'Netflix Film Scroll',
-    category: 'interaction',
-    thumbnail: '/thumbnails/carousel.jpg',
-    video: '/videos/netflix_scroll.mp4',
-    href: '/interactions/carousel',
-    excerpt: 'A horizontal scroll with hover lift, parallax drift, and mobile focus scaling.',
-  },
-  {
-    id: 'electric-border',
-    title: 'Electric Border',
-    category: 'interaction',
-    thumbnail: '',
-    video: '/videos/electric_border.mp4',
-    href: '/interactions/electric-border',
-    excerpt: 'A card border that writhes. Driven by SVG displacement maps and animated turbulence noise.',
-  },
-  {
-    id: 'bloom',
-    title: 'Bloom',
-    category: 'interaction',
-    thumbnail: '',
-    video: '/videos/bloom_video.mp4',
-    videoFullLoop: true,
-    href: '/interactions/bloom',
-    excerpt: 'iOS-inspired pull-down menu, reverse-engineered and packaged.',
-  },
-  {
-    id: 'payment-status',
-    title: 'Payment Status',
-    category: 'interaction',
-    thumbnail: '',
-    video: '/videos/payment_processing.mp4',
-    href: '/payment-status',
-    excerpt: 'A button that cycles through payment states. Each state gets its own motion.',
-  },
-  {
-    id: 'visual-system-hover',
-    title: 'Visual System Hover',
-    category: 'interaction',
-    thumbnail: '',
-    video: '/videos/visal_hover.mp4',
-    videoFullLoop: true,
-    href: '/visual-system-hover',
-    excerpt: 'A bento grid where each card previews a video on hover. Clicking opens a draggable, resizable vintage Mac window.',
-  },
-  {
-    id: 'essay-04',
-    title: "The Great Flattening",
-    category: 'writing',
-    thumbnail: '',
-    href: '',
-    excerpt: "The tools got good enough to close the gap. That's when everything got complicated.",
-  },
-  {
-    id: 'film-03',
-    title: 'm8 Commercial',
-    category: 'film',
-    thumbnail: '/thumbnails/film-03.jpg',
-    video: '/videos/m8_video_preview.mp4',
-    videoFullLoop: true,
-    href: '/films/film-03',
-    excerpt: 'Brief description of the project.',
-  },
-  {
-    id: 'film-04',
-    title: 'Zeke Sanders: Slice of Pie',
-    category: 'film',
-    thumbnail: '/thumbnails/film-04.jpg',
-    video: '/videos/slice%20of%20pie.mp4',
-    videoFullLoop: true,
-    videoObjectFit: 'cover',
-    videoScale: 1.15,
-    href: '/films/film-04',
-    excerpt: 'Brief description of the project.',
-  },
-  {
-    id: 'film-05',
-    title: 'The Zeke Sanders Story',
-    category: 'film',
-    thumbnail: '/thumbnails/film-05.jpg',
-    video: '/videos/zeke%20sanders.mp4',
-    videoFullLoop: true,
-    videoObjectFit: 'cover',
-    videoScale: 1.15,
-    href: '/films/film-05',
-    excerpt: 'Brief description of the project.',
-  },
-  {
-    id: 'craft',
-    title: 'Craft',
-    category: 'product',
-    thumbnail: '/thumbnails/craft.png',
-    video: '/videos/craft_video.mp4',
-    videoFullLoop: true,
-    href: '/products/craft',
-    excerpt: 'A concept for refining AI-generated components with live controls and immediate visual feedback.',
-  },
-  {
-    id: 'sunset',
-    title: 'Sunset Chaser',
-    category: 'product',
-    thumbnail: '/thumbnails/sunset.png',
-    video: '/videos/sunset_chaser.mp4',
-    videoStart: 1,
-    videoFullLoop: true,
-    href: '/products/sunset',
-    excerpt: 'A location-aware iOS concept that tells you exactly when to step outside.',
-  },
-  {
-    id: 'thistrackiscrack',
-    title: 'ThisTrackisCrack (acquired)',
-    category: 'product',
-    thumbnail: '/thumbnails/thistrackiscrack.jpg',
-    video: '/images/thistrackiscrack/trackiscrack.MOV',
-    href: '/products/thistrackiscrack',
-    excerpt: 'A music discovery blog I built in high school. It went viral. It was acquired.',
-  },
-  {
-    id: 'doritos-loaded',
-    title: 'Doritos Loaded',
-    category: 'product',
-    thumbnail: '/thumbnails/doritos-loaded.jpg',
-    video: '/images/doritos/231215_The-Garage_Doritos_S01_1x1_H264.mp4',
-    href: '/products/doritos-loaded',
-    excerpt: 'End-to-end brand activation for Doritos at Coachella — digital ordering, physical booth, and event capture.',
-  },
-  {
-    id: 'essay-02',
-    title: "Amara's Law",
-    category: 'writing',
-    thumbnail: '',
-    href: '',
-    excerpt: "Amara's Law says we overestimate technology in the short term and underestimate it in the long term. We're in the short term right now.",
-  },
-  {
-    id: 'essay-03',
-    title: "Tuesday Night Heartbreak",
-    category: 'writing',
-    thumbnail: '',
-    href: '',
-    excerpt: "The loneliness isn't from being alone. It's from never letting yourself fully arrive.",
-  },
-];
 
 // Full essay text for essay-01 (paragraphs as sections)
 const ESSAY_01_SECTIONS = [
@@ -285,50 +69,36 @@ const ESSAY_03_SECTIONS = [
   { type: 'text' as const, content: `But the truth is harder than that. This is a broken heart that comes not from loving and losing, but from never letting yourself love at all.` },
 ];
 
-// Full essay text for essay-04 (The Great Flattening)
-const ESSAY_04_SECTIONS = [
-  { type: 'text' as const, content: `Everyone can do everything now, and it's making us worse.` },
-  { type: 'text' as const, content: `PMs who learn to prompt think they've learned to design. Designers who generate code think they've learned to build. Developers who architect features think they've learned to product. Everyone's reaching across boundaries that used to require depth to cross, armed with nothing but confidence and a chatbot.` },
-  { type: 'text' as const, content: `This impulse isn't new. Putting a camera in everyone's pocket didn't make us all photographers. It just made us all think we were.` },
-  { type: 'text' as const, content: `What made great product teams work wasn't division of labor—it was respect for what lay on the other side of the wall. Developers who understood they couldn't pixel-push their way to beauty. Designers who knew their Figma prototypes weren't technical architecture. PMs who recognized that knowing what to build isn't the same as knowing how.` },
-  { type: 'text' as const, content: `These tools are powerful. They do collapse timelines. A designer can ship a working prototype now. A developer can mock up interfaces that don't look broken. A PM can explore technical approaches without waiting for a sprint. This is real progress.` },
-  { type: 'text' as const, content: `But somewhere in that acceleration, collaboration turned into competition. Your coworker isn't your complement anymore—they're your threat. I can do your job now. You're not special. Watch me. Tools that were supposed to make us powerful have made us paranoid instead.` },
-  { type: 'text' as const, content: `Craft dissolves. Respect dissolves. What's left is a workplace of people who've mistaken capability for mastery, each one convinced AI has closed a gap that actually runs deeper than they realize.` },
-  { type: 'text' as const, content: `But here's what they're missing, what no amount of prompting can teach: taste isn't a skill you acquire. It's not in the training data. You either see it or you don't. You either feel the wrongness of a bad gradient, the weight of a clumsy interaction, the hollowness of a feature nobody wanted—or you don't.` },
-  { type: 'text' as const, content: `These tools can't give you that. They can only reveal who never had it to begin with.` },
-];
-
 // Bloom project content (component first so modal renders demo at top)
 const BLOOM_SECTIONS = [
   { type: 'component' as const, componentId: 'bloom' },
-  { type: 'text' as const, content: `Josh Puckett posted a clip on X. A menu that bloomed outward from a trigger — up, down, left, right — with a physicality web dropdowns never have. It felt native in a way that's hard to fake. I wanted to know how it worked, so I reverse-engineered it and built my own version. Then I packaged it.` },
+  { type: 'text' as const, content: `Josh Puckett posted a clip on X of a menu that bloomed outward from a trigger in any direction, with a physicality web dropdowns don't have. I reverse-engineered it, built my own version, and packaged it.` },
   { type: 'heading' as const, content: 'The problem with web menus' },
-  { type: 'text' as const, content: `Dropdowns fall. Always downward, anchored left, clipped by their container. iOS menus don't work this way — they know where they are on screen, expand toward available space, and feel like they belong to the element that triggered them. Not floating above the DOM. Attached to it.` },
-  { type: 'text' as const, content: `Bloom brings that spatial awareness to React. A menu that knows where it is and opens accordingly.` },
+  { type: 'text' as const, content: `Web dropdowns always fall downward, anchored left, clipped by their container. iOS menus expand toward available space and feel attached to the element that triggered them.` },
+  { type: 'text' as const, content: `Bloom brings that spatial awareness to React.` },
   { type: 'heading' as const, content: 'The morph' },
-  { type: 'text' as const, content: `What makes Bloom feel different isn't the direction — it's that the button becomes the menu. The container doesn't appear on top of the trigger. It transforms into it, animating width, height, borderRadius, x, y, scale, and boxShadow simultaneously as a single spring-driven shape.` },
-  { type: 'text' as const, content: `Two spring configs run in parallel. The container morphs at stiffness 382, damping 29 — snappy without overshooting. Content uses stiffness 403, damping 36, with a 30ms delay so it trails just behind. The container arrives first. The content follows.` },
+  { type: 'text' as const, content: `The button becomes the menu. Width, height, borderRadius, x, y, scale, and boxShadow animate simultaneously as a single spring-driven shape.` },
+  { type: 'text' as const, content: `Two spring configs run in parallel. The container morphs first, content follows 30ms behind.` },
   { type: 'code' as const, content: `{\n  morphStiffness: 382,\n  morphDamping: 29,\n  contentStiffness: 403,\n  contentDamping: 36,\n  contentDelay: 0.03,\n}` },
   { type: 'component' as const, componentId: 'bloom-morph' },
   { type: 'heading' as const, content: 'The blur' },
-  { type: 'text' as const, content: `The trigger blurs out as the menu opens. The content blurs in as it arrives. 8px on the trigger fading out, 10px on the content clearing as it settles. Neither side simply toggles opacity — both pass through a blurred state, which is what gives the transition its softness.` },
+  { type: 'text' as const, content: `The trigger blurs out as the menu opens. The content blurs in as it arrives. Both pass through a blurred state rather than toggling opacity, which is what gives the transition its softness.` },
   { type: 'code' as const, content: `{\n  triggerBlur: 8,\n  contentBlur: 10,\n}` },
-  { type: 'text' as const, content: `That's the detail that makes it feel native. iOS menus don't just appear — they resolve.` },
   { type: 'heading' as const, content: 'Direction' },
-  { type: 'text' as const, content: `The core primitive is direction — top, bottom, left, or right. The menu expands along that axis from the trigger's edge, not the menu's corner. Each direction maps to a different x/y offset in the content variants, so the content always feels like it's emerging from the trigger rather than materializing in space.` },
+  { type: 'text' as const, content: `The menu expands from the trigger's edge along a top, bottom, left, or right axis. Content offsets are calculated per direction so it always feels like it's emerging from the trigger.` },
   { type: 'code' as const, content: `<Menu.Root direction="top">` },
   { type: 'component' as const, componentId: 'bloom-direction' },
   { type: 'heading' as const, content: 'Alignment' },
-  { type: 'text' as const, content: `Vertical menus can align to the start, center, or end of the trigger. Start sits flush left. Center sits symmetrically. End hangs right.` },
-  { type: 'text' as const, content: `When direction is left or right, alignment locks to center. There's no meaningful start or end along that axis, so the option disappears rather than becoming a no-op.` },
+  { type: 'text' as const, content: `Vertical menus align to the start, center, or end of the trigger.` },
+  { type: 'text' as const, content: `Left and right directions lock to center alignment. The option is hidden rather than exposed as a no-op.` },
   { type: 'code' as const, content: `<Menu.Root direction="bottom" anchor="start">` },
   { type: 'component' as const, componentId: 'bloom-alignment' },
   { type: 'heading' as const, content: 'Accessibility' },
-  { type: 'text' as const, content: `When prefers-reduced-motion is active, Bloom swaps the spring entirely — a near-instant config at stiffness 1000, damping 100. The shape still transforms, but without perceptible motion. Blur transitions are removed too. The interaction stays functional without relying on animation to communicate state.` },
+  { type: 'text' as const, content: `When \`prefers-reduced-motion\` is active, Bloom uses a near-instant spring config and removes blur transitions. The interaction stays functional without relying on animation to communicate state.` },
   { type: 'code' as const, content: `{ stiffness: 1000, damping: 100 }` },
   { type: 'component' as const, componentId: 'bloom-accessibility' },
   { type: 'heading' as const, content: 'The trigger' },
-  { type: 'text' as const, content: `The trigger is whatever you put inside Menu.Trigger — icon, text, avatar, anything. Container size adjusts via buttonSize, accepting a number for square buttons or a { width, height } object for custom shapes.` },
+  { type: 'text' as const, content: `Menu.Trigger accepts anything: icon, text, avatar. Pass a number to \`buttonSize\` for a square button, or \`{ width, height }\` for a custom shape.` },
   { type: 'component' as const, componentId: 'bloom-trigger' },
   { type: 'code' as const, content: `<Menu.Container buttonSize={40}>\n<Menu.Container buttonSize={{ width: 100, height: 40 }}>` },
   { type: 'heading' as const, content: 'Credit' },
@@ -348,70 +118,70 @@ const THISTRACKISCRACK_SECTIONS = [
 
 const DORITOS_SECTIONS = [
   { type: 'component' as const, componentId: 'doritos-loaded' },
-  { type: 'text' as const, content: `Coachella runs across two weekends in the California desert. Heat, direct sun, crowds, and patchy connectivity. PepsiCo brought Doritos in as an activation and I was the solo designer on the full experience — the in-app ordering flow, the physical booth environment, and the photography and video that documented it. One brief, one designer, end to end.` },
+  { type: 'text' as const, content: `Coachella runs across two weekends in the California desert. Heat, direct sun, crowds, patchy connectivity. PepsiCo brought Doritos in as an activation and I was the solo designer on the full experience: in-app ordering flow, physical booth environment, and the photography and video that documented it.` },
   { type: 'heading' as const, content: 'The constraint' },
-  { type: 'text' as const, content: `Festival environments are hostile to digital interfaces. Screens wash out in direct sunlight. Users are distracted, moving, often holding a drink. Connectivity drops under crowd density. Every design decision had to account for a context that most app work never considers — high ambient brightness, low attention, unreliable data. The interface had to work in a single glance.` },
+  { type: 'text' as const, content: `Festival environments are hostile to digital interfaces. Screens wash out in direct sunlight. Users are distracted, moving, often holding a drink. Connectivity drops under crowd density. The interface had to work in a single glance.` },
   { type: 'heading' as const, content: 'The ordering flow' },
-  { type: 'text' as const, content: `The in-app flow was built around speed and legibility. Large tap targets, high-contrast type, minimal steps between entry and confirmation. Two SKUs — Base and Protein — meant the menu could be a single screen. No scrolling, no nested categories, no edge cases to navigate. The splash screen set the energy; the menu closed the loop in two taps.` },
+  { type: 'text' as const, content: `Built around speed and legibility. Large tap targets, high-contrast type, minimal steps between entry and confirmation. Two SKUs meant the menu fit on a single screen. The splash screen set the energy; the menu closed the loop in two taps.` },
   { type: 'component' as const, componentId: 'doritos-flow-images' },
   { type: 'heading' as const, content: 'The booth' },
-  { type: 'text' as const, content: `The physical environment had to match the digital one. The booth design carried the same visual language — the red, the bold type, the loaded energy of the brand — into a three-dimensional space. Signage was sized for legibility from a distance in bright light. The layout accounted for queue flow across both weekends.` },
+  { type: 'text' as const, content: `The booth carried the same visual language as the app: the red, the bold type, the loaded energy of the brand, in a three-dimensional space. Signage sized for legibility at distance in bright light. Layout accounted for queue flow across both weekends.` },
   { type: 'image' as const, content: '/images/doritos/Doritos_Loaded_VIS_FINAL copy_Page_2.png' },
   { type: 'heading' as const, content: 'Photography and video' },
-  { type: 'text' as const, content: `Brand activations live or die by their documentation. The photography and video from the event weren't an afterthought — they were scoped into the brief from the start. Two videos, shot on location, captured the product and the environment. The stills covered the booth, the crowd, and the food. The full asset library came back to PepsiCo as part of the deliverable.` },
+  { type: 'text' as const, content: `Documentation was scoped into the brief from the start. Two videos shot on location captured the product and the environment. Stills covered the booth, the crowd, and the food. The full asset library shipped to PepsiCo as part of the deliverable.` },
   { type: 'heading' as const, content: 'Scope' },
-  { type: 'text' as const, content: `Solo designer on a PepsiCo brand activation means owning everything: the UX, the visual design, the environmental design, the art direction on set, and the final asset delivery. No handoffs, no waiting. The constraint was also the advantage — every touchpoint was coherent because the same person made all of them.` },
+  { type: 'text' as const, content: `Solo designer on a PepsiCo activation: UX, visual design, environmental design, art direction on set, final asset delivery. Every touchpoint was coherent because the same person made all of them.` },
 ];
 
 const KEYCADETS_SECTIONS = [
   { type: 'component' as const, componentId: 'keycadets' },
-  { type: 'text' as const, content: `I designed the product line, sourced factories, and built the business from scratch until it was on shelves at Target, Walmart, Best Buy, MicroCenter, and Drop.com. Acquired in 2024.` },
+  { type: 'text' as const, content: `I designed the product line, sourced factories, and built the business from scratch. It ended up on shelves at Target, Walmart, Best Buy, MicroCenter, and Drop.com. Acquired in 2024.` },
   { type: 'heading' as const, content: 'The product line' },
-  { type: 'text' as const, content: `Over 20 SKUs across five categories: deskmats, keyboards, metal trays, artisan keycap cases, and accessories. Every product was designed from scratch — dimensions, materials, colorways, packaging. The deskmat line came first. The metal trays were a personal obsession: desk organization as an object worth owning.` },
+  { type: 'text' as const, content: `Over 20 SKUs across five categories: deskmats, keyboards, metal trays, artisan keycap cases, and accessories. Every product was designed from scratch: dimensions, materials, colorways, packaging. The metal trays were a personal obsession — desk organization as an object worth owning.` },
   { type: 'heading' as const, content: 'Design process' },
-  { type: 'text' as const, content: `Find a gap in the market, spec the product, find a factory willing to work at small MOQs, iterate on samples until it was right, then launch. Most products went through three to five sample rounds before hitting production. The keyboard line was the hardest — tolerances, switch compatibility, plate materials, case resonance. All of it learned on the job.` },
+  { type: 'text' as const, content: `Find a gap, spec the product, find a factory willing to work at small MOQs, iterate on samples, launch. Most products went through three to five sample rounds before hitting production. The keyboard line was the hardest — tolerances, switch compatibility, plate materials, case resonance. All of it learned on the job.` },
   { type: 'heading' as const, content: 'Manufacturing' },
-  { type: 'text' as const, content: `Everything was sourced and managed directly. I negotiated tooling costs, managed production timelines, handled quality control on incoming inventory. Getting to national retail requires certifications, barcodes, EDI compliance, vendor portals. I built that infrastructure myself.` },
+  { type: 'text' as const, content: `Everything was sourced and managed directly. Tooling negotiations, production timelines, quality control on incoming inventory. Getting to national retail requires certifications, barcodes, EDI compliance, vendor portals. I built that infrastructure myself.` },
   { type: 'heading' as const, content: 'Retail' },
-  { type: 'text' as const, content: `Target, Walmart, Best Buy, MicroCenter, and Drop.com each have their own vendor requirements, margin expectations, and replenishment processes. Getting on those shelves meant meeting all of it — packaging that scanned correctly, product that didn't generate returns, logistics that could handle purchase orders at scale.` },
+  { type: 'text' as const, content: `Target, Walmart, Best Buy, MicroCenter, and Drop.com each have their own vendor requirements, margin expectations, and replenishment processes. Getting on those shelves meant packaging that scanned correctly, product that didn't generate returns, and logistics that could handle purchase orders at scale.` },
   { type: 'component' as const, componentId: 'keycadets-retail' },
   { type: 'heading' as const, content: 'Acquisition' },
-  { type: 'text' as const, content: `The company was acquired in 2024. The acquirer got the brand, the SKUs, the retail relationships, and the supplier network. Five years of building a product company with physical goods, national distribution, and a community of customers who cared about what we made.` },
+  { type: 'text' as const, content: `Acquired in 2024. The acquirer got the brand, the SKUs, the retail relationships, and the supplier network.` },
 ];
 
 const CRAFT_SECTIONS = [
   { type: 'component' as const, componentId: 'craft' },
-  { type: 'text' as const, content: `AI can write a button. What it can't do is know that the scale feels slightly too aggressive, or that 300ms is just a bit slow for this interaction. Craft is a concept for the gap between generated code and finished component — a live editing layer that lets you adjust, preview, and apply changes back to the source without leaving the output.` },
+  { type: 'text' as const, content: `Craft is a concept for the gap between AI-generated code and a finished component. A live editing layer where you adjust, preview, and write changes back to source without leaving the output.` },
   { type: 'heading' as const, content: 'The problem' },
-  { type: 'text' as const, content: `AI-generated code is a starting point, not a finish line. The output is usually structurally sound but visually untuned — wrong radius, stiff animation, spacing that's close but not quite right. The current workflow is: copy the code, paste it into your editor, tweak values manually, reload, repeat. Craft collapses that loop.` },
+  { type: 'text' as const, content: `AI output is usually structurally sound but visually untuned. Wrong radius, stiff animation, spacing that's close but off. The fix is copy, paste, tweak, reload, repeat. Craft collapses that loop.` },
   { type: 'heading' as const, content: 'Live preview' },
-  { type: 'text' as const, content: `Every component renders live inside the panel. The preview reacts to control changes in real time — no save, no reload. You see the scale animation before you commit it. The "Live edit" indicator makes the state explicit: what you're looking at is what the code will produce.` },
+  { type: 'text' as const, content: `Every component renders live inside the panel. Control changes reflect immediately. The "Live edit" indicator makes the state explicit: what you're looking at is what the code produces.` },
   { type: 'component' as const, componentId: 'craft-preview' },
   { type: 'heading' as const, content: 'Interactive controls' },
-  { type: 'text' as const, content: `Properties are exposed as typed controls — stepper inputs for numeric values like scale amount and animation speed, color pickers for tokens, radius selectors for shape. Each control maps directly to a code value. Incrementing scale amount from 1.10 to 1.15 updates the Framer Motion prop, not a CSS override.` },
+  { type: 'text' as const, content: `Properties are exposed as typed controls. Stepper inputs for numeric values, color pickers for tokens, radius selectors for shape. Each control maps directly to a code value. Incrementing scale from 1.10 to 1.15 updates the Framer Motion prop, not a CSS override.` },
   { type: 'component' as const, componentId: 'craft-controls' },
   { type: 'heading' as const, content: 'Design system layer' },
-  { type: 'text' as const, content: `Below the component controls, Craft surfaces the design system context: primary color, border radius, padding values. These aren't read-only — they're the token layer. Changing Button Radius here propagates to every instance, not just the one in front of you. The component and the system stay in sync.` },
+  { type: 'text' as const, content: `Below the component controls, Craft surfaces the design system context: primary color, border radius, padding. Changing a token here propagates to every instance. The component and the system stay in sync.` },
   { type: 'heading' as const, content: 'Apply to code' },
-  { type: 'text' as const, content: `"Apply to code" writes the changes back. Not a new file, not a diff — the source updates with the adjusted values in place. For a design engineer, it's a faster way to tune. For someone building their first interface, it's a way to understand what each property does by watching it change.` },
+  { type: 'text' as const, content: `"Apply to code" writes changes back to source with the adjusted values in place. For a design engineer, it's a faster way to tune. For someone building their first interface, it's a way to learn what each property does by watching it change.` },
   { type: 'heading' as const, content: 'Who it\'s for' },
-  { type: 'text' as const, content: `Craft isn't trying to replace the editor. It's for the moment after generation — when the structure is right but the feel isn't. The controls surface what matters without requiring you to know where in the file to look. The feedback is immediate. The output is real code.` },
+  { type: 'text' as const, content: `Craft is for the moment after generation, when the structure is right but the feel isn't. Controls surface what matters. Feedback is immediate. Output is real code.` },
 ];
 
 const SUNSET_SECTIONS = [
   { type: 'component' as const, componentId: 'sunset' },
-  { type: 'text' as const, content: `My partner is always chasing the perfect sunset. The problem isn't caring — it's timing. You look up and it's already peaked, or you step outside five minutes too late and the color is gone. Sunset Chaser is a concept app that solves exactly that. Location-aware, weather-informed, and built around one question: is tonight worth it, and when do I need to leave?` },
+  { type: 'text' as const, content: `My better half is always chasing the perfect sunset. The problem is timing: you look up and it's already peaked, or you step outside five minutes too late and the color is gone. Sunset Chaser is a concept app built around one question: is tonight worth it, and when do I need to leave?` },
   { type: 'heading' as const, content: 'The screen' },
-  { type: 'text' as const, content: `The main screen is built around a single moment: today's peak. A large arc traces the sun's path across the sky, with a glowing orb marking its current position. Below it, a glassmorphic card surfaces everything you need — sunset time, golden hour window, quality rating, cloud cover, temperature, and a gradient bar that visualizes the golden hour score as a spectrum from deep amber to cool blue.` },
-  { type: 'text' as const, content: `The bottom row anchors the three moments that matter: when golden hour starts, when peak hits, and when dusk falls. Peak is highlighted in orange — the moment the whole app is built around.` },
+  { type: 'text' as const, content: `The main screen is built around a single moment: today's peak. A large arc traces the sun's path across the sky with a glowing orb marking its current position. Below it, a glassmorphic card surfaces sunset time, golden hour window, quality rating, cloud cover, temperature, and a gradient bar that visualizes the golden hour score.` },
+  { type: 'text' as const, content: `The bottom row anchors three moments: when golden hour starts, when peak hits, when dusk falls. Peak is highlighted in orange.` },
   { type: 'heading' as const, content: 'The visual system' },
-  { type: 'text' as const, content: `The background is the UI. A rendered sunset gradient — scarlet bleeding into orange bleeding into blue — fills the entire screen and changes with the time of day and forecast quality. The glassmorphic card sits over it with enough translucency to let the gradient breathe through. The app doesn't describe the sunset. It shows it.` },
-  { type: 'text' as const, content: `Color palette reads directly from the forecast. Scarlet, Orange, Blue — surfaced as a descriptor under the date, but also expressed through every surface in the app. An excellent sunset means warm dominant tones. A poor one shifts cooler. The UI is a preview of what you're about to see outside.` },
+  { type: 'text' as const, content: `The background is the UI. A rendered sunset gradient fills the entire screen and changes with the time of day and forecast quality. The glassmorphic card sits over it with enough translucency to let the gradient show through.` },
+  { type: 'text' as const, content: `Color palette reads from the forecast. An excellent sunset means warm dominant tones. A poor one shifts cooler. The UI is a preview of what you're about to see outside.` },
   { type: 'component' as const, componentId: 'sunset-card' },
   { type: 'heading' as const, content: 'Quality' },
-  { type: 'text' as const, content: `Sunset quality is a composite score — cloud cover, cloud position, atmospheric conditions, and time of year all factor in. The golden hour bar renders that score as a gradient fill, so 83% looks different from 40% without needing to read the number. The quality label — Excellent, Good, Fair, Poor — gives it a single word to anchor on.` },
+  { type: 'text' as const, content: `Sunset quality is a composite score: cloud cover, cloud position, atmospheric conditions, and time of year. The golden hour bar renders that score as a gradient fill so 83% looks different from 40% without reading the number. The quality label gives it a single word to anchor on.` },
   { type: 'heading' as const, content: 'Notifications' },
-  { type: 'text' as const, content: `The whole concept runs on a single notification, timed to arrive at the start of golden hour. Not at sunset — at golden hour, when the light is still building and there's time to get somewhere good. The notification carries the quality score and peak time so you can decide in two seconds whether it's worth stepping out.` },
+  { type: 'text' as const, content: `The concept runs on a single notification timed to arrive at the start of golden hour, when the light is still building and there's time to get somewhere. The notification carries the quality score and peak time so you can decide in two seconds whether it's worth stepping out.` },
   { type: 'component' as const, componentId: 'sunset-notification' },
 ];
 
@@ -436,35 +206,35 @@ const CO_CREATOR_SECTIONS = [
 
 const AI_DOC_VERIFICATION_SECTIONS = [
   { type: 'component' as const, componentId: 'ai-document-verification' },
-  { type: 'text' as const, content: `Government benefit programs run on documents. At scale, manual review breaks the system. This is a product for automating the routine, surfacing the exceptions, and making human review fast enough that caseworkers handle more without more headcount.` },
+  { type: 'text' as const, content: `Government benefit programs run on documents. At scale, manual review breaks down. This is a product for automating routine verification, surfacing exceptions, and making human review fast enough that caseworkers handle more without adding headcount.` },
   { type: 'heading' as const, content: 'The problem' },
-  { type: 'text' as const, content: `SNAP, LIHEAP, and similar programs require proof documents at application and renewal. A caseworker reviews each one, extracts the relevant data, makes a determination. The process doesn't scale — any backlog directly delays benefits reaching people who need them.` },
+  { type: 'text' as const, content: `SNAP, LIHEAP, and similar programs require proof documents at application and renewal. A caseworker reviews each one, extracts the relevant data, makes a determination. Any backlog directly delays benefits reaching people who need them.` },
   { type: 'heading' as const, content: 'The pipeline' },
-  { type: 'text' as const, content: `Documents route through Google Cloud Document AI, which extracts structured fields — name, address, amount, date, issuing entity — and validates them against the case record. Cases where everything checks out are auto-approved. Cases where confidence falls below threshold or validation fails are flagged for review. In testing, the model auto-processed 94% of submissions.` },
+  { type: 'text' as const, content: `Documents route through Google Cloud Document AI, which extracts structured fields: name, address, amount, date, issuing entity, then validates them against the case record. Cases where everything checks out are auto-approved. Cases where confidence falls below threshold or validation fails are flagged for review. In testing, the model auto-processed 94% of submissions.` },
   { type: 'code' as const, content: `const confidence = result.pages[0].formFields\n  .every(field => field.valueDetectedLanguages[0].confidence > 0.85);\n\nif (confidence && validationPassed) {\n  return { status: 'auto-approved' };\n} else {\n  return { status: 'needs-review', flags };\n}` },
   { type: 'heading' as const, content: 'The review interface' },
-  { type: 'text' as const, content: `Flagged cases surface in a queue. Document on the left, extracted fields on the right, validation failures highlighted inline. Caseworkers accept, correct, or mark insufficient. Corrections feed back as labeled training data — the review queue shrinks as the model gets better at what it used to flag.` },
+  { type: 'text' as const, content: `Flagged cases surface in a queue. Document on the left, extracted fields on the right, validation failures highlighted inline. Caseworkers accept, correct, or mark insufficient. Corrections feed back as labeled training data, so the review queue shrinks as the model improves.` },
   { type: 'component' as const, componentId: 'ai-document-verification-review' },
   { type: 'heading' as const, content: 'Resident experience' },
-  { type: 'text' as const, content: `Real-time validation catches problems at upload rather than days later. If a document is blurry, expired, or the wrong type, the resident gets a plain-language explanation and a specific ask. If the document confirms the address, the form doesn't ask for it again.` },
+  { type: 'text' as const, content: `Validation happens at upload. If a document is blurry, expired, or the wrong type, the resident gets a plain-language explanation and a specific ask. If the document already confirms a field, the form doesn't ask for it again.` },
   { type: 'heading' as const, content: 'Stack' },
-  { type: 'text' as const, content: `React 18, Node.js/Express, Google Cloud Document AI. The review queue and resident upload flow are separate surfaces — caseworkers and residents never share the same interface.` },
+  { type: 'text' as const, content: `React 18, Node.js/Express, Google Cloud Document AI. The review queue and resident upload flow are separate surfaces.` },
 ];
 
 const VISUAL_SYSTEM_HOVER_SECTIONS = [
   { type: 'component' as const, componentId: 'visual-system-hover' },
-  { type: 'text' as const, content: `Four people who shaped how I think about what it means to show up fully — Jordan, Jobs, Robin Williams, Mr. Rogers. On desktop, hover a card and a video preview appears beside it. Click and it opens in a window you can move and resize. On mobile, tap to watch. The grid is the navigation. The window is the player.` },
+  { type: 'text' as const, content: `Four people who influenced me through different stages of my life: Jordan, Jobs, Robin Williams, Mr. Rogers. Hover a card and a video preview appears beside it. Click and it opens in a draggable, resizable window. On mobile, tap to watch.` },
   { type: 'heading' as const, content: 'The grid' },
-  { type: 'text' as const, content: `Cards sit at full opacity by default. When any card is hovered, the others dim to 0.6. The hovered card scales to 0.98 — a subtle inward press that signals focus without breaking the layout. Border opacity lifts from 0.1 to 0.5, and a 1px white stroke appears on the left edge. All transitions run at 0.2s easeOut, fast enough to feel instant.` },
+  { type: 'text' as const, content: `When any card is hovered, the others dim to 0.6. The hovered card scales to 0.98, border opacity lifts from 0.1 to 0.5, and a 1px white stroke appears on the left edge. All transitions run at 0.2s easeOut.` },
   { type: 'component' as const, componentId: 'visual-system-hover-grid' },
   { type: 'heading' as const, content: 'The preview' },
-  { type: 'text' as const, content: `On hover, a video popover appears beside the card — to the right for left-column cards, to the left for right-column cards, so it never overlaps the grid. It enters at scale 0.8 with a 20px x-offset and springs to full size in 0.2s. The clip plays from the start and loops at 10 seconds, reset via onTimeUpdate rather than the native loop attribute so the cutoff stays consistent.` },
-  { type: 'text' as const, content: `Videos preload as metadata-only on mount — a hidden 1px element appended to the body for each clip. This means the first frame is available instantly when hover fires, with no visible loading delay.` },
+  { type: 'text' as const, content: `A video popover appears beside the hovered card: to the right for left-column cards, to the left for right-column cards. It enters at scale 0.8 with a 20px x-offset and springs to full size in 0.2s. The clip plays from the start and loops at 10 seconds, reset via \`onTimeUpdate\` rather than the native loop attribute so the cutoff stays consistent.` },
+  { type: 'text' as const, content: `Videos preload as metadata-only on mount via a hidden 1px element appended to the body for each clip. The first frame is available instantly when hover fires.` },
   { type: 'code' as const, content: `video.preload = 'metadata';\nvideo.style.width = '1px';\nvideo.style.opacity = '0';\ndocument.body.appendChild(video);` },
   { type: 'component' as const, componentId: 'visual-system-hover-preview' },
   { type: 'heading' as const, content: 'The window' },
-  { type: 'text' as const, content: `Clicking a card opens a vintage Mac-style modal. Dark title bar with centered filename, a 6-dot drag handle on the left, and a [CLOSE] button on the right. The window is draggable via mousedown on the title bar — delta from click origin applied directly to Framer Motion values x and y, no state updates, no re-renders. Position resets to center on close.` },
-  { type: 'text' as const, content: `The resize handle sits in the bottom-right corner — a triangle of dots cut from the same dark chrome as the title bar. Dragging it updates width and height motion values directly, clamped to a 400×300 minimum. The video fills the content area and scales with the window.`, desktopOnly: true },
+  { type: 'text' as const, content: `Clicking a card opens a vintage Mac-style modal. Dark title bar with centered filename, a 6-dot drag handle on the left, and a [CLOSE] button on the right. Dragging updates Framer Motion's \`x\` and \`y\` values directly from delta off click origin: no state updates, no re-renders. Position resets to center on close.` },
+  { type: 'text' as const, content: `The resize handle sits in the bottom-right corner. Dragging it updates width and height motion values directly, clamped to a 400×300 minimum. The video scales with the window.`, desktopOnly: true },
   { type: 'code' as const, content: `const deltaX = moveEvent.clientX - startX;\nconst deltaY = moveEvent.clientY - startY;\nx.set(startModalX + deltaX);\ny.set(startModalY + deltaY);` },
   { type: 'component' as const, componentId: 'visual-system-hover-window' },
 ];
@@ -472,24 +242,24 @@ const VISUAL_SYSTEM_HOVER_SECTIONS = [
 // Carousel project content
 const CAROUSEL_SECTIONS = [
   { type: 'component' as const, componentId: 'carousel' },
-  { type: 'text' as const, content: `Netflix carousels have a specific feel — cards that lift when you hover them, a row that breathes as you move through it. This is a recreation of that interaction. Horizontal scroll, per-card parallax, hover lift with shadow, and a mobile focus mode where the centered card scales up. Four films. All favorites.` },
+  { type: 'text' as const, content: `A recreation of the Netflix carousel interaction. Horizontal scroll, per-card parallax, hover lift with shadow, and a mobile focus mode where the centered card scales up. Four films, all favorites.` },
   { type: 'heading' as const, content: 'The scroll' },
-  { type: 'text' as const, content: `Scrolling is handled in state, not via native overflow. A scrollLeft value drives a CSS transform on the card container, giving precise control over position without any scroll snapping or browser interference. Wheel events fire when horizontal delta exceeds vertical — or when shift is held. The container translates by 120px initially so the first card sits centered rather than flush left.` },
+  { type: 'text' as const, content: `Scrolling is handled in state via a \`scrollLeft\` value that drives a CSS transform on the card container. Wheel events fire when horizontal delta exceeds vertical, or when shift is held. The container translates by 120px initially so the first card sits centered.` },
   { type: 'code' as const, content: `const newScroll = Math.max(0, Math.min(maxScroll, scrollLeft + (e.deltaX || e.deltaY)));\nsetScrollLeft(newScroll);` },
   { type: 'component' as const, componentId: 'carousel-scroll' },
   { type: 'heading' as const, content: 'The parallax' },
-  { type: 'text' as const, content: `Each card calculates its distance from the viewport center on every render. That distance is multiplied by 0.03 to produce a subtle x offset — cards near the center drift less, cards at the edges drift more. The effect is slight enough to feel ambient rather than mechanical. It gives the row a sense of depth without announcing itself.` },
+  { type: 'text' as const, content: `Each card calculates its distance from the viewport center on every render. That distance multiplied by 0.03 produces a subtle x offset. Cards near the center drift less, cards at the edges drift more.` },
   { type: 'code' as const, content: `const parallaxOffset = (cardCenter - viewportCenter) * 0.03;` },
   { type: 'heading' as const, content: 'Hover' },
-  { type: 'text' as const, content: `On desktop, hovering a card scales it to 1.15 and lifts it 20px on the y-axis. Shadow deepens from 4px to 40px. The spring runs at stiffness 300, damping 30, mass 0.8 — fast enough to feel responsive, heavy enough to feel physical. z-index bumps to 50 so the lifted card clears its neighbors.` },
+  { type: 'text' as const, content: `Hovering a card scales it to 1.15 and lifts it 20px. Shadow deepens from 4px to 40px. Spring runs at stiffness 300, damping 30, mass 0.8. z-index bumps to 50 so the lifted card clears its neighbors.` },
   { type: 'code' as const, content: `animate={{\n  scale: isHovered ? 1.15 : scrollStyles.scale,\n  y: isHovered ? -20 : 0,\n}}\ntransition={{\n  type: 'spring',\n  stiffness: 300,\n  damping: 30,\n  mass: 0.8,\n}}` },
   { type: 'component' as const, componentId: 'carousel-hover' },
   { type: 'heading' as const, content: 'Mobile focus' },
-  { type: 'text' as const, content: `On mobile there's no hover, so the centered card becomes the focal point. A focus zone of cardWidth × 0.6 determines which card is in focus. The focused card scales to 1.1 and lifts 15px. Cards outside the zone scale down to 0.9, with a smooth progress value interpolating between them as you scroll. Transitions switch from spring to a 0.4s tween with a cubic-bezier ease — more predictable on touch.` },
+  { type: 'text' as const, content: `On mobile, the centered card becomes the focal point. A focus zone of \`cardWidth × 0.6\` determines which card is active. The focused card scales to 1.1 and lifts 15px. Cards outside the zone scale down to 0.9, with a progress value interpolating between them as you scroll. Transitions switch from spring to a 0.4s tween with cubic-bezier for more predictable behavior on touch.` },
   { type: 'code' as const, content: `const scaleProgress = Math.max(0, Math.min(1, 1 - (distanceFromCenter / focusZone)));\nconst baseScale = isInFocus ? 1.1 : 0.9 + (scaleProgress * 0.2);` },
   { type: 'component' as const, componentId: 'carousel-mobile' },
   { type: 'heading' as const, content: 'Touch' },
-  { type: 'text' as const, content: `Touch handling distinguishes horizontal from vertical gestures by comparing deltas. Horizontal movement must exceed vertical by 1.5× and cross a 15px threshold before the carousel claims the gesture. Below that threshold, touch events pass through untouched so the page scrolls normally. Once a horizontal gesture is confirmed, preventDefault fires and the carousel takes over.` },
+  { type: 'text' as const, content: `Touch handling distinguishes horizontal from vertical gestures by comparing deltas. Horizontal movement must exceed vertical by 1.5× and cross a 15px threshold before the carousel claims the gesture. Below that, touch events pass through so the page scrolls normally.` },
   { type: 'code' as const, content: `if (!isHorizontalScroll && absDeltaX > absDeltaY * 1.5 && absDeltaX > 15) {\n  isHorizontalScroll = true;\n}` },
 ];
 
@@ -504,7 +274,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: "We've Been Here Before.",
-          year: 'December 2024',
+          year: item.year ?? 'December 2024',
           thumbnail: '',
           tags: ['Essay', 'AI', 'Technology', 'History'],
           content: { sections: ESSAY_01_SECTIONS },
@@ -519,7 +289,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'AI hype, disappointment, and inevitable transformation ahead.',
-          year: 'January 2025',
+          year: item.year ?? 'January 2025',
           thumbnail: '',
           tags: [],
           content: { sections: ESSAY_02_SECTIONS },
@@ -534,25 +304,10 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'The broken heart that comes from never letting yourself love at all.',
-          year: 'January 2026',
+          year: item.year ?? 'January 2026',
           thumbnail: '',
           tags: [],
           content: { sections: ESSAY_03_SECTIONS },
-        },
-      ];
-    }
-    if (item.id === 'essay-04') {
-      return [
-        item.id,
-        {
-          id: item.id,
-          title: item.title,
-          category: item.category,
-          description: "Everyone can do everything now, and it's making us worse.",
-          year: 'February 2026',
-          thumbnail: '',
-          tags: [],
-          content: { sections: ESSAY_04_SECTIONS },
         },
       ];
     }
@@ -564,7 +319,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'iOS-inspired pull-down menu, reverse-engineered and packaged.',
-          year: 'January 2026',
+          year: item.year ?? 'January 2026',
           thumbnail: '',
           tags: [],
           content: { sections: BLOOM_SECTIONS },
@@ -579,38 +334,38 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A card border that writhes. Driven by SVG displacement maps and animated turbulence noise.',
-          year: 'January 2026',
+          year: item.year ?? 'January 2026',
           thumbnail: item.thumbnail,
           tags: [],
           link: '/interactions/electric-border',
           content: {
             sections: [
               { type: 'component', componentId: 'electric-border' },
-              { type: 'text', content: `Most border effects are cosmetic. A gradient that rotates, a glow that pulses, a shimmer that loops. They look alive but aren't — they're scheduled. Electric Border is different. The edge is physically distorted by a displacement map driven by animated turbulence noise. The border doesn't animate. It writhes.` },
+              { type: 'text', content: `Most border effects are scheduled: a gradient that rotates, a glow that pulses, a shimmer that loops. Electric Border is different. The edge is physically distorted by a displacement map driven by animated turbulence noise.` },
               { type: 'heading', content: 'The filter pipeline' },
-              { type: 'text', content: `The entire effect lives inside a single SVG filter. No canvas, no WebGL, no JavaScript running on every frame. A declarative pipeline of filter primitives the browser evaluates continuously.` },
-              { type: 'text', content: `Four stages. First, two pairs of feTurbulence nodes generate fractal noise at slightly different frequencies — 0.018 for vertical movement, 0.022 for horizontal. Each is wrapped in a feOffset with an animated dx or dy value, scrolling the noise fields continuously in opposite directions. Two scrolling up, two scrolling down and sideways.` },
+              { type: 'text', content: `The entire effect lives inside a single SVG filter: a declarative pipeline of filter primitives the browser evaluates continuously.` },
+              { type: 'text', content: `Four stages. Two pairs of \`feTurbulence\` nodes generate fractal noise at slightly different frequencies: 0.018 for vertical movement, 0.022 for horizontal. Each is wrapped in a \`feOffset\` with an animated \`dx\` or \`dy\` value, scrolling the noise fields continuously in opposite directions.` },
               { type: 'code', content: `<feTurbulence type="turbulence" baseFrequency="0.018" numOctaves="8" seed="3" />\n<feOffset>\n  <animate attributeName="dy" values="650; 0" dur="6s" repeatCount="indefinite" />\n</feOffset>` },
               { type: 'component', componentId: 'electric-border-raw' },
               { type: 'heading', content: 'Combining the noise' },
-              { type: 'text', content: `The four offset noise fields composite in pairs, then the two pairs blend together using color-dodge. That's the key — color-dodge amplifies bright regions and creates the hot, electric quality in the combined field. A simple blend gives you soft fog. Color-dodge gives you lightning.` },
+              { type: 'text', content: `The four noise fields composite in pairs, then blend together using color-dodge. Color-dodge amplifies bright regions and creates the hot, electric quality in the combined field. A simple blend gives you soft fog. Color-dodge gives you lightning.` },
               { type: 'code', content: `<feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />\n<feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />\n<feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />` },
               { type: 'component', componentId: 'electric-border-chaos' },
               { type: 'heading', content: 'The displacement' },
-              { type: 'text', content: `The combined noise field feeds into feDisplacementMap, which takes the source graphic — the card's border div — and displaces each pixel based on the red and blue channels of the noise. Scale controls how far pixels are pushed. At the default of 30, the edge wobbles. At 100, it tears.` },
+              { type: 'text', content: `The combined noise field feeds into \`feDisplacementMap\`, which displaces each pixel of the source graphic based on the red and blue channels of the noise. At the default scale of 30, the edge wobbles. At 100, it tears.` },
               { type: 'code', content: `<feDisplacementMap\n  in="SourceGraphic"\n  in2="combinedNoise"\n  scale="30"\n  xChannelSelector="R"\n  yChannelSelector="B"\n/>` },
               { type: 'component', componentId: 'electric-border-pipeline' },
               { type: 'heading', content: 'Live DOM updates' },
-              { type: 'text', content: `Changing speed or chaos doesn't trigger a React re-render. Filter attributes update directly on the SVG DOM via refs and requestAnimationFrame — no flicker, no reset, no reconciliation. React owns the state. The browser owns the filter.` },
+              { type: 'text', content: `Changing speed or chaos updates filter attributes directly on the SVG DOM via refs and \`requestAnimationFrame\`. React owns the state. The browser owns the filter.` },
               { type: 'code', content: `const animates = filter.querySelectorAll('animate');\nanimates[0].setAttribute('dur', \`\${speed}s\`);\n\nconst displacementMap = filter.querySelector('feDisplacementMap');\ndisplacementMap.setAttribute('scale', String(chaos));` },
               { type: 'heading', content: 'The glow layers' },
-              { type: 'text', content: `The displacement handles the edge distortion. The glow is separate — two concentric border divs at blur(1px) and blur(4px), driven by CSS variables that update on color change. A background glow div sits behind everything at blur(32px) and scale(1.1), giving the card its ambient halo. Color is driven by oklch, keeping the glow perceptually consistent across the color wheel.` },
+              { type: 'text', content: `Two concentric border divs at \`blur(1px)\` and \`blur(4px)\` handle the edge glow, driven by CSS variables that update on color change. A background div sits behind at \`blur(32px)\` and \`scale(1.1)\` for the ambient halo. Color is driven by \`oklch\`, keeping the glow perceptually consistent across the color wheel.` },
               { type: 'code', content: `--electric-light-color: oklch(from var(--electric-border-color) l c h);\n--gradient-color: oklch(from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4);` },
               { type: 'component', componentId: 'electric-border-color' },
               { type: 'heading', content: 'Mobile' },
-              { type: 'text', content: `The desktop filter uses 8 and 9 octaves of turbulence with displacement values up to 650. On mobile, octaves drop to 5 and 6, displacement halves to 300 and 250, and each noise field passes through feGaussianBlur before compositing. Smoother and cheaper, without changing the fundamental character of the effect.` },
+              { type: 'text', content: `The desktop filter uses 8 and 9 octaves of turbulence with displacement values up to 650. On mobile, octaves drop to 5 and 6, displacement halves, and each noise field passes through \`feGaussianBlur\` before compositing.` },
               { type: 'heading', content: 'The controls' },
-              { type: 'text', content: `Speed scales animation duration across all four animate elements simultaneously, with staggered begin offsets maintained proportionally so noise fields stay out of phase. Chaos maps directly to displacement scale. Color updates two CSS custom properties — the hex value and its RGB decomposition — cascading through every glow layer without touching the filter.` },
+              { type: 'text', content: `Speed scales animation duration across all four \`animate\` elements simultaneously, with staggered begin offsets maintained proportionally so noise fields stay out of phase. Chaos maps directly to displacement scale. Color updates two CSS custom properties cascading through every glow layer without touching the filter.` },
             ],
           },
         },
@@ -624,7 +379,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A photo stack that explodes from wherever you click.',
-          year: 'January 2026',
+          year: item.year ?? 'January 2026',
           thumbnail: item.thumbnail,
           tags: [],
           content: {
@@ -661,7 +416,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A horizontal scroll with hover lift, parallax drift, and mobile focus scaling.',
-          year: 'November 2024',
+          year: item.year ?? 'November 2024',
           thumbnail: '/thumbnails/carousel.jpg',
           tags: [],
           content: { sections: CAROUSEL_SECTIONS },
@@ -676,7 +431,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A music discovery blog I built in high school. It went viral. It was acquired.',
-          year: '2008',
+          year: item.year ?? '2008',
           thumbnail: '/thumbnails/thistrackiscrack.jpg',
           tags: [],
           content: { sections: THISTRACKISCRACK_SECTIONS },
@@ -691,7 +446,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'End-to-end brand activation for Doritos at Coachella — digital ordering, physical booth, and event capture.',
-          year: 'June 2023',
+          year: item.year ?? 'June 2023',
           thumbnail: '/thumbnails/doritos-loaded.jpg',
           tags: [],
           content: { sections: DORITOS_SECTIONS },
@@ -706,7 +461,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'Founded, designed, and scaled a premium mechanical keyboard brand to national retail. Acquired 2024.',
-          year: '2019–2024',
+          year: item.year ?? '2019–2024',
           thumbnail: '/thumbnails/keycadets.png',
           tags: [],
           content: { sections: KEYCADETS_SECTIONS },
@@ -721,7 +476,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A concept for refining AI-generated components with live controls and immediate visual feedback.',
-          year: 'July 2025',
+          year: item.year ?? 'July 2025',
           thumbnail: '/thumbnails/craft.png',
           tags: [],
           content: { sections: CRAFT_SECTIONS },
@@ -736,7 +491,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A location-aware iOS concept that tells you exactly when to step outside.',
-          year: 'December 2025',
+          year: item.year ?? 'December 2025',
           thumbnail: '/thumbnails/sunset.png',
           tags: [],
           content: { sections: SUNSET_SECTIONS },
@@ -751,7 +506,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'AI co-designer that turns taste into a complete design system.',
-          year: 'February 2026',
+          year: item.year ?? 'February 2026',
           thumbnail: '/thumbnails/co-creator.jpg',
           tags: [],
           content: { sections: CO_CREATOR_SECTIONS },
@@ -766,7 +521,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'AI-powered eligibility verification that keeps humans in the loop.',
-          year: 'January 2026',
+          year: item.year ?? 'January 2026',
           thumbnail: '/thumbnails/ai-document-verification.jpg',
           tags: [],
           content: { sections: AI_DOC_VERIFICATION_SECTIONS },
@@ -781,7 +536,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A bento grid where each card previews a video on hover. Clicking opens a draggable, resizable vintage Mac window.',
-          year: 'January 2025',
+          year: item.year ?? 'January 2025',
           thumbnail: '',
           tags: [],
           content: { sections: VISUAL_SYSTEM_HOVER_SECTIONS },
@@ -796,7 +551,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A payment button that cycles through processing, failed, and complete states.',
-          year: 'January 2026',
+          year: item.year ?? 'January 2026',
           thumbnail: '',
           tags: [],
           content: {
@@ -827,7 +582,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
         title: item.title,
         category: item.category,
         description: 'A documentary portrait of the engineering team at Promise.',
-        year: 'July 2025',
+        year: item.year ?? 'July 2025',
         thumbnail: '/thumbnails/film-01.jpg',
         tags: [],
         content: {
@@ -849,7 +604,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
         title: item.title,
         category: item.category,
         description: 'A commercial for a civic accountability app. Later acquired.',
-        year: 'November 2016',
+        year: item.year ?? 'November 2016',
         thumbnail: '/thumbnails/film-02.jpg',
         tags: [],
         content: {
@@ -871,7 +626,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
         title: item.title,
         category: item.category,
         description: 'A commercial for a proximity dating app.',
-        year: 'November 2013',
+        year: item.year ?? 'November 2013',
         thumbnail: '/thumbnails/film-03.jpg',
         tags: [],
         content: {
@@ -915,7 +670,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
         title: item.title,
         category: item.category,
         description: 'A 35-minute comedy about low-budget filmmaking and creative ambition.',
-        year: 'June 2021',
+        year: item.year ?? 'June 2021',
         thumbnail: '/thumbnails/film-05.jpg',
         tags: [],
         content: {
@@ -938,7 +693,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
         title: item.title,
         category: item.category,
         description: 'Brief description of the project.',
-        year: '2024',
+        year: item.year ?? '2024',
         thumbnail: item.thumbnail,
         tags: ['Design', 'React'],
         link: item.href,
@@ -954,24 +709,8 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
 );
 
 // ─────────────────────────────────────────────────────────────
-// Types
+// Types (WorkItem from @/lib/work-items)
 // ─────────────────────────────────────────────────────────────
-export interface WorkItem {
-  id: string;
-  title: string;
-  category: 'product' | 'film' | 'interaction' | 'writing';
-  thumbnail: string;
-  video?: string;
-  videoStart?: number; // start time in seconds when using item.video
-  videoLoopSec?: number; // loop duration in seconds (default from HOVER_VIDEO_LOOP_SEC)
-  videoFullLoop?: boolean; // when true, play and loop the entire video (no segment)
-  videoObjectFit?: 'cover' | 'contain'; // how video fits in the hover card (default cover)
-  videoScale?: number; // scale video in hover card to fill (e.g. 1.15 = 15% larger, crops edges)
-  href: string;
-  excerpt?: string;
-  year?: string;
-}
-
 interface HoveredWork {
   item: WorkItem;
   screenX: number;
@@ -1315,7 +1054,9 @@ function hitTestWorkNode(
   return null;
 }
 
-export default function NeuralPortfolio() {
+const NEURAL_REVEAL_DELAY_MS = 80;
+
+export default function NeuralPortfolio({ isLayerVisible = true, splashMode = false }: { isLayerVisible?: boolean; splashMode?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pathname = usePathname();
   const router = useRouter();
@@ -1355,10 +1096,16 @@ export default function NeuralPortfolio() {
   const [view, setView] = useState<'neural' | 'grid'>('grid');
   const viewRef = useRef<'neural' | 'grid'>('grid');
   const [neuralRevealed, setNeuralRevealed] = useState(false);
-  const [gridRevealed, setGridRevealed] = useState(() => typeof window !== 'undefined' && sessionStorage.getItem('gridRevealedBefore') === 'true');
+  const [gridRevealed, setGridRevealed] = useState(false);
   const [hasSeenGridBefore, setHasSeenGridBefore] = useState(false);
-  const [returnedFromProject, setReturnedFromProject] = useState(() => typeof window !== 'undefined' && sessionStorage.getItem('gridVisited') === 'true');
+  const [returnedFromProject, setReturnedFromProject] = useState(false);
   const searchParams = useSearchParams();
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (sessionStorage.getItem('gridVisited') === 'true') {
+      setReturnedFromProject(true);
+    }
+  }, []);
   useEffect(() => {
     if (returnedFromProject && typeof window !== 'undefined') {
       sessionStorage.removeItem('gridVisited');
@@ -1373,6 +1120,14 @@ export default function NeuralPortfolio() {
       viewRef.current = v;
     }
   }, [searchParams]);
+  const { splashDone } = useSplash();
+  // During splash on home: show neural view (3D nodes), not grid
+  useEffect(() => {
+    if (pathname === '/' && !splashDone) {
+      setView('neural');
+      viewRef.current = 'neural';
+    }
+  }, [pathname, splashDone]);
   // When switching views (grid ↔ neural), close the mobile preview drawer so it doesn't stay open in the new view.
   useEffect(() => {
     setMobilePreviewVisible(false);
@@ -1404,23 +1159,34 @@ export default function NeuralPortfolio() {
       setViewToggleUsed(true);
     }
   }, [view]);
-  // Calm entrance: neural view fades in on load; returning visitors skip delay (avoids re-init glitch on mobile)
+  // Neural view: during splash show at full brightness immediately; otherwise fade in (card click or ?view=neural)
   useEffect(() => {
-    if (view === 'neural') {
-      const visited = typeof window !== 'undefined' && sessionStorage.getItem('neuralVisited') === 'true';
-      if (visited) {
-        setNeuralRevealed(true);
-        return;
-      }
-      const t = setTimeout(() => {
-        setNeuralRevealed(true);
-        if (typeof window !== 'undefined') sessionStorage.setItem('neuralVisited', 'true');
-      }, 80);
-      return () => clearTimeout(t);
-    } else {
+    if (view !== 'neural') {
       setNeuralRevealed(false);
+      return;
     }
-  }, [view]);
+    if (pathname === '/' && !splashDone) {
+      setNeuralRevealed(true);
+      return;
+    }
+    setNeuralRevealed(false);
+    const t = setTimeout(() => setNeuralRevealed(true), NEURAL_REVEAL_DELAY_MS);
+    return () => clearTimeout(t);
+  }, [view, pathname, splashDone]);
+  useEffect(() => {
+    if (!isLayerVisible) {
+      setNeuralRevealed(false);
+      return;
+    }
+    if (view !== 'neural') return;
+    if (pathname === '/' && !splashDone) {
+      setNeuralRevealed(true);
+      return;
+    }
+    setNeuralRevealed(false);
+    const t = setTimeout(() => setNeuralRevealed(true), NEURAL_REVEAL_DELAY_MS);
+    return () => clearTimeout(t);
+  }, [isLayerVisible, view, pathname, splashDone]);
   const [gridRevealQuick, setGridRevealQuick] = useState(false);
   // When returning to grid (gridRevealedBefore set): run before paint so grid snaps in at full opacity and no flicker
   useLayoutEffect(() => {
@@ -1656,7 +1422,6 @@ export default function NeuralPortfolio() {
   const rendererRef = useRef<any>(null);
 
   const { categoryFilter, setCategoryFilter } = useCategoryFilter();
-  const { splashDone } = useSplash();
   const categoryFilterRef = useRef(categoryFilter);
   useEffect(() => {
     categoryFilterRef.current = categoryFilter;
@@ -2215,7 +1980,7 @@ export default function NeuralPortfolio() {
   return (
     <div style={{ position: 'fixed', inset: 0, background: '#050508', fontFamily: "'Outfit', sans-serif" }}>
       <style dangerouslySetInnerHTML={{ __html: '@keyframes gridFadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } } @keyframes bentoCardEntry { from { transform: translateY(20px); } to { transform: translateY(0); } } @keyframes neuralDot { 0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; } 50% { transform: translate(6px, -10px) scale(1.15); opacity: 0.5; } } @keyframes neuralTwinkle { 0%, 100% { opacity: 0.2; transform: scale(0.85); } 50% { opacity: 0.6; transform: scale(1.1); } } @keyframes neuralWeb { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.22; } }' }} />
-      {/* Neural network wrapper — dimmed in grid view, non-interactive; calm fade-in on load */}
+      {/* Neural network wrapper — dimmed in grid view; in neural view fades in via neuralRevealed */}
       <div
         style={{
           position: 'absolute',
@@ -2642,8 +2407,8 @@ export default function NeuralPortfolio() {
         </div>
       )}
 
-      {/* Bio block — desktop: fixed bottom-left (both views); padding above filter menu */}
-      {!isMobile && (
+      {/* Bio block — desktop: fixed bottom-left (both views); padding above filter menu — hidden during splash */}
+      {!isMobile && !splashMode && (
         <div style={{
           position: 'fixed',
           bottom: 95,
@@ -2669,8 +2434,8 @@ export default function NeuralPortfolio() {
           </p>
         </div>
       )}
-      {/* Bio block — mobile neural view: fixed, same horizontal padding as grid/filter; above menu */}
-      {isMobile && view === 'neural' && (
+      {/* Bio block — mobile neural view: fixed, same horizontal padding as grid/filter; above menu — hidden during splash */}
+      {isMobile && view === 'neural' && !splashMode && (
         <div style={{
           position: 'fixed',
           left: 12,
@@ -2710,7 +2475,8 @@ export default function NeuralPortfolio() {
         }}
       />
 
-      {/* Category filter menu — desktop: full menu with drag; mobile: view toggle only; in grid view use fixed + higher z so it always receives clicks above the scroll overlay */}
+      {/* Category filter menu — desktop: full menu with drag; mobile: view toggle only; hidden during splash */}
+      {!splashMode && (
       <div
           ref={filterMenuRef}
           role="group"
@@ -2821,30 +2587,15 @@ export default function NeuralPortfolio() {
           {/* Separator — desktop only; hidden on mobile */}
           <span style={{ color: 'rgba(255,255,255,0.15)', margin: '0 8px', fontSize: 11 }}>|</span>
 
-          {/* View swap (bento grid ↔ neural) — desktop only; hidden on mobile (view swap is in TopBar on mobile) */}
+          {/* Card view → /craft — desktop only; hidden on mobile (view swap is in TopBar on mobile) */}
           <button
             onTouchStartCapture={(e) => {
-              const next = view === 'neural' ? 'grid' : 'neural';
-              setView(next);
-              const params = new URLSearchParams(window.location.search);
-              params.set('view', next);
-              window.history.replaceState(null, '', `?${params.toString()}`);
-              viewToggledByTouchRef.current = true;
               e.preventDefault();
               e.stopPropagation();
+              router.push('/craft');
             }}
-            onClick={() => {
-              if (viewToggledByTouchRef.current) {
-                viewToggledByTouchRef.current = false;
-                return;
-              }
-              const next = view === 'neural' ? 'grid' : 'neural';
-              setView(next);
-              const params = new URLSearchParams(window.location.search);
-              params.set('view', next);
-              window.history.replaceState(null, '', `?${params.toString()}`);
-            }}
-            title={view === 'neural' ? 'Card view' : 'Neural view'}
+            onClick={() => router.push('/craft')}
+            title="Card view"
             style={{
               background: 'none',
               border: 'none',
@@ -2912,9 +2663,10 @@ export default function NeuralPortfolio() {
             </>
           )}
         </div>
+      )}
 
-      {/* Hover card (desktop only); neural view — hide when this node is selected */}
-      {!isTouchDevice && view === 'neural' && hovered && hovered.item.id !== selectedNodeId && (
+      {/* Hover card (desktop only); neural view — hide when this node is selected; hidden during splash */}
+      {!isTouchDevice && view === 'neural' && !splashMode && hovered && hovered.item.id !== selectedNodeId && (
         <WorkCard
           item={hovered.item}
           x={hovered.screenX}
