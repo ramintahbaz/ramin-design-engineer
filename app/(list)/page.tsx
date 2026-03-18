@@ -1,7 +1,11 @@
 'use client';
+
+import { use } from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import SplashScreen from '@/components/SplashScreen';
 import { useSplash } from '@/contexts/SplashContext';
+
+const EMPTY_SEARCH_PARAMS = Promise.resolve({} as { [key: string]: string | string[] | undefined });
 
 export const photoboomMetadata = {
   id: 'photoboom',
@@ -14,7 +18,14 @@ export const photoboomMetadata = {
   shareText: 'An exploding image gallery interaction exploring motion as feedback.',
 };
 
-export default function Home() {
+type PageProps = {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default function Home({ searchParams }: PageProps) {
+  // Unwrap per Next.js 16: searchParams is a Promise and must not be enumerated or accessed directly
+  use(searchParams ?? EMPTY_SEARCH_PARAMS);
+
   const [splashDone, setSplashDone] = useState(false);
   const { setSplashDone: setSplashDoneContext } = useSplash();
 
