@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useLayoutEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useSplash } from '@/contexts/SplashContext';
-import NeuralPortfolio from '@/components/NeuralPortfolio';
+
+const NeuralPortfolio = dynamic(() => import('@/components/NeuralPortfolio'), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function NeuralPortfolioLayer() {
   const pathname = usePathname();
