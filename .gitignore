@@ -41,6 +41,9 @@ public/videos/*.mp4
 public/videos/*.MOV
 public/videos/*.MP4
 # Exceptions: allow these to be committed (add your file to public/videos/ then git add & push)
+!public/videos/Michael_Jordan.mp4
+!public/videos/Steve Jobs.mp4
+!public/videos/Robin Williams.mp4
 !public/videos/Mr_Rogers.mp4
 !public/videos/promise_commercial_preview.mp4
 !public/videos/fedcaddy_video_1 (1).mp4
