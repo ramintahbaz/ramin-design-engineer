@@ -201,10 +201,11 @@ function NeuralPreviewCard({
           left: 0,
           right: 0,
           bottom: 0,
-          padding: 16,
-          background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+          padding: '20px 16px 18px',
+          minHeight: 56,
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.08) 70%, rgba(0,0,0,0.22) 80%, rgba(0,0,0,0.45) 90%, rgba(0,0,0,0.7) 100%)',
           display: 'flex',
-          alignItems: 'flex-end',
+          alignItems: 'center',
           justifyContent: 'space-between',
           gap: 12,
         }}
@@ -249,29 +250,59 @@ const MasonryCard = memo(function MasonryCard({
   const hasVideo = !!item.video;
   const cardImage = item.cardImage;
 
+  // Both observers: attach after one frame so scroll restore has run; reset video on unmount
   useEffect(() => {
     if (!hasVideo) return;
-    const card = cardRef.current;
-    if (!card) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          const video = videoRef.current;
-          if (e.isIntersecting) {
+    let raf: number;
+    let io1: IntersectionObserver | undefined;
+    let io2: IntersectionObserver | undefined;
+
+    raf = requestAnimationFrame(() => {
+      const card = cardRef.current;
+      if (!card) return;
+      io1 = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            const video = videoRef.current;
             if (!srcSetRef.current && video && item.video) {
               video.src = `${item.video}#t=0.01`;
               srcSetRef.current = true;
             }
-            video?.play().catch(() => {});
-          } else {
-            video?.pause();
+            io1?.disconnect();
           }
-        }
-      },
-      { threshold: 0.2, rootMargin: '200px' }
-    );
-    io.observe(card);
-    return () => io.disconnect();
+        },
+        { rootMargin: '400px', threshold: 0 }
+      );
+      io1.observe(card);
+
+      io2 = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            const video = videoRef.current;
+            if (e.isIntersecting) {
+              video?.play().catch(() => {});
+            } else {
+              video?.pause();
+            }
+          }
+        },
+        { threshold: 0.2 }
+      );
+      io2.observe(card);
+    });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      io1?.disconnect();
+      io2?.disconnect();
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.src = '';
+        videoRef.current.load();
+      }
+      srcSetRef.current = false;
+    };
   }, [hasVideo, item.video]);
 
   const year = item.year ?? '';
@@ -318,7 +349,7 @@ const MasonryCard = memo(function MasonryCard({
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="none"
             onCanPlay={() => {
               if (videoRef.current) videoRef.current.style.opacity = '1';
               setIsLoaded(true);
@@ -424,10 +455,11 @@ const MasonryCard = memo(function MasonryCard({
           left: 0,
           right: 0,
           bottom: 0,
-          padding: 16,
-          background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+          padding: '20px 16px 18px',
+          minHeight: 56,
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.08) 70%, rgba(0,0,0,0.22) 80%, rgba(0,0,0,0.45) 90%, rgba(0,0,0,0.7) 100%)',
           display: 'flex',
-          alignItems: 'flex-end',
+          alignItems: 'center',
           justifyContent: 'space-between',
           gap: 12,
         }}
