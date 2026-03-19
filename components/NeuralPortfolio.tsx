@@ -1831,8 +1831,38 @@ export default function NeuralPortfolio({ isLayerVisible = true, splashMode = fa
       };
     }
 
-    const cleanup = init();
-    return () => { cleanup.then(fn => fn?.()); };
+    let idleHandle: number | undefined;
+    let fallbackHandle: ReturnType<typeof setTimeout> | undefined;
+    let cleanupPromise: Promise<(() => void) | void> | undefined;
+
+    const runInit = () => {
+      cleanupPromise = init();
+    };
+
+    if (typeof window.requestIdleCallback === 'function') {
+      idleHandle = window.requestIdleCallback(
+        () => {
+          idleHandle = undefined;
+          runInit();
+        },
+        { timeout: 2000 }
+      );
+    } else {
+      fallbackHandle = window.setTimeout(() => {
+        fallbackHandle = undefined;
+        runInit();
+      }, 100);
+    }
+
+    return () => {
+      if (idleHandle !== undefined && typeof window.cancelIdleCallback === 'function') {
+        window.cancelIdleCallback(idleHandle);
+      }
+      if (fallbackHandle !== undefined) {
+        clearTimeout(fallbackHandle);
+      }
+      void cleanupPromise?.then((fn) => fn?.());
+    };
   }, []);
 
   useEffect(() => {
