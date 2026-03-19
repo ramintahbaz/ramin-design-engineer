@@ -17,7 +17,14 @@ const CRAFT_FILM_TO_BOTTOM: number[] = [WORK_ITEMS.findIndex((w) => w.id === 'fi
 const CRAFT_DESKTOP_TAIL_INDICES = (() => {
   const tail = Array.from({ length: WORK_ITEMS.length - 4 }, (_, i) => i + 3);
   const move = new Set(CRAFT_FILM_TO_BOTTOM);
-  return [...tail.filter((i) => !move.has(i)), ...CRAFT_FILM_TO_BOTTOM.slice().sort((a, b) => a - b)];
+  const arr = [...tail.filter((i) => !move.has(i)), ...CRAFT_FILM_TO_BOTTOM.slice().sort((a, b) => a - b)];
+  // Swap ai-document (15) ↔ m8 Commercial (18) in desktop masonry only; all other relative order unchanged.
+  const iDoc = arr.indexOf(15);
+  const iM8 = arr.indexOf(18);
+  if (iDoc >= 0 && iM8 >= 0) {
+    [arr[iDoc], arr[iM8]] = [arr[iM8], arr[iDoc]];
+  }
+  return arr;
 })();
 
 const CRAFT_MOBILE_TAIL_BASE = [1, 3, 4, 11, 6, 7, 8, 9, 10, 5, 12, 13, 14, 16, 17, 18, 19, 20] as const;
