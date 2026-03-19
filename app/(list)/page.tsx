@@ -43,6 +43,7 @@ export default function Home({ searchParams }: PageProps) {
 
   // Prefetch weather and commit during splash so TopBar can read from sessionStorage
   useEffect(() => {
+    if (!splashDone) return;
     if (typeof window === 'undefined') return;
     fetch(OPEN_METEO_URL)
       .then((res) => res.json())
@@ -79,7 +80,7 @@ export default function Home({ searchParams }: PageProps) {
           });
       })
       .catch(() => {});
-  }, []);
+  }, [splashDone]);
 
   useEffect(() => {
     if (localStorage.getItem('leftForWork') === 'true') {

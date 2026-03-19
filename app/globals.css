@@ -3,6 +3,8 @@
 :root {
   --background: #e2dedb;
   --foreground: #171717;
+  /* Full-page dark shell (home, portfolio); single source for canvas + chrome */
+  --app-canvas: #161616;
 }
 
 @theme inline {
@@ -20,7 +22,7 @@
 }
 
 html {
-  background-color: #161616;
+  background-color: var(--app-canvas);
   overscroll-behavior: none;
   overflow-x: hidden;
   min-height: 100%;
@@ -28,7 +30,7 @@ html {
 }
 
 body {
-  background-color: #161616;
+  background-color: var(--app-canvas);
   overscroll-behavior: none;
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;
@@ -38,6 +40,12 @@ body {
   min-height: 100%;
   min-height: 100dvh;
   padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* TopBar: same RGB as --app-canvas, 70% alpha. Avoid color-mix(..., transparent):
+   "transparent" is transparent black in sRGB and skews the mix darker than the canvas. */
+.bg-top-bar {
+  background-color: rgb(from var(--app-canvas) r g b / 0.7);
 }
 
 .splash-hidden {

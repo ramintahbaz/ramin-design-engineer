@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSplash } from '@/contexts/SplashContext';
 
 const GITHUB_USERNAME = 'ramintahbaz23';
 const GITHUB_REPO = 'ramin-design-engineer';
@@ -32,9 +33,11 @@ function formatWithCommas(n: number): string {
 }
 
 export default function GitHubCommitBadge() {
+  const { splashDone } = useSplash();
   const [info, setInfo] = useState<CommitInfo | null>(null);
 
   useEffect(() => {
+    if (!splashDone) return;
     if (typeof window !== 'undefined') {
       const cached = sessionStorage.getItem('commit-cache');
       if (cached) {
@@ -88,7 +91,7 @@ export default function GitHubCommitBadge() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [splashDone]);
 
   if (!info) return null;
 
