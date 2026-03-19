@@ -85,7 +85,7 @@ function NeuralPreviewCard({
         for (const e of entries) {
           if (e.isIntersecting) {
             if (!srcSetRef.current) {
-              video.src = '/videos/neural.mp4';
+              video.src = '/videos/neural_video.mp4';
               srcSetRef.current = true;
             }
             video.play().catch(() => {});

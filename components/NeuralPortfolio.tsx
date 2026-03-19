@@ -2271,7 +2271,7 @@ export default function NeuralPortfolio({ isLayerVisible = true, splashMode = fa
                   >
                     {/* Simplified neural-style dots (non-interactive); above gradient so they’re visible */}
                     <video
-                      src="/videos/neural.mp4"
+                      src="/videos/neural_video.mp4"
                       muted
                       loop
                       playsInline
