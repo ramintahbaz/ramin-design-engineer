@@ -29,14 +29,10 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         clearTimeout(t3);
       };
     };
-
-    if (document.readyState === 'complete') {
-      return start();
-    } else {
-      const handler = () => start();
-      window.addEventListener('load', handler, { once: true });
-      return () => window.removeEventListener('load', handler);
-    }
+    if (document.readyState === 'complete') return start();
+    const handler = () => start();
+    window.addEventListener('load', handler, { once: true });
+    return () => window.removeEventListener('load', handler);
   }, [onComplete]);
 
   return (
