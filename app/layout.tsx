@@ -89,11 +89,6 @@ export default async function RootLayout({
   return (
     <html lang="en" style={{ backgroundColor: '#161616' }}>
       <head>
-        <link rel="preload" as="video" href="/videos/document_review_preview.mp4" />
-        <link rel="preload" as="video" href="/videos/netflix_scroll.mp4" />
-        <link rel="preload" as="video" href="/videos/photo_boom_video.mp4" />
-        <link rel="preload" as="video" href="/videos/bloom_video.mp4" />
-        <link rel="preload" as="video" href="/videos/taste_demo.mp4" />
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{

@@ -96,8 +96,8 @@ export default function Home({ searchParams }: PageProps) {
   // List (CraftPage) is rendered by (list)/layout when splashDone; we only render splash here
   return (
     <>
-      <MobileVideoPreloader />
       {!splashDone && <SplashScreen onComplete={handleComplete} />}
+      {splashDone && <MobileVideoPreloader />}
       <div className={!splashDone ? 'splash-hidden' : ''} />
     </>
   );

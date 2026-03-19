@@ -268,38 +268,20 @@ const MasonryCard = memo(function MasonryCard({
 }) {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const srcSetRef = useRef(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const hasVideo = !!item.video;
   const cardImage = item.cardImage;
   const useImageOnCard = !!cardImage;
 
-  // Both observers: attach after one frame so scroll restore has run; reset video on unmount
+  // Play/pause by visibility; attach after one frame so scroll restore has run; reset video on unmount
   useEffect(() => {
     if (!hasVideo) return;
     let raf: number;
-    let io1: IntersectionObserver | undefined;
     let io2: IntersectionObserver | undefined;
 
     raf = requestAnimationFrame(() => {
       const card = cardRef.current;
       if (!card) return;
-      io1 = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (!e.isIntersecting) continue;
-            const video = videoRef.current;
-            if (!srcSetRef.current && video && item.video) {
-              const start = item.videoStart ?? 0;
-              video.src = `${item.video}#t=${start === 0 ? 0.01 : start}`;
-              srcSetRef.current = true;
-            }
-            io1?.disconnect();
-          }
-        },
-        { rootMargin: '400px', threshold: 0 }
-      );
-      io1.observe(card);
 
       io2 = new IntersectionObserver(
         (entries) => {
@@ -319,16 +301,14 @@ const MasonryCard = memo(function MasonryCard({
 
     return () => {
       cancelAnimationFrame(raf);
-      io1?.disconnect();
       io2?.disconnect();
       if (videoRef.current) {
         videoRef.current.pause();
         videoRef.current.src = '';
         videoRef.current.load();
       }
-      srcSetRef.current = false;
     };
-  }, [hasVideo, item.video]);
+  }, [hasVideo]);
 
   const year = item.year ?? '';
   const cardFrameAspect = item.cardAspectRatio ?? '4/3';
@@ -397,11 +377,16 @@ const MasonryCard = memo(function MasonryCard({
         >
           <video
             ref={videoRef}
+            src={
+              item.video
+                ? `${item.video}#t=${(item.videoStart ?? 0) === 0 ? 0.001 : item.videoStart}`
+                : undefined
+            }
             autoPlay
             muted
             loop={item.videoLoopSec == null}
             playsInline
-            preload="none"
+            preload="metadata"
             onCanPlay={() => {
               if (videoRef.current) videoRef.current.style.opacity = '1';
               setIsLoaded(true);
