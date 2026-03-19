@@ -266,6 +266,38 @@ const CAROUSEL_SECTIONS = [
 // Full project data for the modal (one per work item)
 export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> = Object.fromEntries(
   WORK_ITEMS.map((item) => {
+    if (item.id === 'ramin-skill') {
+      return [
+        item.id,
+        {
+          id: item.id,
+          title: item.title,
+          category: item.category,
+          description: 'Design and engineering review as a CLI skill—animation, forms, dashboards, and hierarchy.',
+          year: item.year ?? 'March 2026',
+          thumbnail: '',
+          tags: ['Skill', 'CLI', 'Design', 'Engineering'],
+          link: '/interactions/ramin-skill',
+          content: {
+            sections: [
+              { type: 'video', content: item.video! },
+              { type: 'text', content: `A skill file built for users who want software to disappear, and the engineers who believe it should. Covers animation, forms, dashboards, mobile, and the invisible details that make software feel like it works without anyone knowing why.` },
+              {
+                type: 'code',
+                content: `bash\nnpx skills add ramintahbaz23/ramin-design-eng`,
+                showCopy: true,
+                copyContent: 'npx skills add ramintahbaz23/ramin-design-eng',
+              },
+              { type: 'text', content: `Supports Claude Code, Codex, Cursor, and more.`, variant: 'caption' },
+              { type: 'heading', content: 'When to use it' },
+              { type: 'text', content: `Pull it in when you want a second opinion on something you just built. Animation is the most immediately felt — if something moves wrong, users feel it before they can name it — but the skill covers the full picture. A good place to start:` },
+              { type: 'code', content: `"Review this component"` },
+              { type: 'text', content: `It'll audit animation, form behavior, mobile feel, and data hierarchy in one pass and tell you exactly what to fix and why.` },
+            ],
+          },
+        },
+      ];
+    }
     if (item.id === 'essay-01') {
       return [
         item.id,

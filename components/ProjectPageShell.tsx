@@ -123,7 +123,7 @@ export default function ProjectPageShell({
   }, [hasChildren, description]);
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: '#000' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: '#161616' }}>
       <div
         className="min-h-[100dvh] flex flex-col"
         style={{

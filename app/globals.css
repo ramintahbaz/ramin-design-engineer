@@ -20,7 +20,7 @@
 }
 
 html {
-  background-color: #000;
+  background-color: #161616;
   overscroll-behavior: none;
   overflow-x: hidden;
   min-height: 100%;
@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  background-color: #000;
+  background-color: #161616;
   overscroll-behavior: none;
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;

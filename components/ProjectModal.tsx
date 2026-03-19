@@ -164,11 +164,14 @@ export type ProjectModalProject = {
   link?: string;
   content?: {
     sections: {
-      type: 'text' | 'image' | 'code' | 'heading' | 'component';
+      type: 'text' | 'image' | 'code' | 'heading' | 'component' | 'video';
       content?: string;
       language?: string;
       caption?: string;
       componentId?: string;
+      variant?: 'body' | 'caption';
+      showCopy?: boolean;
+      copyContent?: string;
     }[];
   };
 } | null;

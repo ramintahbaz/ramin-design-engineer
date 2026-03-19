@@ -16,7 +16,7 @@ export interface WorkItem {
   videoFullLoop?: boolean;
   videoObjectFit?: 'cover' | 'contain';
   videoScale?: number;
-  /** Desktop only: card frame aspect ratio for masonry variety; mobile always 4/3 */
+  /** Card frame aspect ratio in masonry; defaults to 4/3 when omitted */
   cardAspectRatio?: CardAspectRatio;
   href: string;
   excerpt?: string;
@@ -261,5 +261,19 @@ export const WORK_ITEMS: WorkItem[] = [
     href: '/films/film-05',
     excerpt: 'Brief description of the project.',
     year: 'June 2021',
+  },
+  {
+    id: 'ramin-skill',
+    title: 'Design engineer skill',
+    category: 'interaction',
+    thumbnail: '',
+    /** Bump `v` when replacing the file so clients don’t keep a cached copy */
+    video: '/videos/payment_plan_skill.mp4?v=4',
+    cardAspectRatio: '1/1',
+    videoObjectFit: 'contain',
+    href: '/interactions/ramin-skill',
+    excerpt:
+      'A CLI skill for design and engineering review—animation, forms, mobile, and hierarchy in one pass.',
+    year: 'March 2026',
   },
 ];

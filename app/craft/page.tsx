@@ -8,6 +8,24 @@ import type { WorkItem } from '@/lib/work-items';
 
 type FilterValue = 'all' | WorkItem['category'];
 
+/** Last in WORK_ITEMS; craft renders this card first without renumbering other indices */
+const CRAFT_RAMIN_SKILL_INDEX = WORK_ITEMS.findIndex((w) => w.id === 'ramin-skill');
+
+/** FedCaddy + Slice of Pie: same relative order as the rest, but rendered last in the masonry tails */
+const CRAFT_FILM_TO_BOTTOM: number[] = [WORK_ITEMS.findIndex((w) => w.id === 'film-02'), WORK_ITEMS.findIndex((w) => w.id === 'film-04')].filter((i) => i >= 0);
+
+const CRAFT_DESKTOP_TAIL_INDICES = (() => {
+  const tail = Array.from({ length: WORK_ITEMS.length - 4 }, (_, i) => i + 3);
+  const move = new Set(CRAFT_FILM_TO_BOTTOM);
+  return [...tail.filter((i) => !move.has(i)), ...CRAFT_FILM_TO_BOTTOM.slice().sort((a, b) => a - b)];
+})();
+
+const CRAFT_MOBILE_TAIL_BASE = [1, 3, 4, 11, 6, 7, 8, 9, 10, 5, 12, 13, 14, 16, 17, 18, 19, 20] as const;
+const CRAFT_MOBILE_TAIL_INDICES = (() => {
+  const move = new Set(CRAFT_FILM_TO_BOTTOM);
+  return [...CRAFT_MOBILE_TAIL_BASE.filter((i) => !move.has(i)), ...CRAFT_FILM_TO_BOTTOM.slice().sort((a, b) => a - b)];
+})();
+
 const FILTER_OPTIONS: { value: FilterValue; label: string }[] = [
   { value: 'all', label: 'All' },
   { value: 'interaction', label: 'Interaction' },
@@ -121,7 +139,7 @@ function NeuralPreviewCard({
         color: 'inherit',
         opacity: dimmed ? 0.25 : 1,
         transition: 'opacity 0.2s ease',
-        background: '#0a0a0a',
+        background: '#161616',
         border: '3px solid #1C1C1C',
         boxShadow: '0 0 0 1px #2E2E2E, 0 0 12px rgba(0,0,0,0.2)',
       }}
@@ -133,7 +151,7 @@ function NeuralPreviewCard({
           width: '100%',
           aspectRatio: '4/3',
           overflow: 'hidden',
-          background: '#0a0a0a',
+          background: '#161616',
         }}
       >
         <video
@@ -313,6 +331,8 @@ const MasonryCard = memo(function MasonryCard({
   }, [hasVideo, item.video]);
 
   const year = item.year ?? '';
+  const cardFrameAspect = item.cardAspectRatio ?? '4/3';
+  const videoFit = item.videoObjectFit ?? 'cover';
 
   return (
     <a
@@ -345,7 +365,7 @@ const MasonryCard = memo(function MasonryCard({
         <div
           style={{
             width: '100%',
-            aspectRatio: isMobile ? '4/3' : (item.cardAspectRatio ?? '4/3'),
+            aspectRatio: cardFrameAspect,
             overflow: 'hidden',
             display: 'block',
           }}
@@ -358,7 +378,7 @@ const MasonryCard = memo(function MasonryCard({
               height: '100%',
               display: 'block',
               objectFit: 'cover',
-              aspectRatio: isMobile ? '4/3' : (item.cardAspectRatio ?? '4/3'),
+              aspectRatio: cardFrameAspect,
               ...(cardImage === '/images/essays/retro_vintage.png'
                 ? { transform: `scale(${isMobile ? 1.2 : 1.1})`, transformOrigin: 'center center' }
                 : {}),
@@ -370,9 +390,9 @@ const MasonryCard = memo(function MasonryCard({
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio: isMobile ? '4/3' : (item.cardAspectRatio ?? '4/3'),
+            aspectRatio: cardFrameAspect,
             overflow: 'hidden',
-            background: '#0a0a0a',
+            background: '#161616',
           }}
         >
           <video
@@ -400,7 +420,7 @@ const MasonryCard = memo(function MasonryCard({
               width: '100%',
               height: '100%',
               display: 'block',
-              objectFit: 'cover',
+              objectFit: videoFit,
               opacity: 0,
               transition: 'opacity 0.4s ease',
               ...(item.videoScale != null
@@ -579,7 +599,7 @@ export default function CraftPage() {
       `}</style>
       <div
         style={{
-          background: '#0a0a0a',
+          background: '#161616',
           minHeight: '100dvh',
         }}
       >
@@ -650,18 +670,26 @@ export default function CraftPage() {
         >
           {(isMobile
             ? [
+                { type: 'work' as const, index: CRAFT_RAMIN_SKILL_INDEX },
                 { type: 'work' as const, index: 0 },
                 { type: 'work' as const, index: 15 },
                 { type: 'work' as const, index: 2 },
                 { type: 'neural' as const },
-                ...[1, 3, 4, 11, 6, 7, 8, 9, 10, 5, 12, 13, 14, 16, 17, 18, 19, 20].map((index) => ({ type: 'work' as const, index })),
+                ...CRAFT_MOBILE_TAIL_INDICES.map((index) => ({
+                  type: 'work' as const,
+                  index,
+                })),
               ]
             : [
+                { type: 'work' as const, index: CRAFT_RAMIN_SKILL_INDEX },
                 { type: 'work' as const, index: 0 },
                 { type: 'neural' as const },
                 { type: 'work' as const, index: 2 },
                 { type: 'work' as const, index: 1 },
-                ...Array.from({ length: WORK_ITEMS.length - 3 }, (_, i) => ({ type: 'work' as const, index: i + 3 })),
+                ...CRAFT_DESKTOP_TAIL_INDICES.map((index) => ({
+                  type: 'work' as const,
+                  index,
+                })),
               ]
           ).map((slot) =>
             slot.type === 'neural' ? (

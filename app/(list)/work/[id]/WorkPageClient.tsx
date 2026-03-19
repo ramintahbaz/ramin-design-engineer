@@ -38,7 +38,7 @@ export function WorkPageClient({ id }: WorkPageClientProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
       style={{
-        background: '#000',
+        background: '#161616',
         minHeight: '100dvh',
         color: 'rgba(255,255,255,0.85)',
         padding: '0 0 80px',

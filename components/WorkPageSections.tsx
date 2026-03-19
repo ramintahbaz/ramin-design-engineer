@@ -47,13 +47,19 @@ const OrderingFlowDemo = dynamic(() => import('@/components/doritos-demos/Orderi
 const OrderingFlowImages = dynamic(() => import('@/components/doritos-demos/OrderingFlowImages'), { ssr: false });
 
 export type WorkPageSection = {
-  type: 'text' | 'image' | 'code' | 'heading' | 'component';
+  type: 'text' | 'image' | 'code' | 'heading' | 'component' | 'video';
   content?: string;
   language?: string;
   caption?: string;
   componentId?: string;
   /** When true, this section is not rendered on viewports < 768px (e.g. desktop-only copy) */
   desktopOnly?: boolean;
+  /** Body copy vs smaller muted line (e.g. under install command) */
+  variant?: 'body' | 'caption';
+  /** Code row: flex + copy control (e.g. npx install) */
+  showCopy?: boolean;
+  /** String written to clipboard when showCopy; defaults to content */
+  copyContent?: string;
 };
 
 export function FilmEmbed({ src, isVimeo }: { src: string; isVimeo: boolean }) {
@@ -94,6 +100,62 @@ interface WorkPageSectionsProps {
   sections: WorkPageSection[];
 }
 
+function CopyCodeButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    void navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    });
+  };
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      aria-label={copied ? 'Copied' : 'Copy command'}
+      style={{
+        flexShrink: 0,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 4,
+        margin: 0,
+        border: 'none',
+        background: 'transparent',
+        color: 'rgba(255,255,255,0.65)',
+        cursor: 'pointer',
+        transition: 'color 0.15s ease',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.color = 'rgba(255,255,255,0.95)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.color = 'rgba(255,255,255,0.65)';
+      }}
+    >
+      {copied ? (
+        <span style={{ fontSize: 11, fontFamily: 'var(--font-geist-mono), monospace', letterSpacing: '0.02em' }}>OK</span>
+      ) : (
+        <svg
+          width={16}
+          height={16}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden
+          style={{ transform: 'scaleX(-1)' }}
+        >
+          <rect x="9" y="9" width="13" height="13" rx="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
 export function WorkPageSections({ sections }: WorkPageSectionsProps) {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -109,8 +171,28 @@ export function WorkPageSections({ sections }: WorkPageSectionsProps) {
         const firstSectionNoTop = isMobile && i === 0 ? { marginTop: 0 } : {};
         if (section.type === 'text') {
           if (section.desktopOnly && isMobile) return null;
+          const caption = section.variant === 'caption';
           return (
-            <p key={i} style={{ margin: '0 0 16px', fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.75)' }}>
+            <p
+              key={i}
+              style={
+                caption
+                  ? {
+                      margin: '10px 0 16px',
+                      fontSize: 13,
+                      lineHeight: 1.55,
+                      color: 'rgba(255,255,255,0.48)',
+                      fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
+                    }
+                  : {
+                      margin: '0 0 16px',
+                      fontSize: 15,
+                      lineHeight: 1.7,
+                      color: 'rgba(255,255,255,0.75)',
+                      fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
+                    }
+              }
+            >
               {section.content}
             </p>
           );
@@ -124,7 +206,80 @@ export function WorkPageSections({ sections }: WorkPageSectionsProps) {
             </figure>
           );
         }
+        if (section.type === 'video' && section.content) {
+          const raw = section.content;
+          const src = raw.includes('#') ? raw : `${raw}#t=0.01`;
+          return (
+            <div
+              key={i}
+              style={{
+                margin: '0 0 28px',
+                borderRadius: 10,
+                overflow: 'hidden',
+                background: '#0a0a0a',
+                aspectRatio: '1',
+                position: 'relative',
+                border: '1px solid rgba(255,255,255,0.08)',
+                ...firstSectionNoTop,
+              }}
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                src={src}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
+              />
+            </div>
+          );
+        }
         if (section.type === 'code') {
+          const copyTarget = (section.copyContent ?? section.content) ?? '';
+          if (section.showCopy) {
+            return (
+              <div key={i} style={{ margin: '8px 0 0' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 16,
+                    padding: '14px 16px 14px 18px',
+                    borderRadius: 10,
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    background: '#050505',
+                    boxShadow:
+                      '0 4px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04)',
+                  }}
+                >
+                  <code
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                      fontFamily: "'SF Mono', 'Fira Code', ui-monospace, monospace",
+                      fontSize: 13,
+                      lineHeight: 1.55,
+                      color: 'rgba(255,255,255,0.88)',
+                      whiteSpace: 'pre-wrap',
+                      wordBreak: 'break-word',
+                    }}
+                  >
+                    {section.content}
+                  </code>
+                  <CopyCodeButton text={copyTarget} />
+                </div>
+              </div>
+            );
+          }
           return (
             <pre
               key={i}

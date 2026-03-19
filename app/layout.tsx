@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: "Ramin Tahbaz — Design Engineer",
   description:
     "Designer who codes, working across product, film, hardware, and writing. Self-taught, learning by doing.",
-  themeColor: "#000000",
+  themeColor: "#161616",
   icons: {
     icon: [
       { url: '/favicon.ico' },
