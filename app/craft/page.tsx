@@ -259,29 +259,52 @@ const MasonryCard = memo(function MasonryCard({
   dimmed,
   hideWhenFiltered,
   isMobile,
+  gridIndex,
 }: {
   item: WorkItem;
   onNavigate: () => void;
   dimmed: boolean;
   hideWhenFiltered?: boolean;
   isMobile: boolean;
+  gridIndex: number;
 }) {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const srcSetRef = useRef(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const hasVideo = !!item.video;
   const cardImage = item.cardImage;
   const useImageOnCard = !!cardImage;
+  const eagerVideo = gridIndex < 6;
 
-  // Play/pause by visibility; attach after one frame so scroll restore has run; reset video on unmount
+  // Lazy src (below fold) + play/pause by visibility; attach after one frame so scroll restore has run
   useEffect(() => {
     if (!hasVideo) return;
     let raf: number;
+    let io1: IntersectionObserver | undefined;
     let io2: IntersectionObserver | undefined;
 
     raf = requestAnimationFrame(() => {
       const card = cardRef.current;
       if (!card) return;
+
+      if (!eagerVideo) {
+        io1 = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              const video = videoRef.current;
+              if (!srcSetRef.current && video && item.video) {
+                video.src = `${item.video}#t=${(item.videoStart ?? 0) === 0 ? 0.001 : item.videoStart}`;
+                srcSetRef.current = true;
+              }
+              io1?.disconnect();
+            }
+          },
+          { rootMargin: '200px', threshold: 0 }
+        );
+        io1.observe(card);
+      }
 
       io2 = new IntersectionObserver(
         (entries) => {
@@ -301,14 +324,18 @@ const MasonryCard = memo(function MasonryCard({
 
     return () => {
       cancelAnimationFrame(raf);
+      io1?.disconnect();
       io2?.disconnect();
       if (videoRef.current) {
         videoRef.current.pause();
-        videoRef.current.src = '';
-        videoRef.current.load();
+        if (!eagerVideo) {
+          videoRef.current.src = '';
+          videoRef.current.load();
+          srcSetRef.current = false;
+        }
       }
     };
-  }, [hasVideo]);
+  }, [hasVideo, gridIndex, eagerVideo, item.video, item.videoStart]);
 
   const year = item.year ?? '';
   const cardFrameAspect = item.cardAspectRatio ?? '4/3';
@@ -378,7 +405,7 @@ const MasonryCard = memo(function MasonryCard({
           <video
             ref={videoRef}
             src={
-              item.video
+              eagerVideo && item.video
                 ? `${item.video}#t=${(item.videoStart ?? 0) === 0 ? 0.001 : item.videoStart}`
                 : undefined
             }
@@ -386,7 +413,7 @@ const MasonryCard = memo(function MasonryCard({
             muted
             loop={item.videoLoopSec == null}
             playsInline
-            preload="metadata"
+            preload={eagerVideo ? 'metadata' : 'none'}
             onCanPlay={() => {
               if (videoRef.current) videoRef.current.style.opacity = '1';
               setIsLoaded(true);
@@ -676,7 +703,7 @@ export default function CraftPage() {
                   index,
                 })),
               ]
-          ).map((slot) =>
+          ).map((slot, gridIndex) =>
             slot.type === 'neural' ? (
               <NeuralPreviewCard
                 key="neural-preview"
@@ -693,6 +720,7 @@ export default function CraftPage() {
                 dimmed={filter !== 'all' && WORK_ITEMS[slot.index].category !== filter}
                 hideWhenFiltered={filter !== 'all' && WORK_ITEMS[slot.index].category !== filter}
                 isMobile={isMobile}
+                gridIndex={gridIndex}
               />
             ) : null
           )}
