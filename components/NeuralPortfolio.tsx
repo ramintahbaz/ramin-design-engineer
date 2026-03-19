@@ -281,7 +281,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           content: {
             sections: [
               { type: 'video', content: item.video! },
-              { type: 'text', content: `A skill file built for users who want software to disappear, and the engineers who believe it should. Covers animation, forms, dashboards, mobile, and the invisible details that make software feel like it works without anyone knowing why.` },
+              { type: 'text', content: `A skill file built for users who want software to disappear, and the engineers who believe it should. Covers animation, forms, dashboards, mobile, and the invisible details that make software feel like it works without anyone knowing why. The demo above is a payment plan enrollment flow one shotted with the skill file.` },
               {
                 type: 'code',
                 content: `bash\nnpx skills add ramintahbaz23/ramin-design-eng`,
