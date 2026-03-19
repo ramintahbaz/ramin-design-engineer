@@ -7,6 +7,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import GitHubCommitBadge from '@/components/GitHubCommitBadge';
 import SignalIcon from '@/components/SignalIcon';
+import { useSplash } from '@/contexts/SplashContext';
 
 // Washington, DC coordinates for Open-Meteo
 const DC_LAT = 38.9072;
@@ -109,6 +110,8 @@ function XLogo({ className }: { className?: string }) {
 
 export default function TopBar() {
   const pathname = usePathname();
+  const { splashDone } = useSplash();
+  const showTopBar = splashDone || pathname !== '/';
   const router = useRouter();
   const searchParams = useSearchParams();
   const view = (searchParams.get('view') === 'neural' ? 'neural' : 'grid') as 'neural' | 'grid';
@@ -155,6 +158,19 @@ export default function TopBar() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const cached = sessionStorage.getItem('weather-cache');
+    if (cached) {
+      try {
+        const { temp, code } = JSON.parse(cached);
+        if (typeof temp === 'number' && typeof code === 'number') {
+          setWeather({ temp, code });
+          return;
+        }
+      } catch {
+        // invalid cache, fall through to fetch
+      }
+    }
     fetch(OPEN_METEO_URL)
       .then((res) => res.json())
       .then((data) => {
@@ -168,6 +184,10 @@ export default function TopBar() {
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
+
+  if (!showTopBar) {
+    return <div className="h-12 shrink-0" aria-hidden />;
+  }
 
   if (typeof document !== 'undefined' && showWeatherTooltip && weatherTooltipPos && weather) {
     createPortal(

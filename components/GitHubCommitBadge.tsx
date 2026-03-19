@@ -35,6 +35,26 @@ export default function GitHubCommitBadge() {
   const [info, setInfo] = useState<CommitInfo | null>(null);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const cached = sessionStorage.getItem('commit-cache');
+      if (cached) {
+        try {
+          const { sha, date, additions, deletions } = JSON.parse(cached);
+          if (
+            typeof sha === 'string' &&
+            typeof date === 'string' &&
+            typeof additions === 'number' &&
+            typeof deletions === 'number'
+          ) {
+            setInfo({ sha, date, additions, deletions });
+            return;
+          }
+        } catch {
+          // invalid cache, fall through to fetch
+        }
+      }
+    }
+
     let cancelled = false;
 
     async function fetchCommit() {
