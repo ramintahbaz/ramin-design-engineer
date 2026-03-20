@@ -551,7 +551,9 @@ export default function CraftPage() {
   const router = useRouter();
   useCraftScrollRestore();
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
   const [filter, setFilter] = useState<FilterValue>('all');
 
   useEffect(() => {
