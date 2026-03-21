@@ -279,6 +279,7 @@ const MasonryCard = memo(function MasonryCard({
   const videoRef = useRef<HTMLVideoElement>(null);
   const srcSetRef = useRef(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const hasVideo = !!item.video;
   const cardImage = item.cardImage;
   const useImageOnCard = !!cardImage;
@@ -415,6 +416,18 @@ const MasonryCard = memo(function MasonryCard({
             background: '#161616',
           }}
         >
+          {!isPlaying && (
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                zIndex: 2,
+                pointerEvents: 'none',
+              }}
+            />
+          )}
           <video
             ref={videoRef}
             src={
@@ -427,6 +440,8 @@ const MasonryCard = memo(function MasonryCard({
             loop={item.videoLoopSec == null}
             playsInline
             preload={eagerVideo ? 'metadata' : 'none'}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
             onCanPlay={() => {
               if (videoRef.current) videoRef.current.style.opacity = '1';
               setIsLoaded(true);
