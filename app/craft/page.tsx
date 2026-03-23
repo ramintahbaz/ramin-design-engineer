@@ -38,14 +38,19 @@ const CRAFT_MOBILE_TAIL_INDICES = (() => {
 const CRAFT_DESKTOP_PROMISE_IDX = WORK_ITEMS.findIndex((w) => w.id === 'promise-website');
 const CRAFT_DESKTOP_M8_IDX = WORK_ITEMS.findIndex((w) => w.id === 'film-03');
 
-/** Desktop only: exchange Promise website and m8 Commercial masonry positions. */
-function swapPromiseM8DesktopSlots<T extends { type: 'work'; index: number }>(slots: T[]): T[] {
+type CraftMasonrySlot =
+  | { type: 'work'; index: number }
+  | { type: 'neural' };
+
+/** Desktop only: exchange Promise website and m8 Commercial masonry positions (work slots only; neural passes through). */
+function swapPromiseM8DesktopSlots(slots: CraftMasonrySlot[]): CraftMasonrySlot[] {
   const a = CRAFT_DESKTOP_PROMISE_IDX;
   const b = CRAFT_DESKTOP_M8_IDX;
   if (a < 0 || b < 0) return slots;
   return slots.map((s) => {
-    if (s.index === a) return { ...s, index: b };
-    if (s.index === b) return { ...s, index: a };
+    if (s.type !== 'work') return s;
+    if (s.index === a) return { type: 'work' as const, index: b };
+    if (s.index === b) return { type: 'work' as const, index: a };
     return s;
   });
 }
