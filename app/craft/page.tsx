@@ -301,6 +301,7 @@ const MasonryCard = memo(function MasonryCard({
   const videoRef = useRef<HTMLVideoElement>(null);
   const srcSetRef = useRef(false);
   const shouldPlayRef = useRef(false);
+  const canPlayHandlerRef = useRef<(() => void) | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const hasVideo = !!item.video;
   const cardImage = item.cardImage;
@@ -352,9 +353,22 @@ const MasonryCard = memo(function MasonryCard({
             if (e.isIntersecting) {
               shouldPlayRef.current = true;
               tryPlayIfAppropriate();
+              if (video && video.paused) {
+                if (canPlayHandlerRef.current) {
+                  video.removeEventListener('canplay', canPlayHandlerRef.current);
+                  canPlayHandlerRef.current = null;
+                }
+                const handler = () => tryPlayIfAppropriate();
+                canPlayHandlerRef.current = handler;
+                video.addEventListener('canplay', handler);
+              }
             } else {
               shouldPlayRef.current = false;
               video?.pause();
+              if (video && canPlayHandlerRef.current) {
+                video.removeEventListener('canplay', canPlayHandlerRef.current);
+                canPlayHandlerRef.current = null;
+              }
             }
           }
         },
@@ -368,6 +382,10 @@ const MasonryCard = memo(function MasonryCard({
       cancelAnimationFrame(raf);
       io1?.disconnect();
       io2?.disconnect();
+      if (videoRef.current && canPlayHandlerRef.current) {
+        videoRef.current.removeEventListener('canplay', canPlayHandlerRef.current);
+        canPlayHandlerRef.current = null;
+      }
       if (videoRef.current) {
         videoRef.current.pause();
         if (!eagerVideo) {
