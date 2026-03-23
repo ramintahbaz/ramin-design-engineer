@@ -312,7 +312,7 @@ const MasonryCard = memo(function MasonryCard({
     if (!video) return;
     if (!shouldPlayRef.current) return;
     if (!video.paused) return;
-    if (video.readyState < 1) return;
+    if (video.readyState < 3) return;
     void video.play().catch(() => {});
   }, []);
 
@@ -340,7 +340,7 @@ const MasonryCard = memo(function MasonryCard({
               io1?.disconnect();
             }
           },
-          { rootMargin: '800px', threshold: 0 }
+          { rootMargin: '400px', threshold: 0 }
         );
         io1.observe(card);
       }
