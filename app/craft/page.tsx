@@ -322,6 +322,7 @@ const MasonryCard = memo(function MasonryCard({
     let raf: number;
     let io1: IntersectionObserver | undefined;
     let io2: IntersectionObserver | undefined;
+    let loadSrcTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
     raf = requestAnimationFrame(() => {
       const card = cardRef.current;
@@ -334,13 +335,20 @@ const MasonryCard = memo(function MasonryCard({
               if (!e.isIntersecting) continue;
               const video = videoRef.current;
               if (!srcSetRef.current && video && item.video) {
-                video.src = `${item.video}#t=${(item.videoStart ?? 0) === 0 ? 0.001 : item.videoStart}`;
-                srcSetRef.current = true;
+                io1?.disconnect();
+                loadSrcTimeoutId = setTimeout(() => {
+                  loadSrcTimeoutId = undefined;
+                  const v = videoRef.current;
+                  if (!v || srcSetRef.current || !item.video) return;
+                  v.src = `${item.video}#t=${(item.videoStart ?? 0) === 0 ? 0.001 : item.videoStart}`;
+                  srcSetRef.current = true;
+                }, gridIndex * 100);
+              } else {
+                io1?.disconnect();
               }
-              io1?.disconnect();
             }
           },
-          { rootMargin: '800px', threshold: 0 }
+          { rootMargin: '400px', threshold: 0 }
         );
         io1.observe(card);
       }
@@ -365,6 +373,7 @@ const MasonryCard = memo(function MasonryCard({
 
     return () => {
       shouldPlayRef.current = false;
+      if (loadSrcTimeoutId !== undefined) clearTimeout(loadSrcTimeoutId);
       cancelAnimationFrame(raf);
       io1?.disconnect();
       io2?.disconnect();
