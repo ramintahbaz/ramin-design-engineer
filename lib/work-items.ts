@@ -23,7 +23,7 @@ export interface WorkItem {
   year?: string;
 }
 
-/** Bump `?v=` when replacing `publichttps://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/promise_website_demo.mp4` so cached responses invalidate. */
+/** Bump `?v=` when replacing `https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/promise_website_demo.mp4` so cached responses invalidate. */
 export const PROMISE_WEBSITE_DEMO_VIDEO = 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/promise_website_demo.mp4';
 
 /** Craft masonry / grid card — lighter clip; hero on the work page uses `PROMISE_WEBSITE_DEMO_VIDEO`. */
@@ -102,7 +102,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'FedCaddy commercial',
     category: 'film',
     thumbnail: '/thumbnails/film-02.jpg',
-    video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.comhttps://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/fedcaddy_video_1_1_.mp4',
+    video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/fedcaddy_video_1_1_.mp4',
     videoFullLoop: true,
     cardAspectRatio: '4/3',
     href: '/films/film-02',
@@ -200,7 +200,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Zeke Sanders: Slice of pie',
     category: 'film',
     thumbnail: '/thumbnails/film-04.jpg',
-    video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.comhttps://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/slice_of_pie.mp4',
+    video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/slice_of_pie.mp4',
     videoFullLoop: true,
     videoObjectFit: 'cover',
     videoScale: 1.15,
@@ -270,7 +270,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'The Zeke Sanders story',
     category: 'film',
     thumbnail: '/thumbnails/film-05.jpg',
-    video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.comhttps://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/zeke_sanders.mp4',
+    video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/zeke_sanders.mp4',
     videoFullLoop: true,
     videoObjectFit: 'cover',
     videoScale: 1.15,

@@ -1,6 +1,6 @@
 /**
- * Replace local /videos/... URLs with Vercel Blob URLs using scripts/video-blob-urls.json.
- * Only keys under videos/ are applied (paths starting with "videos/").
+ * Replace local /videos/... and /images/... URLs with Vercel Blob URLs using scripts/video-blob-urls.json.
+ * Only keys under videos/ or images/ are applied (paths starting with those prefixes).
  *
  * Usage: npx tsx scripts/update-video-paths.ts
  */
@@ -34,7 +34,7 @@ function main() {
 
   const byUrl = new Map<string, Set<string>>();
   for (const [k, url] of Object.entries(map)) {
-    if (!k.startsWith('videos/')) continue;
+    if (!k.startsWith('videos/') && !k.startsWith('images/')) continue;
     if (!byUrl.has(url)) byUrl.set(url, new Set());
     byUrl.get(url)!.add(k);
   }
@@ -43,13 +43,25 @@ function main() {
   const rows: Row[] = [];
   for (const [url, keys] of byUrl) {
     for (const relKey of keys) {
-      rows.push({ path: encodedPublicPath(relKey), url });
+      const path = encodedPublicPath(relKey);
+      if (!path.startsWith('/videos/') && !path.startsWith('/images/')) continue;
+      rows.push({ path, url });
     }
   }
   rows.sort((a, b) => b.path.length - a.path.length);
 
+  /**
+   * Only replace local public paths (/videos/..., /images/...), never a path segment that
+   * already belongs to a full http(s) URL. Otherwise `https://host/videos/x` would match
+   * `/videos/x` again and prepend a second blob URL.
+   */
+  const localPathOnlyPrefix = '(?<!https?:\\/\\/[^\\/]+)';
+
   const patterns = rows.map(({ path, url }) => ({
-    re: new RegExp(escapeRegex(path) + '(?:\\?v=\\d+)?', 'g'),
+    re: new RegExp(
+      localPathOnlyPrefix + escapeRegex(path) + '(?:\\?v=\\d+)?',
+      'g',
+    ),
     url,
   }));
 
