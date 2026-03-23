@@ -135,17 +135,17 @@ export function PromiseWebsiteDashboard() {
         {tab === 'overview' && (
           <div>
             <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 16 }}>California · Q1 2025</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10, marginBottom: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, marginBottom: 20 }}>
               {[
                 { label: 'Total distributed', value: '$18.4M', delta: '↑ 12% vs last quarter' },
                 { label: 'Households reached', value: '52,841', delta: '↑ 8% vs last quarter' },
                 { label: 'Avg. time to payment', value: '1.6d', delta: '↓ 0.4d faster' },
                 { label: 'Payment success rate', value: '99.2%', delta: '↑ 0.3%' },
               ].map(k => (
-                <div key={k.label} style={{ background: '#161619', borderRadius: 8, padding: '14px 16px', border: '1px solid #1E2023' }}>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginBottom: 6 }}>{k.label}</div>
-                  <div style={{ fontSize: 22, fontWeight: 500, color: 'white', letterSpacing: '-0.02em' }}>{k.value}</div>
-                  <div style={{ fontSize: 11, color: '#4ade80', marginTop: 4 }}>{k.delta}</div>
+                <div key={k.label} style={{ background: '#161619', borderRadius: 6, padding: '10px 12px', border: '1px solid #1E2023' }}>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', marginBottom: 4 }}>{k.label}</div>
+                  <div style={{ fontSize: 17, fontWeight: 500, color: 'white', letterSpacing: '-0.02em', lineHeight: 1.2 }}>{k.value}</div>
+                  <div style={{ fontSize: 10, color: '#4ade80', marginTop: 3 }}>{k.delta}</div>
                 </div>
               ))}
             </div>

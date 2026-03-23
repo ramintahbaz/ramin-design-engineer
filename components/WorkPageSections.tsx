@@ -312,6 +312,7 @@ export function WorkPageSections({ sections }: WorkPageSectionsProps) {
           );
         }
         if (section.type === 'heading') {
+          if (section.desktopOnly && isMobile) return null;
           return (
             <h3
               key={i}
@@ -328,6 +329,7 @@ export function WorkPageSections({ sections }: WorkPageSectionsProps) {
           );
         }
         if (section.type === 'component') {
+          if (section.desktopOnly && isMobile) return null;
           const id = section.componentId;
           if (id === 'bloom') return (<div key={i} style={{ margin: '24px 0', ...firstSectionNoTop }}><Bloom /></div>);
           if (id === 'bloom-morph') return (<div key={i} style={{ margin: '16px 0 32px', ...firstSectionNoTop }}><BloomMorphDemo /></div>);

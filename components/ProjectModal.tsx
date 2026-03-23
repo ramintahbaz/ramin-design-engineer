@@ -654,6 +654,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                           );
                         }
                         if (section.type === 'heading') {
+                          if ('desktopOnly' in section && (section as { desktopOnly?: boolean }).desktopOnly && isMobile) return null;
                           return (
                             <h3
                               key={i}
@@ -893,6 +894,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                           );
                         }
                         if (section.type === 'component' && section.componentId === 'promise-website-dashboard') {
+                          if ('desktopOnly' in section && (section as { desktopOnly?: boolean }).desktopOnly && isMobile) return null;
                           return (
                             <div key={i} style={{ margin: '16px 0 32px' }}>
                               <PromiseWebsiteDashboard />

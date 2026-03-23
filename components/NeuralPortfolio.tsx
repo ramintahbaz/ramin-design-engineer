@@ -225,9 +225,13 @@ const PROMISE_WEBSITE_SECTIONS = [
   { type: 'component' as const, componentId: 'promise-website-hero' },
   { type: 'heading' as const, content: 'The concept' },
   { type: 'text' as const, content: `Govtech sites often explain the stack in copy first. Here, the hero embeds a live dashboard that steps through what Promise actually runs: payment plans, benefits, eligibility, financial relief — so visitors can demo the actual product and understand our attention to craft.` },
-  { type: 'heading' as const, content: 'The dashboard' },
-  { type: 'text' as const, content: `Fully interactive React: batch tables, KPIs, program-level disbursement, recipient rows, and a compliance audit log — instead of the traditional recording or static frame. The mock data mirrors how Promise structures payments and oversight at scale.` },
-  { type: 'component' as const, componentId: 'promise-website-dashboard' },
+  { type: 'heading' as const, content: 'The dashboard', desktopOnly: true },
+  {
+    type: 'text' as const,
+    content: `Fully interactive React: batch tables, KPIs, program-level disbursement, recipient rows, and a compliance audit log — instead of the traditional recording or static frame. The mock data mirrors how Promise structures payments and oversight at scale.`,
+    desktopOnly: true,
+  },
+  { type: 'component' as const, componentId: 'promise-website-dashboard', desktopOnly: true },
   { type: 'heading' as const, content: 'Stack' },
   { type: 'text' as const, content: `Next.js, Framer Motion, Tailwind, TypeScript. The dashboard is a self-contained tree embedded in the page.` },
 ];

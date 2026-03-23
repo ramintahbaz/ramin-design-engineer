@@ -221,7 +221,7 @@ export default function TopBar() {
           pathname === '/' && view === 'neural' ? 'bg-neural-top-bar' : 'bg-top-bar'
         }`}
       >
-      {/* Mobile: avatar + GitHub · Connect · X left-aligned, filter right — avatar uses client nav to avoid refresh and keep view preference */}
+      {/* Mobile: avatar + Resume + GitHub · LinkedIn · X left-aligned, filter right — avatar uses client nav to avoid refresh and keep view preference */}
       <div className="flex md:hidden items-center justify-between w-full text-[11px] font-medium">
         <div className="flex items-center gap-4">
           <button
@@ -245,6 +245,14 @@ export default function TopBar() {
               sizes="32px"
             />
           </button>
+          <Link
+            href="/resume/ramin_tahbaz_resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 hover:opacity-80 transition-opacity"
+          >
+            Resume
+          </Link>
           <Link href="https://github.com/ramintahbaz23/" target="_blank" rel="noopener noreferrer" className="shrink-0 flex items-center hover:opacity-80" aria-label="GitHub">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/GitHub_Invertocat_White.svg" alt="" className="h-3.5 w-3.5" />
@@ -330,6 +338,14 @@ export default function TopBar() {
         <span className="shrink-0 font-mono" suppressHydrationWarning>
           {mounted ? `SFO ${formatTime(now, 'America/Los_Angeles', true)}` : 'SFO --:--:--'}
         </span>
+        <Link
+          href="/resume/ramin_tahbaz_resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 hover:opacity-80 transition-opacity"
+        >
+          Resume
+        </Link>
         <Link href="https://github.com/ramintahbaz23/" target="_blank" rel="noopener noreferrer" className="shrink-0 flex items-center hover:opacity-80" aria-label="GitHub">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/GitHub_Invertocat_White.svg" alt="" className="h-3.5 w-3.5" />
@@ -338,7 +354,6 @@ export default function TopBar() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/linkedin-icon.png" alt="" className="h-3.5 w-3.5" />
         </Link>
-        <span className="shrink-0 text-white/60 cursor-default hidden">Resume</span>
         <Link
           href="https://x.com/ramintahbaz"
           target="_blank"
