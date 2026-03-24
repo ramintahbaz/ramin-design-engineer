@@ -584,7 +584,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           category: item.category,
           description: 'A coded redesign of Promise\'s marketing site. An unreleased direction.',
           year: item.year ?? 'December 2025',
-          thumbnail: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/thumbnails/promise_website_preview.mp4',
+          thumbnail: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/thumbnails/promise_website_preview.mp4#t=0.01',
           tags: [],
           content: { sections: PROMISE_WEBSITE_SECTIONS },
         },
@@ -2393,7 +2393,7 @@ export default function NeuralPortfolio({ isLayerVisible = true, splashMode = fa
                   >
                     {/* Simplified neural-style dots (non-interactive); above gradient so they’re visible */}
                     <video
-                      src="https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/neural_video.mp4"
+                      src="https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/neural_video.mp4#t=0.01"
                       muted
                       loop
                       playsInline
@@ -2971,21 +2971,21 @@ const MOBILE_PREVIEW_CATEGORY_LABELS: Record<string, string> = {
 const MOBILE_PREVIEW_MODAL_WIDTH = 'min(88vw, 320px)';
 const MOBILE_PREVIEW_CARD_HEIGHT = 300;
 
-const SHOWREEL_VIDEO = 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/document_review_preview.mp4';
+const SHOWREEL_VIDEO = 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/document_review_preview.mp4#t=0.01';
 const SHOWREEL_ANCHOR_ID = 'visual-system-hover'; // desktop: showreel placed to the right of this card
 
 const SHOWREEL_ITEMS = [
-  { id: 'photoboom', title: 'Photo boom', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/photo_boom_video.mp4', href: '/photoboom' },
-  { id: 'ai-document-verification', title: 'Intelligent document review', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/document_review_preview.mp4', href: '/products/ai-document-verification' },
+  { id: 'photoboom', title: 'Photo boom', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/photo_boom_video.mp4#t=0.01', href: '/photoboom' },
+  { id: 'ai-document-verification', title: 'Intelligent document review', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/document_review_preview.mp4#t=0.01', href: '/products/ai-document-verification' },
   { id: 'co-creator', title: 'Co-creator', video: '/images/co-creator/taste%20%E2%86%92%20system%20demo.mp4', href: '/products/co-creator' },
   { id: 'keycadets', title: 'Keycadets (acquired)', video: '/images/keycadets/248285912_4711445322210021_8637902604872814185_n.MOV', href: '/products/keycadets' },
-  { id: 'carousel', title: 'Netflix film scroll', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/netflix_scroll.mp4', href: '/interactions/carousel' },
-  { id: 'electric-border', title: 'Electric border', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/electric_border.mp4', href: '/interactions/electric-border' },
-  { id: 'bloom', title: 'Bloom', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/bloom_video.mp4', href: '/interactions/bloom' },
-  { id: 'payment-status', title: 'Payment status', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/payment_processing.mp4', href: '/payment-status' },
-  { id: 'visual-system-hover', title: 'Visual system hover', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/visal_hover.mp4', href: '/visual-system-hover' },
-  { id: 'craft', title: 'Craft', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/craft_video.mp4', href: '/products/craft' },
-  { id: 'sunset', title: 'Sunset chaser', video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/sunset_chaser.mp4', href: '/products/sunset' },
+  { id: 'carousel', title: 'Netflix film scroll', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/netflix_scroll.mp4#t=0.01', href: '/interactions/carousel' },
+  { id: 'electric-border', title: 'Electric border', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/electric_border.mp4#t=0.01', href: '/interactions/electric-border' },
+  { id: 'bloom', title: 'Bloom', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/bloom_video.mp4#t=0.01', href: '/interactions/bloom' },
+  { id: 'payment-status', title: 'Payment status', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/payment_processing.mp4#t=0.01', href: '/payment-status' },
+  { id: 'visual-system-hover', title: 'Visual system hover', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/visal_hover.mp4#t=0.01', href: '/visual-system-hover' },
+  { id: 'craft', title: 'Craft', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/craft_video.mp4#t=0.01', href: '/products/craft' },
+  { id: 'sunset', title: 'Sunset chaser', video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/sunset_chaser.mp4#t=0.01', href: '/products/sunset' },
   { id: 'thistrackiscrack', title: 'Thistrackiscrack (acquired)', video: '/images/thistrackiscrack/trackiscrack.MOV', href: '/products/thistrackiscrack' },
   { id: 'doritos-loaded', title: 'Doritos loaded', video: '/images/doritos/231215_The-Garage_Doritos_S01_1x1_H264.mp4', href: '/products/doritos-loaded' },
 ];

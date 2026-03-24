@@ -147,7 +147,7 @@ function NeuralPreviewCard({
         for (const e of entries) {
           if (e.isIntersecting) {
             if (!srcSetRef.current) {
-              video.src = 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/neural_video.mp4';
+              video.src = 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/neural_video.mp4#t=0.01';
               srcSetRef.current = true;
             }
             video.play().catch(() => {});
@@ -319,6 +319,8 @@ const MasonryCard = memo(function MasonryCard({
   const canPlayHandlerRef = useRef<(() => void) | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const hasVideo = !!item.video;
+  /** Strip #fragment so we can append `#t=` for start time without duplicating fragments from data URLs. */
+  const videoBase = item.video ? item.video.split('#')[0] : '';
   const cardImage = item.cardImage;
   const useImageOnCard = !!cardImage;
   const eagerVideo = gridIndex < 6;
@@ -350,7 +352,7 @@ const MasonryCard = memo(function MasonryCard({
               if (!e.isIntersecting) continue;
               const video = videoRef.current;
               if (!srcSetRef.current && video && item.video) {
-                video.src = `${item.video}#t=${(item.videoStart ?? 0) === 0 ? 0.001 : item.videoStart}`;
+                video.src = `${videoBase}#t=${(item.videoStart ?? 0) === 0 ? 0.01 : item.videoStart}`;
                 srcSetRef.current = true;
               }
               io1?.disconnect();
@@ -481,7 +483,7 @@ const MasonryCard = memo(function MasonryCard({
             ref={videoRef}
             src={
               eagerVideo && item.video
-                ? `${item.video}#t=${(item.videoStart ?? 0) === 0 ? 0.001 : item.videoStart}`
+                ? `${videoBase}#t=${(item.videoStart ?? 0) === 0 ? 0.01 : item.videoStart}`
                 : undefined
             }
             autoPlay

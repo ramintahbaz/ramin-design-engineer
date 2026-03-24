@@ -1,10 +1,18 @@
 /**
- * Upload all .mp4 / .MP4 under public/ to Vercel Blob.
- * Requires BLOB_READ_WRITE_TOKEN in .env.local (or .env).
+ * Upload all .mp4 / .MP4 under public/ to Cloudflare R2 (S3-compatible API).
+ *
+ * Requires in .env.local (or .env):
+ *   R2_ACCOUNT_ID
+ *   R2_ACCESS_KEY_ID
+ *   R2_SECRET_ACCESS_KEY
+ *
+ * Objects are written to bucket `ramin-portfolio-videos`. The S3 API endpoint is
+ * `https://<R2_ACCOUNT_ID>.r2.cloudflarestorage.com`. Public URLs in the output
+ * JSON use the bucket’s public hostname (r2.dev).
  *
  * Usage: npx tsx scripts/upload-videos.ts
  */
-import { put } from '@vercel/blob';
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { config } from 'dotenv';
 import { createReadStream, readdirSync, existsSync, writeFileSync } from 'fs';
 import { resolve, join, relative } from 'path';
@@ -16,6 +24,10 @@ config({ path: resolve(process.cwd(), '.env') });
 const PUBLIC_DIR = resolve(process.cwd(), 'public');
 const OUT_JSON = resolve(process.cwd(), 'scripts', 'video-blob-urls.json');
 
+const R2_BUCKET = 'ramin-portfolio-videos';
+/** Public base URL for objects (matches site asset URLs). */
+const R2_PUBLIC_BASE = 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev';
+
 /** Blob key: path relative to public/; spaces/special chars → underscores per segment. */
 export function normalizeBlobKey(relPath: string): string {
   const rel = relPath.replace(/\\/g, '/').replace(/^\/+/, '');
@@ -23,6 +35,11 @@ export function normalizeBlobKey(relPath: string): string {
     .split('/')
     .map((segment) => segment.replace(/[^a-zA-Z0-9._-]/g, '_').replace(/_+/g, '_'))
     .join('/');
+}
+
+function publicObjectUrl(key: string): string {
+  const base = R2_PUBLIC_BASE.replace(/\/$/, '');
+  return `${base}/${key.split('/').map(encodeURIComponent).join('/')}`;
 }
 
 function* walkMp4(dir: string): Generator<string> {
@@ -35,11 +52,25 @@ function* walkMp4(dir: string): Generator<string> {
 }
 
 async function main() {
-  const token = process.env.BLOB_READ_WRITE_TOKEN;
-  if (!token) {
-    console.error('Missing BLOB_READ_WRITE_TOKEN. Add it to .env.local');
+  const accountId = process.env.R2_ACCOUNT_ID;
+  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+
+  if (!accountId || !accessKeyId || !secretAccessKey) {
+    console.error(
+      'Missing R2 credentials. Set R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, and R2_SECRET_ACCESS_KEY in .env.local'
+    );
     process.exit(1);
   }
+
+  const s3 = new S3Client({
+    region: 'auto',
+    endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId,
+      secretAccessKey,
+    },
+  });
 
   const flatMap: Record<string, string> = {};
 
@@ -48,15 +79,19 @@ async function main() {
     const normalizedKey = normalizeBlobKey(relFromPublic);
     const body = createReadStream(abs);
 
-    const blob = await put(normalizedKey, body, {
-      access: 'public',
-      token,
-      addRandomSuffix: false,
-    });
+    await s3.send(
+      new PutObjectCommand({
+        Bucket: R2_BUCKET,
+        Key: normalizedKey,
+        Body: body,
+        ContentType: 'video/mp4',
+      })
+    );
 
-    flatMap[relFromPublic] = blob.url;
-    flatMap[normalizedKey] = blob.url;
-    console.error(relFromPublic, '→', normalizedKey, '→', blob.url);
+    const url = publicObjectUrl(normalizedKey);
+    flatMap[relFromPublic] = url;
+    flatMap[normalizedKey] = url;
+    console.error(relFromPublic, '→', normalizedKey, '→', url);
   }
 
   writeFileSync(OUT_JSON, JSON.stringify(flatMap, null, 2), 'utf8');

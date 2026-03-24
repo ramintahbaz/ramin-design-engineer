@@ -18,7 +18,7 @@ const gridItems: GridItem[] = [
     year: '1987',
     bgColor: 'rgba(42, 42, 42, 0.5)',
     image: '/images/image1.jpeg',
-    video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/Michael_Jordan.mp4',
+    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/Michael_Jordan.mp4#t=0.01',
   },
   {
     id: '2',
@@ -42,7 +42,7 @@ const gridItems: GridItem[] = [
     year: '1997',
     bgColor: 'rgba(42, 42, 42, 0.5)',
     image: '/images/image4.jpeg',
-    video: 'https://xt6vyscb1zzon7fs.public.blob.vercel-storage.com/videos/Mr_Rogers.mp4',
+    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/Mr_Rogers.mp4#t=0.01',
   },
 ];
 
