@@ -27,8 +27,12 @@ export interface WorkItem {
 export const PROMISE_COMMERCIAL_PREVIEW_VIDEO =
   'https://cdn.ramintahbaz.com/videos/Promise_Console_preview.mp4#t=0.01';
 
-/** Promise Console demo clip (e.g. Promise website / Promise Console work page hero). Bump URL or add `?v=` when replacing the file so cached responses invalidate. */
+/** Promise marketing-site hero (`PromiseWebsiteHero` / promise-website work page). Bump URL or add `?v=` when replacing the file so cached responses invalidate. */
 export const PROMISE_WEBSITE_DEMO_VIDEO =
+  'https://cdn.ramintahbaz.com/videos/promise_website_demo.mp4#t=0.01';
+
+/** Lead video on the Promise Console product work page only — not shared with promise-website. */
+export const PROMISE_CONSOLE_WORK_PAGE_VIDEO =
   'https://cdn.ramintahbaz.com/videos/Promise_Console_new.mp4#t=0.01';
 
 /** Craft masonry / grid card — lighter clip; hero on the work page uses `PROMISE_WEBSITE_DEMO_VIDEO`. */
@@ -305,7 +309,7 @@ export const WORK_ITEMS: WorkItem[] = [
     excerpt: 'An agentic ops console for government benefit payment infrastructure.',
     year: 'January 2026',
     video: PROMISE_COMMERCIAL_PREVIEW_VIDEO,
-    thumbnail: 'https://cdn.ramintahbaz.com/videos/promise_website_demo.mp4#t=0.01',
+    thumbnail: PROMISE_CONSOLE_WORK_PAGE_VIDEO,
     cardAspectRatio: '4/3',
   },
 ];

@@ -9,7 +9,12 @@ import { useSplash } from '@/contexts/SplashContext';
 import type { ProjectModalProject } from '@/components/ProjectModal';
 import { BentoCard } from '@/components/BentoCard';
 import SignalIcon from '@/components/SignalIcon';
-import { WORK_ITEMS, PROMISE_WEBSITE_DEMO_VIDEO, PROMISE_COMMERCIAL_PREVIEW_VIDEO, type WorkItem } from '@/lib/work-items';
+import {
+  WORK_ITEMS,
+  PROMISE_COMMERCIAL_PREVIEW_VIDEO,
+  PROMISE_CONSOLE_WORK_PAGE_VIDEO,
+  type WorkItem,
+} from '@/lib/work-items';
 
 export { WORK_ITEMS, type WorkItem };
 
@@ -762,7 +767,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           link: item.href,
           content: {
             sections: [
-              { type: 'video', content: PROMISE_WEBSITE_DEMO_VIDEO },
+              { type: 'video', content: PROMISE_CONSOLE_WORK_PAGE_VIDEO },
               {
                 type: 'text',
                 content: `Promise is payment infrastructure for government benefit programs. Console is the operator interface — accounts, payment plans, ACH, ledger, compliance, all in one surface.`,
