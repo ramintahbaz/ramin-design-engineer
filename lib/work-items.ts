@@ -88,7 +88,7 @@ export const WORK_ITEMS: WorkItem[] = [
     cardAspectRatio: '16/9',
     href: '/interactions/electric-border',
     excerpt: 'A card border that writhes. Driven by SVG displacement maps and animated turbulence noise.',
-    year: 'January 2026',
+    year: 'June 2025',
   },
   {
     id: 'visual-system-hover',

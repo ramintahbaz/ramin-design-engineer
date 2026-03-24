@@ -381,7 +381,7 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
           title: item.title,
           category: item.category,
           description: 'A card border that writhes. Driven by SVG displacement maps and animated turbulence noise.',
-          year: item.year ?? 'January 2026',
+          year: item.year ?? 'June 2025',
           thumbnail: item.thumbnail,
           tags: [],
           link: '/interactions/electric-border',
