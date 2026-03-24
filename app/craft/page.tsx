@@ -147,7 +147,7 @@ function NeuralPreviewCard({
         for (const e of entries) {
           if (e.isIntersecting) {
             if (!srcSetRef.current) {
-              video.src = 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/neural_video.mp4#t=0.01';
+              video.src = 'https://cdn.ramintahbaz.com/videos/neural_video.mp4#t=0.01';
               srcSetRef.current = true;
             }
             video.play().catch(() => {});

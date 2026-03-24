@@ -25,14 +25,14 @@ export interface WorkItem {
 
 /** Masonry + neural hover preview for Promise Console. */
 export const PROMISE_COMMERCIAL_PREVIEW_VIDEO =
-  'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/Promise_Console_preview.mp4#t=0.01';
+  'https://cdn.ramintahbaz.com/videos/Promise_Console_preview.mp4#t=0.01';
 
 /** Full-length Promise Console clip (e.g. work page hero). Bump URL or add `?v=` when replacing the file so cached responses invalidate. */
 export const PROMISE_WEBSITE_DEMO_VIDEO =
-  'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/promise_console_latest.mp4#t=0.01';
+  'https://cdn.ramintahbaz.com/videos/promise_console_latest.mp4#t=0.01';
 
 /** Craft masonry / grid card — lighter clip; hero on the work page uses `PROMISE_WEBSITE_DEMO_VIDEO`. */
-export const PROMISE_WEBSITE_MASONRY_VIDEO = 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/thumbnails/promise_website_demo_1.mp4#t=0.01';
+export const PROMISE_WEBSITE_MASONRY_VIDEO = 'https://cdn.ramintahbaz.com/videos/thumbnails/promise_website_demo_1.mp4#t=0.01';
 
 export const WORK_ITEMS: WorkItem[] = [
   {
@@ -40,7 +40,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Payment status',
     category: 'interaction',
     thumbnail: '',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/payment_processing.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/payment_processing.mp4#t=0.01',
     cardAspectRatio: '1/1',
     href: '/payment-status',
     excerpt: 'A button that cycles through payment states. Each state gets its own motion.',
@@ -51,7 +51,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Craft',
     category: 'product',
     thumbnail: '/thumbnails/craft.png',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/craft_video.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/craft_video.mp4#t=0.01',
     videoFullLoop: true,
     cardAspectRatio: '4/3',
     href: '/products/craft',
@@ -65,7 +65,7 @@ export const WORK_ITEMS: WorkItem[] = [
     year: 'December 2025',
     href: '/products/promise-website',
     video: PROMISE_WEBSITE_MASONRY_VIDEO,
-    thumbnail: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/thumbnails/promise_website_preview.mp4#t=0.01',
+    thumbnail: 'https://cdn.ramintahbaz.com/videos/thumbnails/promise_website_preview.mp4#t=0.01',
     excerpt: 'A coded redesign of Promise\'s marketing site. An unreleased direction.',
   },
   {
@@ -73,7 +73,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Photo boom',
     category: 'interaction',
     thumbnail: '',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/photo_boom_video.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/photo_boom_video.mp4#t=0.01',
     cardAspectRatio: '3/4',
     href: '/photoboom',
     excerpt: 'A photo stack that explodes from wherever you click.',
@@ -84,7 +84,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Electric border',
     category: 'interaction',
     thumbnail: '',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/electric_border.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/electric_border.mp4#t=0.01',
     cardAspectRatio: '16/9',
     href: '/interactions/electric-border',
     excerpt: 'A card border that writhes. Driven by SVG displacement maps and animated turbulence noise.',
@@ -95,7 +95,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Visual system hover',
     category: 'interaction',
     thumbnail: '',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/visal_hover.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/visal_hover.mp4#t=0.01',
     videoFullLoop: true,
     cardAspectRatio: '1/1',
     href: '/visual-system-hover',
@@ -107,7 +107,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'FedCaddy commercial',
     category: 'film',
     thumbnail: '/thumbnails/film-02.jpg',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/fedcaddy_video_1_1_.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/fedcaddy_video_1%20(1).mp4#t=0.01',
     videoFullLoop: true,
     cardAspectRatio: '4/3',
     href: '/films/film-02',
@@ -119,7 +119,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Bloom',
     category: 'interaction',
     thumbnail: '',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/bloom_video.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/bloom_video.mp4#t=0.01',
     videoFullLoop: true,
     cardAspectRatio: '16/9',
     href: '/interactions/bloom',
@@ -131,7 +131,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Co-creator',
     category: 'product',
     thumbnail: '/thumbnails/co-creator.jpg',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/taste_demo.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/taste_demo.mp4#t=0.01',
     cardAspectRatio: '4/3',
     href: '/products/co-creator',
     excerpt: 'AI co-designer that turns taste into a complete design system.',
@@ -152,7 +152,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Netflix film scroll',
     category: 'interaction',
     thumbnail: '/thumbnails/carousel.jpg',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/netflix_scroll.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/netflix_scroll.mp4#t=0.01',
     href: '/interactions/carousel',
     excerpt: 'A horizontal scroll with hover lift, parallax drift, and mobile focus scaling.',
     year: 'November 2024',
@@ -172,7 +172,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Engineering at Promise',
     category: 'film',
     thumbnail: '/thumbnails/film-01.jpg',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/promise_commercial_preview.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/promise_commercial_preview.mp4#t=0.01',
     videoFullLoop: true,
     href: '/films/film-01',
     excerpt: 'Brief description of the project.',
@@ -183,7 +183,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Sunset chaser',
     category: 'product',
     thumbnail: '/thumbnails/sunset.png',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/sunset_chaser.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/sunset_chaser.mp4#t=0.01',
     videoStart: 1,
     videoFullLoop: true,
     href: '/products/sunset',
@@ -205,7 +205,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Zeke Sanders: Slice of pie',
     category: 'film',
     thumbnail: '/thumbnails/film-04.jpg',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/slice_of_pie.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/slice%20of%20pie.mp4#t=0.01',
     videoFullLoop: true,
     videoObjectFit: 'cover',
     videoScale: 1.15,
@@ -218,7 +218,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'Intelligent document review',
     category: 'product',
     thumbnail: '/thumbnails/ai-document-verification.jpg',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/document_review_preview.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/document_review_preview.mp4#t=0.01',
     videoObjectFit: 'cover',
     videoFullLoop: true,
     cardAspectRatio: '3/4',
@@ -253,7 +253,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'M8 commercial',
     category: 'film',
     thumbnail: '/thumbnails/film-03.jpg',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/m8_video_preview.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/m8_video_preview.mp4#t=0.01',
     videoFullLoop: true,
     cardAspectRatio: '3/4',
     href: '/films/film-03',
@@ -275,7 +275,7 @@ export const WORK_ITEMS: WorkItem[] = [
     title: 'The Zeke Sanders story',
     category: 'film',
     thumbnail: '/thumbnails/film-05.jpg',
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/zeke_sanders.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/zeke%20sanders.mp4#t=0.01',
     videoFullLoop: true,
     videoObjectFit: 'cover',
     videoScale: 1.15,
@@ -289,7 +289,7 @@ export const WORK_ITEMS: WorkItem[] = [
     category: 'interaction',
     thumbnail: '',
     /** Bump `v` when replacing the file so clients don’t keep a cached copy */
-    video: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/payment_plan_skill.mp4#t=0.01',
+    video: 'https://cdn.ramintahbaz.com/videos/payment_plan_skill.mp4#t=0.01',
     cardAspectRatio: '1/1',
     videoObjectFit: 'contain',
     href: '/interactions/ramin-skill',
@@ -305,7 +305,7 @@ export const WORK_ITEMS: WorkItem[] = [
     excerpt: 'An agentic ops console for government benefit payment infrastructure.',
     year: 'January 2026',
     video: PROMISE_COMMERCIAL_PREVIEW_VIDEO,
-    thumbnail: 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev/videos/promise_website_demo.mp4#t=0.01',
+    thumbnail: 'https://cdn.ramintahbaz.com/videos/promise_website_demo.mp4#t=0.01',
     cardAspectRatio: '4/3',
   },
 ];

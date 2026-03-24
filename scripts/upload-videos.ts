@@ -8,7 +8,7 @@
  *
  * Objects are written to bucket `ramin-portfolio-videos`. The S3 API endpoint is
  * `https://<R2_ACCOUNT_ID>.r2.cloudflarestorage.com`. Public URLs in the output
- * JSON use the bucket’s public hostname (r2.dev).
+ * JSON use the public CDN base URL (cdn.ramintahbaz.com).
  *
  * Usage: npx tsx scripts/upload-videos.ts
  */
@@ -26,7 +26,7 @@ const OUT_JSON = resolve(process.cwd(), 'scripts', 'video-blob-urls.json');
 
 const R2_BUCKET = 'ramin-portfolio-videos';
 /** Public base URL for objects (matches site asset URLs). */
-const R2_PUBLIC_BASE = 'https://pub-ec94e1d20dd4449bb79f835c53d971c0.r2.dev';
+const R2_PUBLIC_BASE = 'https://cdn.ramintahbaz.com';
 
 /** Blob key: path relative to public/; spaces/special chars → underscores per segment. */
 export function normalizeBlobKey(relPath: string): string {
