@@ -27,9 +27,9 @@ export interface WorkItem {
 export const PROMISE_COMMERCIAL_PREVIEW_VIDEO =
   'https://cdn.ramintahbaz.com/videos/Promise_Console_preview.mp4#t=0.01';
 
-/** Full-length Promise Console clip (e.g. work page hero). Bump URL or add `?v=` when replacing the file so cached responses invalidate. */
+/** Promise Console demo clip (e.g. Promise website / Promise Console work page hero). Bump URL or add `?v=` when replacing the file so cached responses invalidate. */
 export const PROMISE_WEBSITE_DEMO_VIDEO =
-  'https://cdn.ramintahbaz.com/videos/promise_console_latest.mp4#t=0.01';
+  'https://cdn.ramintahbaz.com/videos/Promise_Console_new.mp4#t=0.01';
 
 /** Craft masonry / grid card — lighter clip; hero on the work page uses `PROMISE_WEBSITE_DEMO_VIDEO`. */
 export const PROMISE_WEBSITE_MASONRY_VIDEO = 'https://cdn.ramintahbaz.com/videos/thumbnails/promise_website_demo_1.mp4#t=0.01';
