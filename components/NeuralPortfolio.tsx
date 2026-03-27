@@ -13,6 +13,8 @@ import {
   WORK_ITEMS,
   PROMISE_COMMERCIAL_PREVIEW_VIDEO,
   PROMISE_CONSOLE_WORK_PAGE_VIDEO,
+  NACHA_PREVIEW_VIDEO,
+  NACHA_DEMO_VIDEO,
   type WorkItem,
 } from '@/lib/work-items';
 
@@ -807,6 +809,154 @@ export const PROJECT_DETAILS: Record<string, NonNullable<ProjectModalProject>> =
               {
                 type: 'text',
                 content: `In government fintech, a failed payment can interrupt a benefit or trigger a collections action. Operators need to trust the system and verify it. Console makes both possible at the same time.`,
+              },
+            ],
+          },
+        },
+      ];
+    }
+    if (item.id === 'nacha') {
+      return [
+        item.id,
+        {
+          id: item.id,
+          title: 'Disbursement ledger',
+          category: item.category,
+          description:
+            'Reconciliation infrastructure for government relief disbursement. Event ledger, validated NACHA file generation, and AI-powered returns parsing.',
+          year: item.year ?? 'March 2026',
+          thumbnail: NACHA_PREVIEW_VIDEO,
+          tags: ['Fintech', 'Infrastructure', 'ACH', 'AI'],
+          link: item.href,
+          content: {
+            sections: [
+              { type: 'video', content: NACHA_DEMO_VIDEO },
+              {
+                type: 'text',
+                content:
+                  'Promise is payment infrastructure for government relief programs. This is the reconciliation layer — every dollar tracked from approval to disbursement to return, NACHA files generated from the ledger, returns parsed automatically, and ACH submission handled without manual uploads.',
+              },
+              { type: 'heading', content: 'The problem' },
+              {
+                type: 'text',
+                content:
+                  'Relief funds move through community agencies, fiscal intermediaries, and utilities before reaching a resident. Every handoff is a place where money can get lost, misapplied, or unaccounted for. The agencies managing this were doing it in spreadsheets. Every reconciliation question took hours.',
+              },
+              { type: 'heading', content: 'Event ledger' },
+              {
+                type: 'text',
+                content:
+                  'Every state change is an append-only event. Nothing is ever updated or deleted. At any point in time you can reconstruct the exact state of any award — what it was approved for, when it was funded, whether it was disbursed, and if a utility returned it, why.',
+              },
+              {
+                type: 'code',
+                content: `CREATE TABLE ledger_events (
+  id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  award_id    text NOT NULL,
+  event_type  text NOT NULL,
+  amount      integer NOT NULL,
+  actor       text NOT NULL,
+  role        text NOT NULL,
+  note        text,
+  metadata    jsonb,
+  created_at  timestamptz NOT NULL DEFAULT now()
+);
+
+-- Reconstruct award balance at any point in time
+SELECT
+  award_id,
+  SUM(CASE
+    WHEN event_type = 'funded'      THEN amount
+    WHEN event_type = 'disbursed'   THEN -amount
+    WHEN event_type = 'returned'    THEN amount
+    WHEN event_type = 'adjustment'  THEN amount
+    ELSE 0
+  END) AS balance
+FROM ledger_events
+WHERE award_id = $1
+  AND created_at <= $2
+GROUP BY award_id;`,
+              },
+              { type: 'heading', content: 'NACHA file generation' },
+              {
+                type: 'text',
+                content:
+                  'The final disbursement step outputs a spec-compliant ACH file. 94-character fixed-width records, CCD batch formatting, entry hash validation, automatic blocking factor padding. Generated from the ledger in under a second.',
+              },
+              {
+                type: 'code',
+                content: `function buildEntryDetailRecord(entry: AwardEntry, seq: number): string {
+  const ROUTING = entry.routingNumber.slice(0, 8);
+  const CHECK   = entry.routingNumber.slice(8);
+  const ACCOUNT = padRight(entry.accountNumber, 17);
+  const AMOUNT  = padLeft(String(entry.amountCents), 10, '0');
+  const ID      = padRight(entry.awardId.toUpperCase(), 15);
+  const NAME    = padRight(entry.utilityName.toUpperCase(), 22);
+  const TRACE   = ORIGINATING_DFI + padLeft(String(seq), 7, '0');
+
+  return \`622\${ROUTING}\${CHECK}\${ACCOUNT}\${AMOUNT}\${ID}\${NAME}  0\${TRACE}\`;
+}
+
+function calculateEntryHash(entries: AwardEntry[]): string {
+  const sum = entries.reduce((acc, e) => {
+    return acc + parseInt(e.routingNumber.slice(0, 8));
+  }, 0);
+  return padLeft(String(sum % 10_000_000_000), 10, '0');
+}
+
+function applyBlockingFactor(lines: string[]): string[] {
+  const remainder = lines.length % 10;
+  if (remainder === 0) return lines;
+  return [...lines, ...Array(10 - remainder).fill('9'.repeat(94))];
+}`,
+              },
+              { type: 'heading', content: 'AI returns parsing' },
+              {
+                type: 'text',
+                content:
+                  'Utilities submit returns files monthly — inconsistent formats, missing fields, free-text reason codes. A document extraction model parses each file, maps returns back to ledger entries by award ID, and queues invoice generation automatically. What used to take a full day of manual reconciliation runs in seconds.',
+              },
+              {
+                type: 'code',
+                content: `async function parseReturnsFile(file: Buffer): Promise<ReturnEntry[]> {
+  const extracted = await anthropic.messages.create({
+    model: 'claude-opus-4-5',
+    max_tokens: 2048,
+    messages: [{
+      role: 'user',
+      content: [
+        {
+          type: 'document',
+          source: { type: 'base64', media_type: 'application/pdf', data: file.toString('base64') }
+        },
+        {
+          type: 'text',
+          text: \`Extract all return entries as JSON. For each return:
+            award_id, utility_name, amount_cents, return_reason, account_number.
+            Normalize return_reason to: ACCOUNT_CLOSED | INVALID_ACCOUNT |
+            CUSTOMER_MOVED | DUPLICATE | OTHER.
+            Return only valid JSON, no preamble.\`
+        }
+      ]
+    }]
+  });
+
+  const returns: ReturnEntry[] = JSON.parse(extracted.content[0].text);
+
+  await Promise.all(returns.map(async (r) => {
+    await ledger.append({
+      award_id:   r.award_id,
+      event_type: 'returned',
+      amount:     r.amount_cents,
+      actor:      'returns-parser',
+      role:       'automated',
+      note:       \`Return reason: \${r.return_reason}. Account: \${r.account_number}\`
+    });
+    await invoiceQueue.add({ award_id: r.award_id, amount: r.amount_cents });
+  }));
+
+  return returns;
+}`,
               },
             ],
           },

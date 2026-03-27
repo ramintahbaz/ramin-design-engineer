@@ -38,6 +38,12 @@ export const PROMISE_CONSOLE_WORK_PAGE_VIDEO =
 /** Craft masonry / grid card — lighter clip; hero on the work page uses `PROMISE_WEBSITE_DEMO_VIDEO`. */
 export const PROMISE_WEBSITE_MASONRY_VIDEO = 'https://cdn.ramintahbaz.com/videos/thumbnails/promise_website_demo_1.mp4#t=0.01';
 
+/** Masonry + card thumbnail for Disbursement ledger. */
+export const NACHA_PREVIEW_VIDEO = 'https://cdn.ramintahbaz.com/videos/nacha_preview.mp4#t=0.01';
+
+/** Lead video on `/products/nacha` only. */
+export const NACHA_DEMO_VIDEO = 'https://cdn.ramintahbaz.com/videos/nacha_demo.mp4#t=0.01';
+
 export const WORK_ITEMS: WorkItem[] = [
   {
     id: 'payment-status',
@@ -310,6 +316,18 @@ export const WORK_ITEMS: WorkItem[] = [
     year: 'January 2026',
     video: PROMISE_COMMERCIAL_PREVIEW_VIDEO,
     thumbnail: PROMISE_CONSOLE_WORK_PAGE_VIDEO,
+    cardAspectRatio: '4/3',
+  },
+  {
+    id: 'nacha',
+    title: 'Disbursement ledger',
+    category: 'product' as const,
+    href: '/products/nacha',
+    excerpt:
+      'Reconciliation infrastructure for relief disbursement — append-only ledger, NACHA generation, and automated returns parsing.',
+    year: 'March 2026',
+    video: NACHA_PREVIEW_VIDEO,
+    thumbnail: NACHA_PREVIEW_VIDEO,
     cardAspectRatio: '4/3',
   },
 ];

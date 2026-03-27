@@ -14,10 +14,26 @@ const CRAFT_RAMIN_SKILL_INDEX = WORK_ITEMS.findIndex((w) => w.id === 'ramin-skil
 /** Featured early in masonry; excluded from tail so it doesn’t render twice */
 const CRAFT_PROMISE_CONSOLE_INDEX = WORK_ITEMS.findIndex((w) => w.id === 'promise-console');
 
+/** Featured directly after Promise Console; excluded from tail */
+const CRAFT_NACHA_INDEX = WORK_ITEMS.findIndex((w) => w.id === 'nacha');
+
+/** Rendered last in craft masonry (desktop + mobile); excluded from tail so it isn’t duplicated */
+const CRAFT_THISTRACKISCRACK_INDEX = WORK_ITEMS.findIndex((w) => w.id === 'thistrackiscrack');
+
+/** Appended after masonry tail (desktop + mobile); excluded from tail list via featured filter */
+const CRAFT_DORITOS_INDEX = WORK_ITEMS.findIndex((w) => w.id === 'doritos-loaded');
+
+/** Tuesday night heartbreak — appended toward bottom; excluded from tail */
+const CRAFT_ESSAY03_TUESDAY_INDEX = WORK_ITEMS.findIndex((w) => w.id === 'essay-03');
+
 /** Indices pinned in the first row (after neural); must not appear again in tail (avoids duplicate keys + duplicate cards). */
 function filterTailExcludedFromFeatured(i: number): boolean {
   if (CRAFT_PROMISE_CONSOLE_INDEX >= 0 && i === CRAFT_PROMISE_CONSOLE_INDEX) return false;
+  if (CRAFT_NACHA_INDEX >= 0 && i === CRAFT_NACHA_INDEX) return false;
   if (CRAFT_RAMIN_SKILL_INDEX >= 0 && i === CRAFT_RAMIN_SKILL_INDEX) return false;
+  if (CRAFT_THISTRACKISCRACK_INDEX >= 0 && i === CRAFT_THISTRACKISCRACK_INDEX) return false;
+  if (CRAFT_DORITOS_INDEX >= 0 && i === CRAFT_DORITOS_INDEX) return false;
+  if (CRAFT_ESSAY03_TUESDAY_INDEX >= 0 && i === CRAFT_ESSAY03_TUESDAY_INDEX) return false;
   return true;
 }
 
@@ -53,6 +69,9 @@ const CRAFT_MOBILE_TAIL_INDICES = (() => {
 const CRAFT_DESKTOP_PROMISE_IDX = WORK_ITEMS.findIndex((w) => w.id === 'promise-website');
 const CRAFT_DESKTOP_M8_IDX = WORK_ITEMS.findIndex((w) => w.id === 'film-03');
 
+/** Desktop: Zeke Sanders story — moved to bottom; Promise website takes its former tail slot (after swap, slot uses m8 index → promise) */
+const CRAFT_FILM05_ZEKE_INDEX = WORK_ITEMS.findIndex((w) => w.id === 'film-05');
+
 type CraftMasonrySlot =
   | { type: 'work'; index: number }
   | { type: 'neural' };
@@ -68,6 +87,29 @@ function swapPromiseM8DesktopSlots(slots: CraftMasonrySlot[]): CraftMasonrySlot[
     if (s.index === b) return { type: 'work' as const, index: a };
     return s;
   });
+}
+
+/**
+ * Desktop tail: Promise website (via swap, index 19) moves up into Zeke’s former position; remove the old Promise
+ * tail slot (first m8 index) so it doesn’t duplicate; Zeke is appended after Doritos, before Thistrackiscrack.
+ */
+function reorderDesktopTailPromiseWebsiteWithZeke(tailIndices: readonly number[]): number[] {
+  const zeke = CRAFT_FILM05_ZEKE_INDEX;
+  const m8 = CRAFT_DESKTOP_M8_IDX;
+  const out: number[] = [];
+  let removedFirstM8 = false;
+  for (const i of tailIndices) {
+    if (m8 >= 0 && i === m8 && !removedFirstM8) {
+      removedFirstM8 = true;
+      continue;
+    }
+    if (zeke >= 0 && i === zeke) {
+      out.push(m8 >= 0 ? m8 : i);
+      continue;
+    }
+    out.push(i);
+  }
+  return out;
 }
 
 const FILTER_OPTIONS: { value: FilterValue; label: string }[] = [
@@ -768,6 +810,7 @@ export default function CraftPage() {
                 ...(CRAFT_PROMISE_CONSOLE_INDEX >= 0
                   ? [{ type: 'work' as const, index: CRAFT_PROMISE_CONSOLE_INDEX }]
                   : []),
+                ...(CRAFT_NACHA_INDEX >= 0 ? [{ type: 'work' as const, index: CRAFT_NACHA_INDEX }] : []),
                 { type: 'neural' as const },
                 ...(CRAFT_RAMIN_SKILL_INDEX >= 0
                   ? [{ type: 'work' as const, index: CRAFT_RAMIN_SKILL_INDEX }]
@@ -780,11 +823,19 @@ export default function CraftPage() {
                   type: 'work' as const,
                   index,
                 })),
+                ...(CRAFT_DORITOS_INDEX >= 0 ? [{ type: 'work' as const, index: CRAFT_DORITOS_INDEX }] : []),
+                ...(CRAFT_ESSAY03_TUESDAY_INDEX >= 0
+                  ? [{ type: 'work' as const, index: CRAFT_ESSAY03_TUESDAY_INDEX }]
+                  : []),
+                ...(CRAFT_THISTRACKISCRACK_INDEX >= 0
+                  ? [{ type: 'work' as const, index: CRAFT_THISTRACKISCRACK_INDEX }]
+                  : []),
               ]
             : swapPromiseM8DesktopSlots([
                 ...(CRAFT_PROMISE_CONSOLE_INDEX >= 0
                   ? [{ type: 'work' as const, index: CRAFT_PROMISE_CONSOLE_INDEX }]
                   : []),
+                ...(CRAFT_NACHA_INDEX >= 0 ? [{ type: 'work' as const, index: CRAFT_NACHA_INDEX }] : []),
                 { type: 'neural' as const },
                 ...(CRAFT_RAMIN_SKILL_INDEX >= 0
                   ? [{ type: 'work' as const, index: CRAFT_RAMIN_SKILL_INDEX }]
@@ -793,10 +844,18 @@ export default function CraftPage() {
                 { type: 'work' as const, index: 2 },
                 { type: 'work' as const, index: 3 },
                 { type: 'work' as const, index: 1 },
-                ...CRAFT_DESKTOP_TAIL_INDICES.map((index) => ({
+                ...reorderDesktopTailPromiseWebsiteWithZeke(CRAFT_DESKTOP_TAIL_INDICES).map((index) => ({
                   type: 'work' as const,
                   index,
                 })),
+                ...(CRAFT_DORITOS_INDEX >= 0 ? [{ type: 'work' as const, index: CRAFT_DORITOS_INDEX }] : []),
+                ...(CRAFT_FILM05_ZEKE_INDEX >= 0 ? [{ type: 'work' as const, index: CRAFT_FILM05_ZEKE_INDEX }] : []),
+                ...(CRAFT_ESSAY03_TUESDAY_INDEX >= 0
+                  ? [{ type: 'work' as const, index: CRAFT_ESSAY03_TUESDAY_INDEX }]
+                  : []),
+                ...(CRAFT_THISTRACKISCRACK_INDEX >= 0
+                  ? [{ type: 'work' as const, index: CRAFT_THISTRACKISCRACK_INDEX }]
+                  : []),
               ])
           ).map((slot, gridIndex) =>
             slot.type === 'neural' ? (
