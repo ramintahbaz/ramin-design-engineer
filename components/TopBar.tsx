@@ -237,7 +237,7 @@ export default function TopBar() {
             aria-label="Home"
           >
             <Image
-              src="/images/avatar.png"
+              src="/images/website_image.png"
               alt="Avatar"
               width={96}
               height={96}
@@ -312,7 +312,7 @@ export default function TopBar() {
       <div className="hidden md:flex items-center gap-4 text-[10px] sm:text-[12px] font-medium overflow-x-auto scrollbar-hide shrink-0">
         <Link href="/" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full overflow-hidden" aria-label="Home">
           <Image
-            src="/images/avatar.png"
+            src="/images/website_image.png"
             alt="Avatar"
             width={96}
             height={96}

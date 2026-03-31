@@ -62,7 +62,7 @@ export default function Navigation() {
             style={{ backgroundColor: '#292929' }}
           >
             <Image
-              src="/images/avatar.png"
+              src="/images/website_image.png"
               alt="Avatar"
               width={96}
               height={96}

@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Ramin Tahbaz — Design Engineer",
     images: [
       {
-        url: "/images/share-og.png",
+        url: "/images/website_image.png",
         width: 1200,
         height: 630,
         alt: "Ramin Tahbaz — Design Engineer",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: "Ramin Tahbaz — Design Engineer",
     description:
       "Designer who codes, working across product, film, hardware, and writing. Self-taught, learning by doing.",
-    images: ["/images/share-og.png"],
+    images: ["/images/website_image.png"],
   },
 };
 
